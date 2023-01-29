@@ -10,9 +10,9 @@ function SocialLinks() {
     <div className='flex mt-8'>
       <div className='w-1/4'></div>
       <div className='flex justify-around w-1/2'>
-        <Image src={iconGitHub} width="32" />
-        <Image src={iconLinkedIn} width="32" />
-        <Image src={iconEmail} width="32" />
+        <Image src={iconGitHub} alt="GitHub" width="32" />
+        <Image src={iconLinkedIn} alt="LinkedIn" width="32" />
+        <Image src={iconEmail} alt="Email me" width="32" />
       </div>
       <div className='w-1/4'></div>
     </div>
