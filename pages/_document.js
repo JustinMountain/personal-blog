@@ -4,8 +4,7 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
-        <link rel="icon" type="image/x-icon" href="/favicon.svg" />
-        <title>Justin Mountain</title>
+        <link rel="icon" type="image/x-icon" href="/icons/favicon.png?" />
       </Head>
       <body>
         <Main />
