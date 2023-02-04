@@ -4,7 +4,16 @@ import path from 'path'
 import matter from 'gray-matter';
 
 export default function PostPage({ slug, frontmatter: { title, date }, content }) {
-  return <div>{title}{date}{slug}{content}</div>
+  return (
+    <>
+      <h2>
+        {title}{date}{slug}
+      </h2>
+      <p>
+        {content}
+      </p>
+    </>
+  )
 }
 
 export async function getStaticPaths() {
@@ -26,7 +35,7 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params: { slug } }) {
   const markdownWithMeta = fs.readFileSync(path.join('posts', slug + '.md'), 'utf-8')
 
-  const {data:frontmatter, content} = matter(markdownWithMeta)
+  const { data: frontmatter, content } = matter(markdownWithMeta)
 
   return {
     props: {
