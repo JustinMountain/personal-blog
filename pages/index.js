@@ -2,7 +2,7 @@ import React from 'react';
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
-import { sortDescendingyDate } from '../utils';
+import { sortDescendingyDate } from '../utils/sort';
 
 import Header from '@/components/Header';
 import SectionHero from '@/components/SectionHero';

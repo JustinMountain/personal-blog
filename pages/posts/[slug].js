@@ -2,16 +2,15 @@ import React from 'react'
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter';
+import markdownToHtml from '@/utils/markdownToHtml';
 
-export default function PostPage({ slug, frontmatter: { title, date }, content }) {
+export default function PostPage({ slug, frontmatter: { title, date }, htmlContent }) {
   return (
     <>
       <h2>
         {title}{date}{slug}
       </h2>
-      <p>
-        {content}
-      </p>
+      <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
     </>
   )
 }
@@ -36,10 +35,13 @@ export async function getStaticProps({ params: { slug } }) {
   const markdownWithMeta = fs.readFileSync(path.join('posts', slug + '.md'), 'utf-8')
 
   const { data: frontmatter, content } = matter(markdownWithMeta)
+  console.log(content)
+  const htmlContent = await markdownToHtml(content);
+  console.log(htmlContent)
 
   return {
     props: {
-      slug, frontmatter, content
+      slug, frontmatter, htmlContent
     }
   }
 }
