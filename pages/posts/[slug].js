@@ -10,7 +10,9 @@ export default function PostPage({ slug, frontmatter: { title, date }, htmlConte
       <h2>
         {title}{date}{slug}
       </h2>
-      <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
+      <article class="prose lg:prose-xl">
+        <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
+      </article>
     </>
   )
 }
