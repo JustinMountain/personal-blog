@@ -5,7 +5,6 @@ import matter from 'gray-matter';
 
 import Header from '@/components/Header';
 import markdownToHtml from '@/utils/markdownToHtml';
-import { globalStyles } from '@/utils/globalStyles';
 
 export default function PostPage({ slug, frontmatter: { title, date }, htmlContent }) {
   return (
