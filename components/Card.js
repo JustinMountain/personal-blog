@@ -1,13 +1,14 @@
 import React from 'react'
 import Link from 'next/link'
+import { globalStyles } from '@/utils/globalStyles';
 
-function Card({index, post}) {
+export default function Card({ index, post }) {
 
   return (
     <div className='bg-gray-200 rounded w-72 text-center m-auto my-8'>
-      <h3 className='p-8'>{post.frontmatter.title}</h3>
-      <p className='px-8 pb-8'>{post.frontmatter.excerpt}</p>
-      <div className="btn p-2 mx-20 mb-8 text-white bg-gray-800 rounded-lg hover:text-gray-800 hover:bg-white">
+      <h3 className={globalStyles.h3}>{post.frontmatter.title}</h3>
+      <p className={globalStyles.p}>{post.frontmatter.excerpt}</p>
+      <div className={globalStyles.darkButton}>
         <Link href={`/posts/${post.slug}`}>
           Read More
         </Link>
@@ -15,5 +16,3 @@ function Card({index, post}) {
     </div>
   )
 }
-
-export default Card

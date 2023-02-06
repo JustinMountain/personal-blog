@@ -5,7 +5,7 @@ import iconEmail from '../public/icons/icon-email.svg'
 import iconGitHub from '../public/icons/icon-github.svg'
 import iconLinkedIn from '../public/icons/icon-linkedin.svg'
 
-function SocialLinks() {
+export default function SocialLinks() {
   return (
     <div className='flex mt-8'>
       <div className='w-1/4'></div>
@@ -18,5 +18,3 @@ function SocialLinks() {
     </div>
   )
 }
-
-export default SocialLinks

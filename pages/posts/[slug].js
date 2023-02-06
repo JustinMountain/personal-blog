@@ -2,17 +2,21 @@ import React from 'react'
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter';
+
+import Header from '@/components/Header';
 import markdownToHtml from '@/utils/markdownToHtml';
+import { globalStyles } from '@/utils/globalStyles';
 
 export default function PostPage({ slug, frontmatter: { title, date }, htmlContent }) {
   return (
     <>
-      <h2>
-        {title}{date}{slug}
-      </h2>
-      <article class="prose lg:prose-xl">
-        <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
-      </article>
+      <Header mainText="Justin Mountain" />
+      <div className="mx-auto my-8 border max-w-screen-2xl px-6 ">
+        <article className="prose lg:prose-xl">
+          <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
+        </article>
+      </div>
+      <Header mainText="Copyright 2023 Justin Mountain" />
     </>
   )
 }
@@ -37,13 +41,24 @@ export async function getStaticProps({ params: { slug } }) {
   const markdownWithMeta = fs.readFileSync(path.join('posts', slug + '.md'), 'utf-8')
 
   const { data: frontmatter, content } = matter(markdownWithMeta)
-  console.log(content)
   const htmlContent = await markdownToHtml(content);
   console.log(htmlContent)
-
   return {
     props: {
       slug, frontmatter, htmlContent
     }
   }
 }
+
+// Add title dynamic from slug
+// Add tailwind for prose:
+  // h2
+  // h3
+  // h4
+  // p
+  // pre / code
+  // ul
+  // li
+  // ol
+  // link
+  // blockquote?
