@@ -8,9 +8,9 @@ export default function SectionHero() {
       <Head>
         <title>Justin Mountain</title>
       </Head>
-      <h2 className='text-3xl py-2'>Hi, I&apos;m Justin</h2>
-      <h3 className='text-3xl py-2'>Junior Developer</h3>
-      <p className='py-4'>
+      <h2>Hi, I&apos;m Justin</h2>
+      <h3>Junior Developer</h3>
+      <p>
         Currently pursuing interests in full stack web development and DevOps.
       </p>
       <SocialLinks />
