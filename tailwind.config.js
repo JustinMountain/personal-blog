@@ -6,9 +6,67 @@ module.exports = {
     './components/**/*.{js,jsx}'
   ],
   theme: {
-    extend: {},
+    extend: {
+      typography: {
+        DEFAULT: {
+          css: {
+            color: '#000',
+            h2: {
+              fontSize: '1.875rem',
+              lineHeight: '2.25rem',
+              fontWeight: '400',
+              margin: '0',
+              padding: '0.5rem 0'
+            },
+            h3: {
+              fontSize: '1.25rem',
+              lineHeight: '1.75rem',
+              fontWeight: '400',
+              margin: '0',
+              padding: '0.5rem 0'
+            },
+            p: {
+              lineHeight: '1.5rem',
+              fontWeight: '400',
+              margin: '0',
+              padding: '1rem 0'
+            },
+            a: {
+              color: 'rgb(59 130 246)',
+              '&:hover': {
+                color: 'rgb(30 64 175);',
+              },
+              lineHeight: '1.5rem',
+              fontWeight: '400',
+            },
+          },
+        },
+      },
+    },
   },
   plugins: [
-    require('@tailwindcss/typography')
+    require('@tailwindcss/typography'),
   ],
 }
+
+// Example with hover
+// h2: {
+//   color: '#3182ce',
+//   '&:hover': {
+//     color: '#2c5282',
+//   },
+// },
+
+// Add tailwind for prose:
+  // h2
+  // h3
+  // h4
+  // p
+  // pre / code
+  // image
+  // ul
+  // li
+  // ol
+  // link
+  // blockquote?
+  // check other tags from markdown guide

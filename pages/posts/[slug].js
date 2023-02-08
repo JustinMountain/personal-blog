@@ -11,7 +11,7 @@ export default function PostPage({ slug, frontmatter: { title, date }, htmlConte
     <>
       <Header mainText="Justin Mountain" />
       <div className="mx-auto my-8 border max-w-screen-2xl px-6 ">
-        <article className="prose lg:prose-xl">
+        <article className="prose prose-h2:default-h2 lg:prose-xl">
           <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
         </article>
       </div>
@@ -50,14 +50,3 @@ export async function getStaticProps({ params: { slug } }) {
 }
 
 // Add title dynamic from slug
-// Add tailwind for prose:
-  // h2
-  // h3
-  // h4
-  // p
-  // pre / code
-  // ul
-  // li
-  // ol
-  // link
-  // blockquote?
