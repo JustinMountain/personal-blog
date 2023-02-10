@@ -3,27 +3,42 @@
 @tailwind utilities;
 
 /* Changes to default typography below should get reflected in tailwind.config.js for blog pages */
-h2 {
-  @apply text-3xl py-2;
+@layer base {
+  h2 {
+    @apply text-3xl py-2;
+  }
+  
+  h3 {
+    @apply text-xl py-2;
+  }
+  
+  p {
+    @apply py-4;
+  }
+  
+  a {
+    @apply text-blue-500 underline;
+  }
+  
+  a:hover {
+    @apply text-blue-800;
+  }
 }
 
-h3 {
-  @apply text-xl py-2;
+@layer components {
+  .main-nav {
+    @apply justify-center p-2 hidden md:justify-end md:flex ;
+  }
+
+  .main-nav > * {
+    @apply mr-16 last:mr-0;
+  }
+
+  .invert-link-color > a {
+    @apply text-white no-underline;
+  }
+
+  .btn-gray {
+    @apply p-2 mx-20 my-2 invert-link-color bg-gray-800 rounded-lg;
+  }
 }
-
-p {
-  @apply py-4;
-}
-
-a {
-  @apply text-blue-500 underline;
-}
-
-a:hover {
-  @apply text-blue-800;
-}
-
-/* Create a custom class? 
-    in card: btn p-2 mx-20 mb-8 text-white bg-gray-800 rounded-lg hover:text-gray-800 hover:bg-white */
-
-/* Custom class for inverted link colors */

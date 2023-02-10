@@ -11,7 +11,7 @@ export default function PostPage({ slug, frontmatter: { title, date }, htmlConte
     <>
       <Header mainText="Justin Mountain" />
       <div className="mx-auto my-8 border max-w-screen-2xl px-6 ">
-        <article className="prose prose-h2:default-h2 lg:prose-xl">
+        <article className="prose">
           <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
         </article>
       </div>
@@ -41,7 +41,7 @@ export async function getStaticProps({ params: { slug } }) {
 
   const { data: frontmatter, content } = matter(markdownWithMeta)
   const htmlContent = await markdownToHtml(content);
-  console.log(htmlContent)
+
   return {
     props: {
       slug, frontmatter, htmlContent
