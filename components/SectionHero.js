@@ -4,7 +4,7 @@ import SocialLinks from '@/components/SocialLinks'
 
 export default function SectionHero() {
   return (
-    <section className='text-center p-16 w-96 m-auto'>
+    <section className='text-center p-16 max-w-sm m-auto'>
       <Head>
         <title>Justin Mountain</title>
       </Head>
