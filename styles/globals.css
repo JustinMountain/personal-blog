@@ -1,9 +1,25 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Alegreya&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 /* Changes to default typography below should get reflected in tailwind.config.js for blog pages */
 @layer base {
+  body {
+    /* @apply font-poppins; */
+    /* @apply font-roboto; */
+    /* @apply font-roboto-condensed; */
+    @apply font-lato;
+    /* @apply font-alegreya; */
+    /* @apply font-roboto-slab; */
+  }
+
   h2 {
     @apply text-3xl py-2;
   }

@@ -21,7 +21,7 @@ export default function Header({ mainText }) {
               <Link href="/">Contact</Link>
             </li>
           </ul>
-          <label for="nav-toggle" className='py-2 justify-end md:hidden'>
+          <label htmlFor="nav-toggle" className='py-2 justify-end md:hidden'>
               <div>A</div>
           </label>
         </nav>

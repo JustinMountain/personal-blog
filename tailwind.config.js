@@ -7,6 +7,14 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        'poppins': ['Poppins', 'sans-serif'],
+        'roboto': ['Roboto', 'sans-serif'],
+        'roboto-condensed': ['"Roboto Condensed"', 'sans-serif'],
+        'lato': ['Lato', 'sans-serif'],
+        'alegreya': ['Alegreya', 'serif'],
+        'roboto-slab': ['"Roboto Slab"', 'serif'],
+      },
       typography: {
         DEFAULT: {
           css: {
