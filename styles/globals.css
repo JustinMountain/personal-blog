@@ -43,11 +43,11 @@
 
 @layer components {
   .main-nav {
-    @apply justify-center p-2 hidden md:justify-end md:flex ;
+    @apply justify-center md:justify-end md:flex;
   }
 
   .main-nav > * {
-    @apply mr-16 last:mr-0;
+    @apply py-8 md:py-0 md:mr-16 md:last:mr-0;
   }
 
   .invert-link-color > a {
