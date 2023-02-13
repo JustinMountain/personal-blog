@@ -5,6 +5,7 @@ import matter from 'gray-matter';
 
 import Header from '@/components/Header';
 import markdownToHtml from '@/utils/markdownToHtml';
+import Footer from '@/components/Footer';
 
 export default function PostPage({ slug, frontmatter: { title, date }, htmlContent }) {
   return (
@@ -15,7 +16,7 @@ export default function PostPage({ slug, frontmatter: { title, date }, htmlConte
           <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
         </article>
       </div>
-      <Header mainText="Copyright 2023 Justin Mountain" />
+      <Footer mainText="Copyright 2023 Justin Mountain" />
     </>
   )
 }

@@ -8,6 +8,7 @@ import Header from '@/components/Header';
 import SectionHero from '@/components/SectionHero';
 import SectionCards from '@/components/SectionCards';
 import SectionAbout from '@/components/SectionAbout';
+import Footer from '@/components/Footer';
 
 export default function Home({ posts }) {
   return (
@@ -16,7 +17,7 @@ export default function Home({ posts }) {
       <SectionHero />
       <SectionCards posts={posts} />
       <SectionAbout />
-      <Header mainText="Copyright 2023 Justin Mountain" />
+      <Footer mainText="Copyright 2023 Justin Mountain" />
     </>
   );
 };

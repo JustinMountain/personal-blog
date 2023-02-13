@@ -21,9 +21,9 @@ export default function Header({ mainText }) {
     <header className="bg-gray-800 text-white sticky top-0 md:static">
       <div className='flex flex-col px-8 py-5 max-w-screen-2xl m-auto md:flex-row'>
         <div className="flex my-auto justify-between md:w-1/2 md:justify-start">
-          <div className="">
+          <div>
             <h1 className='invert-link-color'>
-              <Link href="/">{mainText}</Link>
+              <Link href="/">{ mainText }</Link>
             </h1>
           </div>
           <button 
@@ -36,7 +36,7 @@ export default function Header({ mainText }) {
             </div>
           </button> 
         </div>
-        <nav className={`md:w-1/2 justify-end md:flex absolute w-screen top-16 right-0 pr-8 bg-gray-8 00 md:static md:pr-0 ${buttonAddClass}`}>
+        <nav className={`md:w-1/2 justify-end md:flex absolute w-screen top-16 right-0 pr-8 bg-gray-800 md:static md:pr-0 ${buttonAddClass}`}>
           <ul className="main-nav ">
             <li className="invert-link-color text-right my-auto">
               <Link href="/">Top</Link>

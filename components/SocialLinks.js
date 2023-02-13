@@ -1,20 +1,27 @@
-import React from 'react'
-import Image from 'next/image'
+import React from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
 
-import iconEmail from '../public/icons/icon-email.svg'
-import iconGitHub from '../public/icons/icon-github.svg'
-import iconLinkedIn from '../public/icons/icon-linkedin.svg'
+import IconGitHub from '@/public/icons/IconGitHub';
+import IconLinkedIn from '@/public/icons/IconLinkedIn';
+import IconEmail from '@/public/icons/IconEmail';
 
-export default function SocialLinks() {
+export default function SocialLinks({ fillColor }) {
   return (
-    <div className='flex mt-8'>
-      {/* <div className='w-1/4'></div> */}
+    <div className='flex'>
       <div className='flex justify-around mx-auto gap-4'>
-        <Image src={iconGitHub} alt="GitHub" width="32" />
-        <Image src={iconLinkedIn} alt="LinkedIn" width="32" />
-        <Image src={iconEmail} alt="Email me" width="32" />
+        <Link href="https://github.com/JustinMountain">
+          <IconGitHub fill={ fillColor } width="32px" />
+        </Link>
+        <Link href="https://www.linkedin.com/in/justinmountain/">
+          <IconLinkedIn fill={ fillColor } width="32" />
+        </Link>
+        <Link href="mailto:mountainj@gmail.com">
+          <IconEmail fill={ fillColor } width="32" />
+        </Link>
       </div>
-      {/* <div className='w-1/4'></div> */}
     </div>
-  )
-}
+  );
+};
+
+// I should create an array to map over to create the Link elements

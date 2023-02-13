@@ -13,7 +13,7 @@ export default function SectionHero() {
       <p>
         Currently pursuing interests in full stack web development and DevOps.
       </p>
-      <SocialLinks />
+      <SocialLinks fillColor="rgb(31 41 55)" />
     </section>
   )
 }
