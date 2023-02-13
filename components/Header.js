@@ -1,6 +1,7 @@
-import React from 'react'
-import Link from 'next/link'
+import React from 'react';
+import Link from 'next/link';
 import { useState } from "react";
+import MainNav from './MainNav';
 
 export default function Header({ mainText }) {
 
@@ -9,13 +10,7 @@ export default function Header({ mainText }) {
 
   function handleClick() {
     setBtnState(btnState => !btnState);
-  }
-
-  // Create an array containing all nav links
-  // Loop/Map over the array to make the nav
-    // https://www.youtube.com/watch?v=74ys-dT94mA
-    // Once this is done main-nav and > * styles can be moved here
-
+  };
 
   return (
     <header className="bg-gray-800 text-white sticky top-0 md:static">
@@ -36,17 +31,10 @@ export default function Header({ mainText }) {
             </div>
           </button> 
         </div>
-        <nav className={`md:w-1/2 justify-end md:flex absolute w-screen top-16 right-0 pr-8 bg-gray-800 md:static md:pr-0 ${buttonAddClass}`}>
-          <ul className="main-nav ">
-            <li className="invert-link-color text-right my-auto">
-              <Link href="/">Top</Link>
-            </li>
-            <li className="invert-link-color text-right my-auto">
-              <Link href="/">Contact</Link>
-            </li>
-          </ul>
-        </nav>
+        <div className={`md:w-1/2 justify-end md:flex absolute w-screen top-16 right-0 bg-gray-800 md:static md:pr-0 ${buttonAddClass}`}>
+          <MainNav />
+        </div>
       </div>
     </header>
-  )
-}
+  );
+};

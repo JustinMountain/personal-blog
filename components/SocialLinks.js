@@ -1,5 +1,4 @@
 import React from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 
 import IconGitHub from '@/public/icons/IconGitHub';
@@ -23,5 +22,3 @@ export default function SocialLinks({ fillColor }) {
     </div>
   );
 };
-
-// I should create an array to map over to create the Link elements

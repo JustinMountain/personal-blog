@@ -42,14 +42,6 @@
 }
 
 @layer components {
-  .main-nav {
-    @apply justify-center md:justify-end md:flex;
-  }
-
-  .main-nav > * {
-    @apply py-8 md:py-0 md:mr-16 md:last:mr-0;
-  }
-
   .invert-link-color > a {
     @apply text-white no-underline;
   }
