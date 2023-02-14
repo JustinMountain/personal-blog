@@ -13,11 +13,11 @@ import Footer from '@/components/Footer';
 export default function Home({ posts }) {
   return (
     <>
-      <Header mainText="Justin Mountain" />
+      <Header />
       <SectionHero />
       <SectionCards posts={posts} />
       <SectionAbout />
-      <Footer mainText="Copyright 2023 Justin Mountain" />
+      <Footer />
     </>
   );
 };

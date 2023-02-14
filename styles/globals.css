@@ -11,6 +11,10 @@
 
 /* Changes to default typography below should get reflected in tailwind.config.js for blog pages */
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     /* @apply font-poppins; */
     /* @apply font-roboto; */

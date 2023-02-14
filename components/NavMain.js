@@ -1,7 +1,7 @@
 import React from "react";
-import Link from 'next/link'
+import Link from 'next/link';
 
-export default function MainNav() {
+export default function NavMain() {
 
   const navLinks = [
     {name:"Blog", href:"/"},
@@ -9,7 +9,7 @@ export default function MainNav() {
   ]
 
   const navHtml = navLinks.map((link, index) => (
-    <li key={index} className="invert-link-color my-auto text-right pr-8 md:pr-0 py-8 md:py-0 md:mr-16 md:last:mr-0">
+    <li key={index} className="invert-link-color text-right my-auto py-8 pr-8 md:pr-0 md:py-0 md:mr-16 md:last:mr-0">
       <Link href={link.href}>
         {link.name}
       </Link>
