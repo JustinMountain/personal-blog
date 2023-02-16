@@ -13,7 +13,7 @@ export default function Header() {
   };
 
   return (
-    <header id="page-top" className="bg-gray-800 text-white top-0">
+    <header className="bg-gray-800 text-white top-0">
       <div className='flex flex-col px-8 py-5 max-w-screen-2xl m-auto md:flex-row'>
         <div className="flex my-auto justify-between md:w-1/2 md:justify-start">
           <div>

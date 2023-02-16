@@ -9,7 +9,7 @@ export default function Footer() {
         <div className="py-5 my-auto md:py-0 md:w-1/2">
           <div className="text-center md:text-left">
             <span className='invert-link-color'>
-              <a href="#page-top">Copyright 2023 Justin Mountain</a>
+              <a href="#">Copyright 2023 Justin Mountain</a>
             </span>
           </div>
         </div>
