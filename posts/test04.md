@@ -1,6 +1,6 @@
 ---
 title: 'Test Post 04'
-date: '2023-02-01'
+published: '2023-02-01'
 excerpt: 'The fourth excerpt'
 thumbnail: ''
 ---

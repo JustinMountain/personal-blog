@@ -1,9 +1,9 @@
 // Ascending Sort
 export const sortDescendingyDate = (a, b) => {
-  return new Date(b.frontmatter.date) - new Date(a.frontmatter.date)
-}
+  return new Date(b.frontmatter.published) - new Date(a.frontmatter.published)
+};
 
 // Descending Sort 
 export const sortAscendingByDate = (a, b) => {
-  return new Date(a.frontmatter.date) - new Date(b.frontmatter.date)
-}
+  return new Date(a.frontmatter.published) - new Date(b.frontmatter.published)
+};
