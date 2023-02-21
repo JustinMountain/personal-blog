@@ -29,11 +29,11 @@
   }
   
   h3 {
-    @apply text-xl py-2;
+    @apply text-2xl py-2;
   }
   
   p {
-    @apply py-4;
+    @apply py-4 text-lg break-words;
   }
   
   a {

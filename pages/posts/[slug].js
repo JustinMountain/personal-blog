@@ -11,8 +11,8 @@ export default function PostPage({ slug, frontmatter: { title, date }, htmlConte
   return (
     <>
       <Header mainText="Justin Mountain" />
-      <div className="mx-auto my-8 border max-w-screen-2xl px-6 ">
-        <article className="prose">
+      <div className="mx-auto my-8 max-w-screen-xl px-6 ">
+        <article className="prose mx-auto">
           <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
         </article>
       </div>

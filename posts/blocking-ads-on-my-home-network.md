@@ -47,3 +47,15 @@ In the navigation, click Network > Interfaces. On WAN, click edit > Advanced Set
 It's important to note that this does not provide complete network security. This protects against DNS requests, if a device has the DNS hard-coded into it, the PiHole will not stop the requests from exiting the network. This is a job better suited for a Firewall or DMZ. 
 
 I also like to point my devices to the PiHole. 
+
+
+
+
+
+
+
+
+
+
+
+With veloserver now active on the network, we can do some fun things. The first thing I’ll do is setup Docker to containerize the server processes. Inside Docker, we’ll install PiHole to keep telemetry and advertising at a minimum. 

@@ -1,50 +1,87 @@
 ---
-title: 'Repurposing an Old Laptop'
-published: '2023-02-17'
-updated: ''
-tags: ''
+title: 'Repurposing an Old Laptop as a Home Server'
+published: '2023-01-06'
+updated: '2023-02-20'
+tags: 'homelab, linux, home server'
 excerpt: 'The first excerpt'
 thumbnail: ''
 ---
 
-## Repurposing an Old Laptop
-
-> This isn’t a tutorial or a walkthrough. It’s my own documentation for how I setup the laptop to be a home server. 
+## Repurposing an Old Laptop as a Home Server
 
 ### Table of Contents
 
 ### Laptop Specs
 
-I still need to find and summarize this...
+For this project, I'm using my old Toshiba Satellite S50D-A. While the specs of this laptop leave a lot to be desired when it comes to a home server, there are a few key reasons why I chose to use it:
 
-### Laptop Upgrades:
+1. I can re-use some hardware that would otherwise become e-waste
+2. None of the current workload I have in mind will require more power than the laptop has
+3. Upgrading and tinkering with the older hardware is a risk-free way of practicing
 
-When I first had the idea to use this old laptop as a home server, I went through all the steps to make sure that it would work before spending money on a few small upgrades. Once the basics were setup and I was able to confirm that the laptop would function as I wanted it to, I decided to do a few upgrades since the machine will be running 24/7 and I want it to be a reliable tool for my home network as well as a resource to learn with. The two upgrades I did were replacing the old mechanical hard drive with an SSD and replace the thermal paste for better heat management. 
+Without further adieu, here are the relavent specs for the laptop server:
 
-The bottom panel of this laptop has seen better days, as most of the screw retention clips have been broken off. The hard drive in this laptop has been replaced previously, and the tray that held it in place also broke. But this laptop will be sitting on a shelf as a server, not moving around. As long as I stay aware of the fact that the SSD isn’t secured, it should be fine. 
+ - Quad Core AMD A10-5745M with Radeon HD 2.1Ghz
+ - 8gb DDR3 RAM
+ - 100Mbps Ethernet
+ - 500gb WD Blue Solid State Drive
+ - AMD HD8500M (1G)/AMD Radeon HD 8610G+R5M 2000 (1.7G) Dual Graphics
 
-The heat sink couldn’t be completely removed, but I was able to lift it up enough and use rubbing alcohol with a cotton swab to remove all of the very old thermal paste. This laptop has two dyes that connect to the copper heat sink, so both were cleaned, and a small amount of new thermal paste was placed on them before the heat sink was secured back to the motherboard. The fan is in charge of dissipating the heat from the copper heat sink, so I took this time to give it a thorough cleaning as well. 
+### Laptop Upgrades
 
-Once the two upgrades were complete, I did my best to find the last remaining retention clips and screwed the bottom panel back on the laptop. 
+I bought this laptop in 2014 and by the time it was retired in 2020, it was being used with an external mouse, keyboard, and monitor and its SSD (an upgrade ~2016) was canabalized into my new desktop. I re-installed the old 5400rpm HDD and installed Linux to make sure the hardware would work in a *good enough* state, then bought a few small upgrades. 
 
-### Install Linux 
+I wanted the laptop to function as a reliable tool for my home network as well as be a resource to learn with, which led to me replacing the spinning rust with a WD Blue SSD and giving it a thorough cleaning. I also cleaned off and replaced the thermal paste from the CPU and graphics card and removed the DVD drive. 
 
-First, I need a Linux USB boot drive. This time around, I had one from the previous installation using Linux 22.04. I did so by following the following guide (https://ubuntu.com/tutorials/create-a-usb-stick-on-windows#1-overview). 
-Plug the newly created Linux boot drive into the laptop, boot up, and follow the onscreen instructions to install Linux. I used the minimum installation option, since I didn’t want or need the extras installed on the server. I named the server and user veloserver, following my dinosaur themed naming convention. 
+The bottom panel of this laptop has seen better days, as most of the screw retention clips have been broken off. The tray that holds the SSD in place is also broken, but this laptop will be sitting on a shelf as a server, not moving around. I'm more than happy to be re-using old hardware for this project, especially as a starting point.
 
-Once on the desktop, I navigated to the Wired Connection Settings to set a static IP address for the server. I’ve got a very standard networking setup, so I chose 102.168.1.100 for the server’s IP, 255.255.255.0 for the subnet mask, and 192.168.1.1 for the default gateway. These values may be different for different routers, but the subnet mask and default gateway have been these values for every router I’ve accessed.
+Once the upgrades were complete, I did my best to find the last remaining retention clips and screwed the bottom panel back on the laptop. I placed the laptop bottom-up to help dissipate heat, hooked up the ethernet, and plugged it in. It's not pretty, but it works.
 
-With the basic setup complete, it’s time to turn this laptop into a server. Open the terminal (CTRL+ALT+T) and type ‘sudo apt update’ to download the latest package information. Then we run ‘sudo apt install openssh-server’ to be able to access and control the server from another machine on the network. We also needs to run ‘sudo systemctl status ssh’ to verify that ssh is running. 
+### Installing Linux 
 
-Before we’re done on the laptop, we need to make sure it won’t shut down when we close the lid. Again in the terminal, type ‘sudo nano /etc/systemd/logind.conf’ and the file will open in the nano text editor. Navigate down to where it says ‘#HandleLidSwitch=suspend’ which is commented out. Remove the # and change suspend to ignore ‘HandleLidSwitch=ignore’. Make sure the changes are saved and nano has been closed. 
+With the hardware sorted out, it was time to install Linux. I chose the newest LTS version of Ubuntu Desktop (22.04) and followed the [guide on the Linux website](https://ubuntu.com/tutorials/create-a-usb-stick-on-windows#1-overview) to create a USB boot drive. With the USB boot drive, installing Linux was as easy as plugging it into the laptop server and following the on-screen instructions, choosing the minimum installation option. Following my dinosaur themed naming convention, I gave it the name *veloserver*.
 
-Now for the moment of truth: open PowerShell (or OpenSSH or PuTTY, etc) and type ‘ssh veloserver@192.168.1.100’. Enter the password made during the Linux installation. We should now have access to the command line of the server. To make sure everything is working, reboot the server (sudo reboot). When the server is back up and the login page displayed, close the lid. SSH back into the server (ssh veloserver@192.168.1.100) to make sure and now we can start to do some fun things with our server! 
+Once on the desktop, I navigated to the Wired Connection Settings to set a static IP address for the server. I chose 192.168.1.100 for the server’s IP, 255.255.255.0 for the subnet mask, and 192.168.1.1 for the default gateway. The value for default gateway might be different on different routers, but I have a simple consumer-grade router. I could've setup Linux headless and chose the Linux Server option, but I opted for 22.04 LTS because I was installing on a laptop and being able to use its screen in a worst-case scenario was worth it for me. 
+
+With the basic setup complete, it was time to turn this laptop into a server. This is done primarily through installing an SSH server so that I can remotely access the laptop:
+
+``` 
+# Updates the package list
+sudo apt update
+
+# Updates outdated packages
+sudo apt upgrade
+
+# Installs the openssh server 
+sudo apt install openssh-server
+
+# Verifies the ssh server is running
+sudo systemctl status ssh
+```
+
+The last - and arguably most important - step in turning this laptop into a server is ensuring that it won't go to sleep while the lid is closed. Still in the terminal, the following command will open a system configuration file. Navigate to where it says ‘#HandleLidSwitch=suspend’. Remove the # and change suspend to ignore ‘HandleLidSwitch=ignore’. Make sure the changes are saved and nano has been closed:
+
+```
+# Opens system configuration file
+sudo nano /etc/systemd/logind.conf
+
+# Navigate to this line:
+#HandleLidSwitch=suspend
+
+# Remove the comment # and change to ignore:
+HandleLidSwitch=ignore
+```
+
+The last step is to test the configuration. On my desktop, I opened PowerShell and used the ssh command to remote into veloserver:
+
+```
+ssh veloserver@192.168.1.100
+```
+
+After entering the password I made during Linux installation, I had command line access to the laptop. To test the connection, I reboot the machine ('sudo reboot'), closed the lid, and ssh'd back into the server. Everything works. With setup complete, it's time to have some fun with my new server!
 
 ### Next Steps
 
-With the veloserver now active on the network, we can do some fun things. The first thing I’ll do is setup Docker to containerize the server processes. Inside Docker, we’ll install PiHole to keep telemetry and advertising at a minimum. 
+The first thing I will be setting up on this server is Docker which will let me put containerized applications on the server. The benefit here is that each container doesn't know about any of the other containers unless we explicitly tell them where to look. There are a whole host of other benefits that come with containers, but I'll elaborate on them in future posts. 
 
-Like any good project, doing this has created more a few more questions. What services can I self-host? Are there any services that I definitely shouldn’t self-host? 
-
-While I was inside the laptop, I also noticed that I can easily remove the DVD drive. I wonder if I could buy an adapter and replace the DVD drive with a second SSD, creating a mirrored boot drive. It would be a shame to create a bunch of services and tie them to this laptop and have the SSD fail. 
-I’ve done this as a way of exploring and learning about systems and networking. 
+While I was inside the laptop, I removed the DVD drive. After a little bit of investigation, I found that I can buy an adapter that would allow me to put a second SSD inside veloserver. I would love to explore adding a mirrored boot drive for redundancy because it would be a shame to self host a bunch of services and tie them to this laptop and have the SSD fail. 
