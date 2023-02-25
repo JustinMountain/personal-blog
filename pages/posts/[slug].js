@@ -2,6 +2,7 @@ import React from 'react'
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter';
+import Head from 'next/head';
 
 import Header from '@/components/Header';
 import markdownToHtml from '@/utils/markdownToHtml';
@@ -10,6 +11,10 @@ import Footer from '@/components/Footer';
 export default function PostPage({ slug, frontmatter: { title, date }, htmlContent }) {
   return (
     <>
+    <Head>
+      <title>{`${title} - Justin Mountain`}</title>
+      <meta property="og:title" content={title} key="title" />
+    </Head>
       <Header mainText="Justin Mountain" />
       <div className="mx-auto my-8 max-w-screen-xl px-6 ">
         <article className="prose mx-auto">
@@ -49,5 +54,3 @@ export async function getStaticProps({ params: { slug } }) {
     }
   }
 }
-
-// Add title dynamic from slug

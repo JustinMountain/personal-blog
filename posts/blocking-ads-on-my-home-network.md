@@ -1,8 +1,9 @@
 ---
 title: 'Blocking Ads on My Home Network'
-published: '2023-01-18'
-updated: ''
-tags: ''
+published: '2023-02-23'
+repo: ''
+category: 'homelab'
+tags: 'pi-hole, docker, linux, home server, documentation'
 excerpt: 'The second excerpt'
 thumbnail: ''
 ---
@@ -11,51 +12,80 @@ thumbnail: ''
 
 ### Table of Contents
 
-### Install Docker
+### Why Block Ads?
 
-First thing’s first, Docker will allow us to add containers. Containers are like application packages that include everything needed for the application to run. Docker containers have the benefit of being isolated from the host machine as well as one another. This isolation mainly allows the different applications on the machine to run without knowledge of one another, which can clean up some interference when running multiple applications. For example, if there are two applications installed which both require a database, the two databases will be completely isolated. This allows us to have two tables with the same names in each database or even different versions of the same database, each linked to a different application.
+I've been using an in browser ad blocker for as longas I knew they existed. They do the job they're supposed to do and they do it very well; they even do it better than the solution outlined below. The problem is that they only work in the browser. However, they won't block application telemetry nor will they work on mobile devices. I wanted a solution that would work for all devices on my local network. Enter Pi-hole.
 
-To install Docker, I just followed the instructions on Docker’s website (https://docs.docker.com/engine/install/ubuntu/). I had to manually install docker-compose (sudo apt install docker-compose). On subsequent installs, I’ll still follow the guide and check the version of docker and docker-compose before manually installing it. 
+Originally designed to work with Raspberry Pis, Pi-hole is a DNS sinkhole that works by intercepting DNS requests and checking if they match a list of blacklisted domains. If the requested site is on the list, the Pi-hole returns null. Pi-hole can do a numch of other things like handle DHCP and create local DNS, but here I'll be focusing on setting it up as a DNS sinkhole. I'm also using [my repurposed laptop](/posts/repurposing-an-old-laptop) instead of a Raspberry Pi using Docker.
 
-### Install PiHole
+### Docker Setup
 
-Now that Docker has been installed, we can finally install PiHole. Once again, I just followed the instructions on Docker Hub (https://hub.docker.com/r/pihole/pihole). 
+What is Docker? Simply put, Docker let's us add containers that include everything needed for an application to run. This streamlines the setup process for applications because we don't need to worry about installing dependencies or having different versions of the same dependency on one system - everything we need is packaged in the container. Containers are also independent of the host operating system and therefore work the same regardless of the OS they are being run in. Containers are isolated from the host machine as well as other containers so for example there's no conflict having two different MySQL databases each with their own 'Users' table because the two databases have no idea the other exists. It's possible to solve this problem with virtual (or physical) machines, but that solution requires a lot more technical overhead than simply deploying a container.
 
-After SSHing into veloserver, I created a directory to store the PiHole instance (mkdir pihole). After changing into the new directory, I created a new docker-compose.yml file and opened it in nano (sudo nano docker-compose.yml). I copied the provided file into nano, changing the TimeZone to New_York, uncommenting the WEBPASSWORD field and added a password. Check this. 
+Installing Docker is relatively simple, I just followed the [instructions on Docker's website](https://docs.docker.com/engine/install/ubuntu/) using the 'Install using the repository' section. The only notable point here is that I had to manually install docker-compose, an additional package that let's us define container settings using yaml files:
 
-After saving exiting out of nano, run the compose command.
+```
+sudo apt install docker-compose
+```
 
-Every time I get here, I run into an issue with port 53. Luckily, I was able to find this post (https://discourse.pi-hole.net/t/docker-unable-to-bind-to-port-53/45082/7) which gave me the following commands and fixed the issue:
+### Installing Pi-hole
+
+With Docker installed, it's time to navigate to DockerHub and find the [official Pi-hole image](https://hub.docker.com/r/pihole/pihole). 
+
+In the home directory of veloserver, I made a new directory for the Pi-hole files and opened a new docker-compose.yaml file in nano:
+
+```
+mkdir pihole
+sudo nano docker-compose.yaml
+```
+
+I copied the provided docker-compose file into nano (right-clicking in the editor will paste the contents of the clipboard). There were a few small changes that needed to be made to this file: I changed the TZ to America/New_York, uncommented the WEBPASSWORD field, and added a password. There are some optimizations I can do to this docker-compose file, but those will be a problem for future Justin; time to save and exit out of nano.
+
+Every time I have reached this stage of the installation, I've been greeted with an issue related to port 53, seemingly caused by Ubuntu's systemd-resolved service already running on port 53. I found a [post outlining a solution](https://discourse.pi-hole.net/t/docker-unable-to-bind-to-port-53/45082/7), and run the following commands:
 
 ```
 systemctl disable systemd-resolved.service
 systemctl stop systemd-resolved
 ```
 
-Once these are done, we run ‘sudo docker-compose up -d’ to start the containers. 
+**Explain what this does**
 
-After a restart, I can now access the pihole admin panel from any web browser on the network (http://192.168.1.100/admin/login.php) by using the password defined in the docker-compose file used to build the PiHole container. 
+With the systemd-resolved issue resolved, it's time to run the docker-compose file:
 
-Once inside, the next step is to update adlists. This step is completely optional, but doing so will vastly increase the number of IPs that the PiHole will block. I just used the lists on the firebog (https://firebog.net/) website. By adding all of the green and blue lists (I added a comment in PiHole to indicate which type of list each link was protecting against – advertising, telemetry, etc) I was able to get over 5.7 million blocked IPs. 
+```
+sudo docker-compose up -d
+```
 
-Finally, the PiHole is up and running as a DNS sinkhole. Now that it’s setup, we just need to tell the devices on our network to use the PiHole as their DNS provider. There are two ways to do this: we can go into the setting for each network device and put 192.168.1.100 as the DNS provider, or we can tell our router to use the PiHole for the entire network. The first option is more work to setup (and maintain – if the PiHole’s IP changes then each devices will need to be manually updated) but it provides more granular information about what’s happening on the network – which devices are making which DNS queries. The second option provides total coverage for the network, but finding the rogue devices calling home a million times will be much more difficult. 
+This command spins up the container in detatched mode - basically just runs it as a background process rather than taking over the terminal. From here we should be able to run the following command to make sure that the new Pi-hole container is indeed up and running:
 
-I have an Archer C7 router with the OpenWRT firmware installed. I can’t list out here how to configure custom DNS settings for every router, but it’s going to be a similar process for all routers. 
+```
+sudo docker ps
+```
 
-In the navigation, click Network > Interfaces. On WAN, click edit > Advanced Settings. Uncheck the ‘Use DNS servers advertised by peer’ option, add 192.168.1.100 to ‘Use custom DNS servers’ and save. Click on ‘Interface has pending changes’ and Save & Apply. I like to make sure everything is covered now by going to System > Reboot from the navigation bar. Once the router has restarted, the network should be covered by PiHole! 
+After a restart, it's now possible to access the Pi-hole admin panel from any web browser on the network [http://192.168.1.100/admin/](http://192.168.1.100/admin/) by using the password defined earlier in the docker-compose file that was used to build the Pi-hole container. 
 
-It's important to note that this does not provide complete network security. This protects against DNS requests, if a device has the DNS hard-coded into it, the PiHole will not stop the requests from exiting the network. This is a job better suited for a Firewall or DMZ. 
+### Adding Blacklists
 
-I also like to point my devices to the PiHole. 
+Once in the admin panel, the next step is to update the blacklists. This step is completely optional, as Pi-hole does come with a default list, but doing so will vastly increase the number of IP addresses that the Pi-hole will block. Adding a new list is as easy as navigating to the Adlists section in the navigation and adding an address with a comment.
 
+The simplest way that I found to add sites was to use the curated lists present on [The Firebog](https://firebog.net/). Blacklists here have different categories: green lists are the least likely to interfere with normal browsing, blue lists more aggressively block sites (I had one completely block Amazon), and lists with strikethrough text are deprecated or give false positives. Using just the green lists there are over 750,000 domains blocked on my network and I don't notice any negative effects when browsing. It's worth noting that it's not perfect - the YouTube app will still deliver ads to my phone, but I don't use the app often and they are taken care of in my desktop browser with [uBlock origin](https://ublockorigin.com/). 
 
+Now that the Pi-hole is setup, it's time to tell the devices on our network to use it as their DNS provider. There are two options here and each have their own pros and cons:
 
+1) Configure each individual device's DNS settings
+2) Tell the router to resolve all DNS queries through the Pi-hole
 
+Pointing each device to the Pi-hole will collect more granular data about which device is making which query. Telling the router is much simpler, but not all routers can be setup with this functionality. I've gone with a combination of both soltions: a lot of my devices have their connections manually configured, and I also point my home router (an Archer C7 and flashed with the OpenWRT firmware) to the Pi-hole. This makes sure the network is covered and also lets me know when different devices are phoning home at different intervals. 
 
+On my Archer C7:
 
+1) Click Network > Interfaces
+2) On WAN, click edit > Advanced Settings
+3) Uncheck the ‘Use DNS servers advertised by peer’ option, add 192.168.1.100 to ‘Use custom DNS servers’ and save
+4) Click on ‘Interface has pending changes’ and Save & Apply. 
+5) System > Reboot from the navigation bar to ensure that all of the settings are active. 
+6) The network should be covered by PiHole! 
 
+It's important to note that this does not provide complete network security. This protects against DNS requests but if a device has the DNS hard-coded into it, the PiHole will not stop the requests from exiting the network. This is a job better suited for a Firewall or DMZ. 
 
-
-
-
-With veloserver now active on the network, we can do some fun things. The first thing I’ll do is setup Docker to containerize the server processes. Inside Docker, we’ll install PiHole to keep telemetry and advertising at a minimum. 
+> I need to add a conclusion here pointing to the next article

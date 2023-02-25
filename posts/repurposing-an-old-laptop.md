@@ -1,8 +1,9 @@
 ---
 title: 'Repurposing an Old Laptop as a Home Server'
-published: '2023-01-06'
-updated: '2023-02-20'
-tags: 'homelab, linux, home server'
+published: '2023-02-18'
+repo: ''
+category: 'homelab'
+tags: 'linux, home server, documentation'
 excerpt: 'The first excerpt'
 thumbnail: ''
 ---
@@ -85,3 +86,5 @@ After entering the password I made during Linux installation, I had command line
 The first thing I will be setting up on this server is Docker which will let me put containerized applications on the server. The benefit here is that each container doesn't know about any of the other containers unless we explicitly tell them where to look. There are a whole host of other benefits that come with containers, but I'll elaborate on them in future posts. 
 
 While I was inside the laptop, I removed the DVD drive. After a little bit of investigation, I found that I can buy an adapter that would allow me to put a second SSD inside veloserver. I would love to explore adding a mirrored boot drive for redundancy because it would be a shame to self host a bunch of services and tie them to this laptop and have the SSD fail. 
+
+> I need to add a link to the next article here. 
