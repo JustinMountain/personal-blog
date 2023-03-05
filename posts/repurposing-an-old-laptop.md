@@ -1,11 +1,13 @@
 ---
 title: 'Repurposing an Old Laptop as a Home Server'
 published: '2023-02-18'
+updated: '2023-02-18'
 repo: ''
-category: 'homelab'
-tags: 'linux, home server, documentation'
-excerpt: 'The first excerpt'
+category: 'project'
+tags: 'linux, home server, documentation, homelab'
+excerpt: "I started my homelab journey on my old laptop, repurposed as a home server."
 thumbnail: ''
+thumbnail-alt: ''
 ---
 
 ## Repurposing an Old Laptop as a Home Server

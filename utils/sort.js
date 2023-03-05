@@ -1,5 +1,5 @@
 // Ascending Sort
-export const sortDescendingyDate = (a, b) => {
+export const sortDescendingByDate = (a, b) => {
   return new Date(b.frontmatter.published) - new Date(a.frontmatter.published)
 };
 

@@ -1,11 +1,13 @@
 ---
 title: 'Blocking Ads on My Home Network'
 published: '2023-02-23'
+updated: '2023-02-23'
 repo: ''
-category: 'homelab'
-tags: 'pi-hole, docker, linux, home server, documentation'
-excerpt: 'The second excerpt'
+category: 'project'
+tags: 'pi-hole, docker, linux, home server, documentation, homelab'
+excerpt: "Ads are the worst. Using the Pi-hole DNS sinkhole, it's possible to get rid of most of them on a home network"
 thumbnail: ''
+thumbnail-alt: ''
 ---
 
 ## Blocking Ads on My Home Network
@@ -17,16 +19,6 @@ thumbnail: ''
 I've been using an in browser ad blocker for as longas I knew they existed. They do the job they're supposed to do and they do it very well; they even do it better than the solution outlined below. The problem is that they only work in the browser. However, they won't block application telemetry nor will they work on mobile devices. I wanted a solution that would work for all devices on my local network. Enter Pi-hole.
 
 Originally designed to work with Raspberry Pis, Pi-hole is a DNS sinkhole that works by intercepting DNS requests and checking if they match a list of blacklisted domains. If the requested site is on the list, the Pi-hole returns null. Pi-hole can do a numch of other things like handle DHCP and create local DNS, but here I'll be focusing on setting it up as a DNS sinkhole. I'm also using [my repurposed laptop](/posts/repurposing-an-old-laptop) instead of a Raspberry Pi using Docker.
-
-### Docker Setup
-
-What is Docker? Simply put, Docker let's us add containers that include everything needed for an application to run. This streamlines the setup process for applications because we don't need to worry about installing dependencies or having different versions of the same dependency on one system - everything we need is packaged in the container. Containers are also independent of the host operating system and therefore work the same regardless of the OS they are being run in. Containers are isolated from the host machine as well as other containers so for example there's no conflict having two different MySQL databases each with their own 'Users' table because the two databases have no idea the other exists. It's possible to solve this problem with virtual (or physical) machines, but that solution requires a lot more technical overhead than simply deploying a container.
-
-Installing Docker is relatively simple, I just followed the [instructions on Docker's website](https://docs.docker.com/engine/install/ubuntu/) using the 'Install using the repository' section. The only notable point here is that I had to manually install docker-compose, an additional package that let's us define container settings using yaml files:
-
-```
-sudo apt install docker-compose
-```
 
 ### Installing Pi-hole
 
