@@ -41,3 +41,5 @@ I think something happens when the server is reset....
     Remount network shares
     Restart containers
     Rescan library (Jellyfin)
+
+> Write this one!

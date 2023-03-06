@@ -92,3 +92,7 @@ Here are two sources that I need to investigate before final draft:
 Wordpress is an open-source content management system (CMS). It's one of the most popular website services which uses MySQL and pmpmyadmin for its backend. 
 
 The docker-compose file here contains three containers linked together through a docker network. Docker networks are a way of allowing containers to talk to one another, allowing multiple containers to be chained together while maintaining all of the benefits of containerized applications. 
+
+> Figure out better way to display infor about ports
+
+> edit pass
