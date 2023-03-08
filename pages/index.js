@@ -6,7 +6,7 @@ import { sortDescendingByDate } from '../utils/sort';
 
 import Header from '@/components/Header';
 import SectionHero from '@/components/SectionHero';
-import SectionCards from '@/components/SectionCards';
+import SectionProjects from '@/components/SectionProjects';
 import SectionAbout from '@/components/SectionAbout';
 import Footer from '@/components/Footer';
 
@@ -15,7 +15,7 @@ export default function Home({ posts }) {
     <>
       <Header />
       <SectionHero />
-      <SectionCards posts={posts} />
+      <SectionProjects posts={posts} />
       <SectionAbout />
       <Footer />
     </>
