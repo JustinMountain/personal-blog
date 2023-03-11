@@ -4,7 +4,7 @@ import Link from 'next/link';
 export default function NavMain() {
 
   const navLinks = [
-    {name:"Blog", href:"/"},
+    {name:"Projects", href:"/projects"},
     {name:"Contact", href:"mailto:mountainj@gmail.com"},
   ]
 

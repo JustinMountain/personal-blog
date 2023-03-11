@@ -5,20 +5,17 @@ import matter from 'gray-matter';
 import { sortDescendingByDate } from '../utils/sort';
 
 import Header from '@/components/Header';
-import SectionHero from '@/components/SectionHero';
+import SectionProjectsHero from '@/components/SectionProjectsHero';
 import SectionFeaturedProjects from '@/components/SectionFeaturedProjects';
 import SectionAbout from '@/components/SectionAbout';
 import Footer from '@/components/Footer';
 
-export default function Home({ posts }) {
-  const slicedPosts = posts.slice(0, 3);
-
+export default function Projects({ posts }) {
   return (
     <>
       <Header />
-      <SectionHero />
-      <SectionFeaturedProjects posts={slicedPosts} />
-      <SectionAbout />
+      <SectionProjectsHero />
+      <SectionFeaturedProjects posts={posts} />
       <Footer />
     </>
   );
