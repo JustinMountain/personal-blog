@@ -4,11 +4,10 @@ import path from 'path';
 import matter from 'gray-matter';
 import { sortDescendingByDate } from '../utils/sort';
 
-import Header from '@/components/Header';
-import SectionProjectsHero from '@/components/SectionProjectsHero';
-import SectionFeaturedProjects from '@/components/SectionFeaturedProjects';
-import SectionAbout from '@/components/SectionAbout';
-import Footer from '@/components/Footer';
+import Header from '@/components/chrome/Header';
+import SectionProjectsHero from '@/components/sections/HeroProjects';
+import SectionFeaturedProjects from '@/components/sections/FeaturedProjects';
+import Footer from '@/components/chrome/Footer';
 
 export default function Projects({ posts }) {
   return (

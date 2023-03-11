@@ -4,11 +4,11 @@ import path from 'path';
 import matter from 'gray-matter';
 import { sortDescendingByDate } from '../utils/sort';
 
-import Header from '@/components/Header';
-import SectionHero from '@/components/SectionHero';
-import SectionFeaturedProjects from '@/components/SectionFeaturedProjects';
-import SectionAbout from '@/components/SectionAbout';
-import Footer from '@/components/Footer';
+import Header from '@/components/chrome/Header';
+import SectionHero from '@/components/sections/HeroHome';
+import SectionFeaturedProjects from '@/components/sections/FeaturedProjects';
+import SectionAbout from '@/components/sections/About';
+import Footer from '@/components/chrome/Footer';
 
 export default function Home({ posts }) {
   const slicedPosts = posts.slice(0, 3);

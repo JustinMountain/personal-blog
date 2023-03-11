@@ -4,9 +4,9 @@ import path from 'path'
 import matter from 'gray-matter';
 import Head from 'next/head';
 
-import Header from '@/components/Header';
+import Header from '@/components/chrome/Header';
 import markdownToHtml from '@/utils/markdownToHtml';
-import Footer from '@/components/Footer';
+import Footer from '@/components/chrome/Footer';
 
 export default function PostPage({ slug, frontmatter: { title, date }, htmlContent }) {
   return (
