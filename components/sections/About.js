@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function SectionAbout() {
+export default function About() {
   return (
     <section className='text-center py-16 px-8 m-auto md:px-16'>
       <h2>About</h2>

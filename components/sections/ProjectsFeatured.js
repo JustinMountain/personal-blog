@@ -2,7 +2,7 @@ import React from 'react';
 
 import Project from '@/components/Project';
 
-export default function SectionFeaturedProjects({ posts }) {
+export default function ProjectsFeatured({ posts }) {
   return (
     <section className='bg-gray-800 pt-2 pb-2 px-8 '>
       <div className='m-auto max-w-screen-2xl'>

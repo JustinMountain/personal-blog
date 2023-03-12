@@ -5,16 +5,16 @@ import matter from 'gray-matter';
 import { sortDescendingByDate } from '../utils/sort';
 
 import Header from '@/components/chrome/Header';
-import SectionProjectsHero from '@/components/sections/HeroProjects';
-import SectionFeaturedProjects from '@/components/sections/FeaturedProjects';
+import HeroProjects from '@/components/sections/HeroProjects';
+import ProjectsAll from '@/components/sections/ProjectsAll';
 import Footer from '@/components/chrome/Footer';
 
 export default function Projects({ posts }) {
   return (
     <>
       <Header />
-      <SectionProjectsHero />
-      <SectionFeaturedProjects posts={posts} />
+      <HeroProjects />
+      <ProjectsAll posts={posts} />
       <Footer />
     </>
   );

@@ -2,7 +2,7 @@ import React from 'react'
 import Head from 'next/head'
 import SocialLinks from '@/components/SocialLinks'
 
-export default function SectionHero() {
+export default function HeroHome() {
   return (
     <section className='text-center p-16 max-w-sm m-auto'>
       <Head>
