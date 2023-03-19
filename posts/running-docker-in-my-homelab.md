@@ -4,7 +4,7 @@ published: '2023-03-05'
 updated: '2023-03-05'
 repo: ''
 category: 'repo'
-tags: 'linux, home server, documentation, homelab'
+tags: 'linux, home server, documentation, homelab, docker'
 excerpt: "Docker is a powerful virualization tool that let's us deploy containerized applications. Learn more about how I implement docker in my homelab."
 thumbnail: ''
 thumbnail-alt: ''

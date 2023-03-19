@@ -9,7 +9,7 @@ import HeroProjects from '@/components/sections/HeroProjects';
 import ProjectsAll from '@/components/sections/ProjectsAll';
 import Footer from '@/components/chrome/Footer';
 
-export default function Projects({ posts }) {
+export default function Projects({ index, posts }) {
   return (
     <>
       <Header />
