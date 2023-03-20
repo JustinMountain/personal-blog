@@ -10,7 +10,7 @@ export default function SocialLinks({ fillColor }) {
     <div className='flex'>
       <div className='flex justify-around mx-auto gap-4'>
         <Link href="https://github.com/JustinMountain">
-          <IconGitHub fill={ fillColor } width="32px" />
+          <IconGitHub fill={ fillColor } width="32" />
         </Link>
         <Link href="https://www.linkedin.com/in/justinmountain/">
           <IconLinkedIn fill={ fillColor } width="32" />

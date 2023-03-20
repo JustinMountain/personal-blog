@@ -81,3 +81,7 @@ On my Archer C7:
 It's important to note that this does not provide complete network security. This protects against DNS requests but if a device has the DNS hard-coded into it, the PiHole will not stop the requests from exiting the network. This is a job better suited for a Firewall or DMZ. 
 
 > I need to add a conclusion here pointing to the next article
+
+> Add unbound as well
+
+> Update installing pi-hole section to include link to docker

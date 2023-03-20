@@ -5,20 +5,16 @@ import matter from 'gray-matter';
 import { sortDescendingByDate } from '../utils/sort';
 
 import Header from '@/components/chrome/Header';
-import SectionHero from '@/components/sections/hero/HeroHome';
-import SectionFeaturedProjects from '@/components/sections/projects/ProjectsFeatured';
-import SectionAbout from '@/components/sections/About';
+import HeroProjects from '@/components/sections/hero/HeroProjects';
+import ProjectsAll from '@/components/sections/projects/ProjectsAll';
 import Footer from '@/components/chrome/Footer';
 
-export default function Home({ posts }) {
-  const slicedPosts = posts.slice(0, 3);
-
+export default function Projects({ index, posts }) {
   return (
     <>
       <Header />
-      <SectionHero />
-      <SectionFeaturedProjects posts={slicedPosts} />
-      <SectionAbout />
+      <HeroProjects />
+      <ProjectsAll posts={posts} />
       <Footer />
     </>
   );
