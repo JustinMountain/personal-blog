@@ -52,21 +52,17 @@ export default function ProjectsAll({ posts }) {
   return (
     <section className='bg-gray-800 pt-2 pb-2 px-8 '>
       <div className='m-auto max-w-screen-2xl'>
-
-        <h2 className="text-center text-white pt-16 pb-8">Featured Projects</h2>
+        <h2 className="text-center text-white pt-16 pb-8">Search projects by tag:</h2>
 
         <div className='flex flex-wrap items-center justify-center m-auto gap-2 lg:col-start-1 lg:col-end-3'>
 
-        <button className='bg-white px-3 py-0.5 mr-2 mt-4 lg:my-1 last:mr-0 rounded active:bg-violet-700' 
+        <button className='bg-white px-3 py-0.5 mr-2 lg:my-1 last:mr-0 rounded active:bg-red-300' 
           onClick={() => resetResult()}>Reset</button> 
 
           {uniqueTags.map((tag, index) => (
-
             <FilterCheckbox key={index} tag={tag} state={tagDictState} onChange={filterResult}/>
-
           ))}
         </div>
-
 
         {/* Takes the first four posts and creates cards for them */}
         {data.map((post, index) => (
