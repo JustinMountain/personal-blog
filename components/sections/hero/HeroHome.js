@@ -1,6 +1,6 @@
 import React from 'react'
 import Head from 'next/head'
-import SocialLinks from '@/components/SocialLinks'
+import SocialLinks from '@/components/utility/SocialLinks'
 
 export default function HeroHome() {
   return (

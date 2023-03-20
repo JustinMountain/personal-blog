@@ -1,9 +1,8 @@
 import React from 'react';
 import { useState } from 'react';
-import { useEffect } from 'react';
 
-import Project from '@/components/Project';
-import FilterCheckbox from '../FilterCheckbox';
+import Project from './Project';
+import FilterCheckbox from './FilterCheckbox';
 
 export default function ProjectsAll({ posts }) {
   const [data, setData] = useState(posts);

@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 
-import TagList from './TagList';
+import ProjectTagList from './ProjectTagList';
 import IconLink from '@/public/icons/IconLink';
 
 export default function Project({ index, post }) {
@@ -20,7 +20,7 @@ export default function Project({ index, post }) {
 
       <img alt="placeholder" className="w-full lg:w-fit lg:col-start-3 lg:col-end-4 lg:row-start-1 lg:row-end-5" src="https://scatterjar.com/wp-content/uploads/2016/11/www.scatterjar.com-4851-2-350x233.jpg"></img>
 
-      <TagList tags={tags} />
+      <ProjectTagList tags={tags} />
     </div>
   )
 }

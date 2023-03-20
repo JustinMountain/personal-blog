@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function TagList({ tags }) {
+export default function ProjectTagList({ tags }) {
 
   return (
     

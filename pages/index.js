@@ -5,8 +5,8 @@ import matter from 'gray-matter';
 import { sortDescendingByDate } from '../utils/sort';
 
 import Header from '@/components/chrome/Header';
-import SectionHero from '@/components/sections/HeroHome';
-import SectionFeaturedProjects from '@/components/sections/ProjectsFeatured';
+import SectionHero from '@/components/sections/hero/HeroHome';
+import SectionFeaturedProjects from '@/components/sections/projects/ProjectsFeatured';
 import SectionAbout from '@/components/sections/About';
 import Footer from '@/components/chrome/Footer';
 
