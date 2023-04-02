@@ -16,6 +16,12 @@ npm run build
 
 ## Notes
 
+### Posts Style Guide
+bold: 
+italic:
+`code`: 
+
+
 
 ## Coming Soon
 

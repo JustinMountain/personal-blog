@@ -18,7 +18,9 @@ export default function Project({ index, post }) {
       <h4 className='text-white lg:col-start-1 lg:col-end-3'>&#47;&#47; {post.frontmatter.category}</h4>
       <p className='text-white py-8 lg:col-start-1 lg:col-end-3'>{post.frontmatter.excerpt}</p>
 
-      <img alt="placeholder" className="w-full lg:w-fit lg:col-start-3 lg:col-end-4 lg:row-start-1 lg:row-end-5" src="https://scatterjar.com/wp-content/uploads/2016/11/www.scatterjar.com-4851-2-350x233.jpg"></img>
+      <Link href={`/posts/${post.slug}`} className="w-full lg:w-fit lg:col-start-3 lg:col-end-4 lg:row-start-1 lg:row-end-5" >
+        <img src={"/posts/" + post.frontmatter.thumbnail} alt={post.frontmatter.thumbnailAlt} title={post.frontmatter.title}></img>
+      </Link>
 
       <ProjectTagList tags={tags} />
     </div>
