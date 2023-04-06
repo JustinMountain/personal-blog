@@ -21,7 +21,7 @@ As the complexity continues to grow in my homelab increases, it's becoming more 
 
 Uptime Kuma allows us to setup an assortment of different monitors, create alerts on those monitors which send webhooks to a plethora of different services, and setup dashboards for easy to understand graphs showing which services are up and which are down. All of this makes Uptime Kuma a great tool to provide insight into- and alerts for- my home network and the different public services I want to monitor.
 
-This documentation assumes that Uptime Kuma has been setup and deployed. You can check out my project file on [Docker](/posts/running-docker-in-my-homelab) or [its associated repo](https://github.com/JustinMountain/docker-compose) for more info on using Docker containers or `docker-compose`.
+This documentation assumes that Uptime Kuma has been setup and deployed. You can check out my project file on [Docker](/posts/running-docker-in-my-homelab#-uptime-kuma) or [its associated repo](https://github.com/JustinMountain/docker-compose/tree/main/UptimeKuma) for more info on using Docker containers or `docker-compose`.
 
 ### 🏓 Monitoring via Ping
 

@@ -42,4 +42,32 @@ I think something happens when the server is reset....
     Restart containers
     Rescan library (Jellyfin)
 
-> Write this one!
+
+https://www.reddit.com/r/selfhosted/comments/11vp9cr/stupid_docker_tricks_dont_start_docker_container/
+https://www.reddit.com/r/jellyfin/comments/rmyowf/network_share_access/
+
+
+
+Devices to maintain backups:
+1. Tamy's Phone
+2. Justin's Phone
+3. Tamy's Computer
+4. Justin's Computer
+5. Veloserver
+6. NAS (to portable HDD and Cloud)
+
+Order of Operations:
+1. Cleanup NAS Structure
+2. Decide file sync solution
+3. Backup devices one by one and setup file sync
+4. Create redundant backups to HDD and Cloud
+
+
+
+
+
+
+
+
+
+

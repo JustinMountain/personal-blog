@@ -51,7 +51,7 @@ Once the upgrades were complete, I did my best to find the last remaining retent
 
 With the hardware sorted out, it was time to install Linux. I chose the newest LTS version of Ubuntu Desktop (22.04) and followed the [guide on the Linux website](https://ubuntu.com/tutorials/create-a-usb-stick-on-windows#1-overview) to create a USB boot drive. With the USB boot drive, installing Linux was as easy as plugging it into the laptop server and following the on-screen instructions, choosing the minimum installation option. Following my dinosaur themed naming convention, I gave it the name *veloserver*.
 
-Once on the desktop, I navigated to the Wired Connection Settings to set a static IP address for the server. I chose 192.168.1.100 for the server’s IP, 255.255.255.0 for the subnet mask, and 192.168.1.1 for the default gateway. The value for default gateway might be different on different routers, but I have a simple consumer-grade router. I could have setup Linux headless and chose the Linux Server option, but I opted for 22.04 LTS because I was installing on a laptop and being able to use its screen in a worst-case scenario was worth it for me. 
+Once on the desktop, I navigated to the **Wired Connection Settings** to set a static IP address for the server. I chose `192.168.1.100` for the server’s IP, `255.255.255.0` for the subnet mask, and `192.168.1.1` for the default gateway. The value for default gateway might be different on different routers, but I have a simple consumer-grade router. I could have setup Linux headless and chose the Linux Server option, but I opted for 22.04 LTS because I was installing on a laptop and being able to use its screen in a worst-case scenario was worth it for me. 
 
 With the basic setup complete, it was time to turn this laptop into a server. This is done primarily through installing an SSH server so that I can remotely access the laptop:
 
@@ -69,7 +69,7 @@ sudo apt install openssh-server
 sudo systemctl status ssh
 ```
 
-The last - and arguably most important - step in turning this laptop into a server is ensuring that it won't go to sleep while the lid is closed. Still in the terminal, the following command will open a system configuration file. Navigate to where it says ‘#HandleLidSwitch=suspend’. Remove the # and change suspend to ignore ‘HandleLidSwitch=ignore’. Make sure the changes are saved and nano has been closed:
+The last - and arguably most important - step in turning this laptop into a server is ensuring that it won't go to sleep while the lid is closed. Still in the terminal, the following command will open a system configuration file. Navigate to where it says `#HandleLidSwitch=suspend`. Remove the `#` and change suspend to ignore `HandleLidSwitch=ignore`. Make sure the changes are saved and nano has been closed:
 
 ```
 # Opens system configuration file
@@ -88,7 +88,7 @@ The last step is to test the configuration. On my desktop, I opened PowerShell a
 ssh veloserver@192.168.1.100
 ```
 
-After entering the password I made during Linux installation, I had command line access to the laptop. To test the connection, I reboot the machine ('sudo reboot'), closed the lid, and ssh'd back into the server. Everything works. With setup complete, it's time to have some fun with my new server!
+After entering the password I made during Linux installation, I had command line access to the laptop. To test the connection, I reboot the machine (`sudo reboot`), closed the lid, and ssh'd back into the server. Everything works. With setup complete, it's time to have some fun with my new server!
 
 ### 🙋 What's Next?
 

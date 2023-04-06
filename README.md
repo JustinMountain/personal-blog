@@ -27,11 +27,12 @@ First-person voice
 #### Italic:
 
 1. Image captions.
+2. In text emphasis
 
 #### `code`
 
 1. Addresses: `https://192.168.1.100:3000`
-2. Paths: `/posts/running-docker-in-my-homelab`
+2. Paths: `/posts/running-docker-in-my-homelab.md`
 3. Code: `mkdir directory`
 
 ## Coming Soon
