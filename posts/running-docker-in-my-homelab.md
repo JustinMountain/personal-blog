@@ -3,7 +3,7 @@ title: 'Running Docker in my Homelab'
 published: '2023-03-05'
 updated: '2023-03-28'
 repo: 'https://github.com/JustinMountain/docker-compose'
-category: 'project'
+category: 'repository'
 tags: 'linux, homelab, docker'
 excerpt: "Docker is a powerful virualization tool that let's us deploy containerized applications. Learn more about how I implement docker in my homelab."
 thumbnail: 'docker-container-list.jpg'
