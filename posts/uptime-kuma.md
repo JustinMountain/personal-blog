@@ -13,15 +13,17 @@ thumbnail-alt: 'Dashboard of Uptime Kuma in my homelab'
 ## Monitoring with Uptime Kuma
 
 [![Dashboard of Uptime Kuma in my homelab](uptime-kuma-dashboard.jpg "Uptime Kuma Dashboard")](uptime-kuma-dashboard.jpg)
-*Dashboard view of my homelba in Uptime Kuma.*
+*Dashboard view of my homelab in Uptime Kuma.*
 
-### Monitoring Basics
+### Table of Contents
 
-As the complexity continues to grow in my homelab increases, it's becoming more and more difficult to understand at a glance which services are functioning as intended; enter Uptime Kuma.
+### 🛡️ Monitoring Basics
 
-Uptime Kuma allows us to setup an assortment of different monitors, create alerts on those monitors which send webhooks to a plethora of different services, and setup dashboards for easy to understand graphs showing which services are up and which are down. All of this makes Uptime Kuma a great tool to provide insight into- and alerts for- my home network and the different public services I want to monitor.
+As the complexity continues to grow in my homelab, it's becoming more and more difficult to understand at a glance which services are functioning as intended; enter Uptime Kuma.
 
-This documentation assumes that Uptime Kuma has been setup and deployed. You can check out my project file on [Docker](/posts/running-docker-in-my-homelab#-uptime-kuma) or [its associated repo](https://github.com/JustinMountain/docker-compose/tree/main/UptimeKuma) for more info on using Docker containers or `docker-compose`.
+Uptime Kuma allows me to setup an assortment of different monitors, create alerts on those monitors which send webhooks to a plethora of different services, and setup dashboards for easy to understand graphs showing which services are up and which are down. All of this makes Uptime Kuma a great tool to provide insight into- and alerts for- my home network and the different public services I want to monitor.
+
+This documentation assumes that Uptime Kuma has been setup and deployed. I have information about setting up and using docker  [here](/posts/running-docker-in-my-homelab) or you can see the docker-compose.yaml file I use on [GitHub](https://github.com/JustinMountain/docker-compose/tree/main/UptimeKuma).
 
 ### 🏓 Monitoring via Ping
 
@@ -112,7 +114,7 @@ With the setup complete on the Docker host server complete, there's now a little
 
 Finally, it's possible to setup a monitor for Docker containers. When adding a new monitor of this type, make sure to use the exact container name or ID and to select the Docker Host from the drop-down menu.
 
-I'm using this solution to monitor the MySQL server that has been setup for a[WordPress Playground](/posts/running-docker-in-my-homelab#-wordpress). The WordPress Playground stack requires MySQL, phpmyadmin, and WordPress, however, MySQL is not a pingable service nor is it directly associated with a port. By monitoring the container itself, I have more granular details about the uptime status on my WordPress Playground. 
+I'm using this solution to monitor the MySQL server that has been setup for a WordPress Playground). The WordPress Playground stack requires MySQL, phpmyadmin, and WordPress, however, MySQL is not a pingable service nor is it directly associated with a port. By monitoring the container itself, I have more granular details about the uptime status on my WordPress Playground. 
 
 ### 📋 Creating a Status Page
 

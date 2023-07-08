@@ -12,13 +12,12 @@ Build the project and export static site into the /out folder to test build:
 npm run build
 ```
 
----
-
 ## Notes
 
 ### Posts Style Guide
 
 First-person voice
+.yaml > .yml
 
 #### Bold 
 
@@ -38,4 +37,4 @@ First-person voice
 ## Coming Soon
 
 - Blog content styling
-- Search
+- Veloserver upgrade with Proxmox
