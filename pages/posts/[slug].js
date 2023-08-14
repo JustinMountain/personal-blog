@@ -11,16 +11,19 @@ import Footer from '@/components/chrome/Footer';
 export default function PostPage({ slug, frontmatter: { title, date }, htmlContent }) {
   return (
     <>
-    <Head>
-      <title>{`${title} - Justin Mountain`}</title>
-      <meta property="og:title" content={title} key="title" />
-    </Head>
+      <Head>
+        <title>{`${title} - Justin Mountain`}</title>
+        <meta property="og:title" content={title} key="title" />
+      </Head>
       <Header mainText="Justin Mountain" />
       <div className="mx-auto my-8 max-w-screen-xl px-6 ">
         <article className="prose mx-auto">
           <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
         </article>
       </div>
+
+      {/* Call to Action: Read next post? Go back to all posts? */}
+
       <Footer mainText="Copyright 2023 Justin Mountain" />
     </>
   )

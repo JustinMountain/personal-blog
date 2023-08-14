@@ -10,7 +10,7 @@ import rehypeStringify from 'rehype-stringify';
 export default async function markdownToHtml(markdown) {
   const result = await unified()
   .use(remarkParse)
-  .use(remarkToc)
+  .use(remarkToc, {tight: true})
   .use(remarkRehype, {allowDangerousHtml: true})
   .use(rehypeSlug)
   .use(rehypeStringify, {allowDangerousHtml: true})

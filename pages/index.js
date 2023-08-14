@@ -36,7 +36,7 @@ export async function getStaticProps() {
     return {
       filename, slug, frontmatter
     }
-  })
+  }).filter(post => post.frontmatter.published !== "no");
 
   return {
     props: {
