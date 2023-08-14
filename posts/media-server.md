@@ -1,7 +1,7 @@
 ---
 title: "You Wouldn't Download a Media Server?!"
-published: '2023-07-07'
-updated: '2023-07-07'
+published: 'no'
+updated: ''
 repo: ''
 category: 'documentation'
 tags: 'linux, homelab, docker, media'
