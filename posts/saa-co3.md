@@ -467,5 +467,3 @@ Spot Intances are designed to open requests to unused EC2 instances at a discoun
 It is possible to define a duration for a Spot Instance, called a Spot Block. These blocks are designed not to be interrupted, however they might be if capacity needs on the underlying instance require it. 
 
 Cancelling a Spot Request does *not* terminate the an instance associated with the request.
-
-1. Thumbnail
