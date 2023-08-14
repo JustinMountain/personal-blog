@@ -5,7 +5,7 @@ updated: '2023-03-28'
 repo: ''
 category: 'documentation'
 tags: 'linux, homelab, docker, monitoring'
-excerpt: "Uptime Kuma is a free and open source netowrk monitoring utility."
+excerpt: "Uptime Kuma is a free and open source network monitoring utility."
 thumbnail: 'uptime-kuma-dashboard.jpg'
 thumbnail-alt: 'Dashboard of Uptime Kuma in my homelab'
 ---
@@ -23,7 +23,7 @@ As the complexity continues to grow in my homelab, it's becoming more and more d
 
 Uptime Kuma allows me to setup an assortment of different monitors, create alerts on those monitors which send webhooks to a plethora of different services, and setup dashboards for easy to understand graphs showing which services are up and which are down. All of this makes Uptime Kuma a great tool to provide insight into- and alerts for- my home network and the different public services I want to monitor.
 
-This documentation assumes that Uptime Kuma has been setup and deployed. I have information about setting up and using docker  [here](/posts/running-docker-in-my-homelab) or you can see the docker-compose.yaml file I use on [GitHub](https://github.com/JustinMountain/docker-compose/tree/main/UptimeKuma).
+This documentation assumes that Uptime Kuma has been setup and deployed. I have information about setting up and using docker [here](/posts/running-docker-in-my-homelab) or you can see the docker-compose.yaml file I use on [GitHub](https://github.com/JustinMountain/docker-compose/tree/main/UptimeKuma).
 
 ### 🏓 Monitoring via Ping
 
