@@ -38,3 +38,9 @@ First-person voice
 
 - Blog content styling
 - Veloserver upgrade with Proxmox
+
+### Polish
+
+1. Mobile nav needs animation on open/close
+2. Mobile nav needs *something* (full screen, opacity, ..?)
+3. 

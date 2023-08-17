@@ -46,11 +46,19 @@
 }
 
 @layer components {
-  .invert-link-color > a {
+  .dark-button {
+    @apply text-light no-underline;
+  }
+
+  .light-button {
+    @apply text-primary no-underline;
+  }
+
+  .control-link-color > a {
     @apply text-white no-underline;
   }
 
-  .btn-gray {
+  /* .btn-gray {
     @apply p-2 mx-20 my-2 invert-link-color bg-gray-800 rounded-lg;
-  }
+  } */
 }

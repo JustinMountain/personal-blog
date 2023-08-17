@@ -5,10 +5,22 @@ import IconGitHub from '@/public/icons/IconGitHub';
 import IconLinkedIn from '@/public/icons/IconLinkedIn';
 import IconEmail from '@/public/icons/IconEmail';
 
-export default function SocialLinks({ fillColor }) {
+export default function SocialLinks({ align, fillColor }) {
+
+  let alignment;
+
+  switch (align) {
+    case "left":
+      alignment = '';
+      break;
+    case "center":
+      alignment = 'justify-around mx-auto';
+      break;
+    }
+  
   return (
     <div className='flex'>
-      <div className='flex justify-around mx-auto gap-4'>
+      <div className={`flex ${alignment} gap-4 pt-4`}>
         <Link href="https://github.com/JustinMountain">
           <IconGitHub fill={ fillColor } width="32" />
         </Link>
