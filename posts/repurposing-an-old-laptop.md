@@ -1,5 +1,6 @@
 ---
 title: 'Repurposing an Old Laptop as a Home Server'
+featured: 'no'
 published: '2023-02-18'
 updated: '2023-02-18'
 repo: ''

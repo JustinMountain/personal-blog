@@ -1,10 +1,11 @@
 ---
 title: 'Storage and Backup'
+featured: 'yes'
 published: '2023-06-15'
 updated: '2023-06-15'
 repo: ''
 category: 'documentation'
-tags: 'linux, homelab, data management, docker, photos'
+tags: 'linux, homelab, data management, docker'
 excerpt: 'A properly organized 3-2-1 backup strategy for all of the devices in my home keeps photos safe and files accessible.'
 thumbnail: 'storage-architecture.jpg'
 thumbnail-alt: 'Architecture diagram for my backup strategy'

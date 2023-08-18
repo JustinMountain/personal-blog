@@ -1,5 +1,6 @@
 ---
 title: 'Monitoring with Uptime Kuma'
+featured: 'no'
 published: '2023-03-28'
 updated: '2023-03-28'
 repo: ''

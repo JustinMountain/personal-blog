@@ -1,5 +1,6 @@
 ---
 title: 'AWS Solutions Architect Associate Certification Quick Reference'
+featured: 'no'
 published: '2023-08-09'
 updated: '2023-08-09'
 repo: ''

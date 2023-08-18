@@ -1,5 +1,6 @@
 ---
 title: "You Wouldn't Download a Media Server?!"
+featured: 'no'
 published: 'no'
 updated: ''
 repo: ''

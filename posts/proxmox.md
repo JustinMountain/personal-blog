@@ -1,5 +1,6 @@
 ---
 title: 'Proxmox'
+featured: 'no'
 published: 'no'
 updated: ''
 repo: ''
