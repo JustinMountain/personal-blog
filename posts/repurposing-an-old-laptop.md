@@ -8,7 +8,7 @@ category: 'documentation'
 tags: 'linux, homelab, hardware'
 excerpt: "I started my homelab journey on my old laptop, repurposed as a home server."
 thumbnail: 'repurpose-under-the-hood.jpg'
-thumbnailAlt: 'The underside of the laptop with the cover removed'
+thumbalt: 'The underside of the laptop with the cover removed'
 ---
 
 ## Repurposing an Old Laptop as a Home Server

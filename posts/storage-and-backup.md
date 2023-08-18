@@ -8,7 +8,7 @@ category: 'documentation'
 tags: 'linux, homelab, data management, docker'
 excerpt: 'A properly organized 3-2-1 backup strategy for all of the devices in my home keeps photos safe and files accessible.'
 thumbnail: 'storage-architecture.jpg'
-thumbnail-alt: 'Architecture diagram for my backup strategy'
+thumbalt: 'Architecture diagram for my backup strategy'
 ---
 
 ## Storage and Backup

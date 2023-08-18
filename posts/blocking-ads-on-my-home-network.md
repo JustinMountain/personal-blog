@@ -8,7 +8,7 @@ category: 'documentation'
 tags: 'networking, docker, linux, homelab'
 excerpt: "Ads are the worst. Using the Pi-hole DNS sinkhole, it's possible to get rid of most of them on a home network."
 thumbnail: 'pihole-dashboard.jpg'
-thumbnail-alt: 'Pi-hole&#39;s dashboard'
+thumbalt: "Pi-hole's dashboard"
 ---
 
 ## Blocking Ads on My Home Network

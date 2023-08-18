@@ -8,7 +8,7 @@ category: 'documentation'
 tags: 'linux, homelab, docker, media'
 excerpt: 'Occupying the grey zone.'
 thumbnail: ''
-thumbnail-alt: ''
+thumbalt: ''
 ---
 
 ## You Wouldn't Download a Media Server?!

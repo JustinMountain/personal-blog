@@ -8,7 +8,7 @@ category: 'repository'
 tags: 'linux, homelab, docker'
 excerpt: "Docker is a powerful virualization tool that let's us deploy containerized applications. Learn more about how I implement docker in my homelab."
 thumbnail: 'docker-container-list.jpg'
-thumbnail-alt: 'List of the docker containers in my homelab'
+thumbalt: 'List of the docker containers in my homelab'
 ---
 
 ## Running Docker in my Homelab 

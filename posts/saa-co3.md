@@ -8,7 +8,7 @@ category: 'documentation'
 tags: 'aws, certification, cloud'
 excerpt: 'My reference guide for the Solutions Architect Associate certification.'
 thumbnail: 'aws-cert-saa-c03.jpg'
-thumbnail-alt: 'Badge for the Solutions Architect Associate certification SAA-C03'
+thumbalt: 'Badge for the Solutions Architect Associate certification SAA-C03'
 ---
 
 ## AWS Associate Certification Overview
