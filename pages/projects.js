@@ -13,7 +13,7 @@ export default function Projects({ index, posts }) {
   return (
     <>
       <Header />
-      <HeroProjects />
+      <HeroProjects posts={posts} />
       <ProjectsAll posts={posts} />
       <Footer />
     </>

@@ -8,10 +8,14 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        // grey and yellow
         'primary': '#222831',
         'secondary': '#393E46',
         'accent': '#FFD369',
         'light': '#EEEEEE',
+      },
+      screens: {
+        'xs': '480px',
       },
       fontFamily: {
         'poppins': ['Poppins', 'sans-serif'],

@@ -43,4 +43,5 @@ First-person voice
 
 1. Mobile nav needs animation on open/close
 2. Mobile nav needs *something* (full screen, opacity, ..?)
-3. 
+3. Re-write short intro to each article
+4. Redo Project Card 

@@ -3,6 +3,7 @@ import { useState } from 'react';
 
 import Project from './Project';
 import FilterCheckbox from './FilterCheckbox';
+import CustomHeading from '@/components/utility/CustomHeading';
 
 export default function ProjectsAll({ posts }) {
   const [data, setData] = useState(posts);
@@ -50,24 +51,30 @@ export default function ProjectsAll({ posts }) {
   const [tagDictState] = useState(tagDictionary);
 
   return (
-    <section className='bg-gray-800 pt-2 pb-2 px-8 '>
-      <div className='m-auto max-w-screen-2xl'>
-        <h2 className="text-center text-white pt-16 pb-8">Search projects by tag:</h2>
+    <section className='bg-secondary pt-2 pb-2 px-4 md:px-8'>
+      <div className='max-w-screen-xl mx-auto'>
+        <h3 className="text-light pt-16 pb-8">Filter all projects by tag:</h3>
 
-        <div className='flex flex-wrap items-center justify-center m-auto gap-2 lg:col-start-1 lg:col-end-3'>
-
-        <button className='bg-white px-3 py-0.5 mr-2 lg:my-1 last:mr-0 rounded active:bg-red-300' 
-          onClick={() => resetResult()}>Reset</button> 
-
+        <div className='flex flex-wrap items-center gap-x-5 gap-y-8 lg:col-start-1 lg:col-end-3'>
           {uniqueTags.map((tag, index) => (
-            <FilterCheckbox key={index} tag={tag} state={tagDictState} onChange={filterResult}/>
-          ))}
+              <FilterCheckbox key={index} tag={tag} state={tagDictState} onChange={filterResult}/>
+            ))}
         </div>
+
+        <button className='flex bg-light px-4 py-2 mt-5 ml-auto rounded text-xl active:bg-accent' 
+            onClick={() => resetResult()}>Reset</button>
 
         {/* Takes the first four posts and creates cards for them */}
         {data.map((post, index) => (
           <Project key={index} post={post} />
         ))}
+
+        <div className="pt-8 pb-16">
+          <CustomHeading size="h3" head="End of List" subhead="Why not reset the list or read an article?" />
+          <button className='bg-light px-4 py-2 mt-5 ml-auto rounded text-xl active:bg-accent' 
+            onClick={() => resetResult()}>Reset</button>
+
+        </div>
 
       </div>
     </section>
