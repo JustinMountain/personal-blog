@@ -1,5 +1,6 @@
 import React from 'react'
 import Head from 'next/head'
+import Image from 'next/image'
 import SocialLinks from '@/components/utility/SocialLinks'
 import CustomHeading from '@/components/utility/CustomHeading'
 
@@ -16,10 +17,17 @@ export default function HeroHome() {
       <div className="max-w-screen-2xl mx-auto
                         md:grid md:grid-cols-2 md:gap-8 
                         xl:grid-cols-6">
-        <img src="https://source.unsplash.com/random/400x400" 
-              className="mx-auto 
-                          md:col-start-1 md:col-end-2 
-                          xl:col-start-2 xl:col-end-4" />
+
+        <Image
+          src="/posts/justin.jpg"
+          width={400}
+          height={400}
+          title="Justin"
+          alt="Justin"
+          className="mx-auto 
+                      md:col-start-1 md:col-end-2 
+                      xl:col-start-2 xl:col-end-4"
+        />
 
         <div className="max-w-sm mx-auto pt-16 
                           md:col-start-2 md:col-end-3 md:w-max 

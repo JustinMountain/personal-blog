@@ -1,8 +1,8 @@
 import React from 'react'
-import CustomHeading from '@/components/utility/CustomHeading';
-import Button from '@/components/utility/Button';
 import Image from 'next/image';
 import Link from 'next/link';
+import CustomHeading from '@/components/utility/CustomHeading';
+import Button from '@/components/utility/Button';
 
 export default function ProjectCard({ index, frontmatter, slug }) {
 
@@ -23,7 +23,7 @@ export default function ProjectCard({ index, frontmatter, slug }) {
         />
         <div className="absolute top-0
                           bg-gradient-to-b from-secondary to-none w-full h-3/4 px-2 py-1">
-          <Link href={`/posts/${slug}`} className="no-underline">
+          <Link href={`/posts/${slug}`} passHref className="no-underline">
             <CustomHeading size="h3" head={frontmatter.title} subhead={frontmatter.tags} />
           </Link>
         </div>

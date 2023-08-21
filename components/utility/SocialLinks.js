@@ -28,13 +28,13 @@ export default function SocialLinks({ align, fillColor, discuss }) {
     <div className='flex'>
       <div className={`flex ${alignment} gap-4 pt-4 items-center`}>
         { discussText }
-        <Link href="https://github.com/JustinMountain">
+        <Link href="https://github.com/JustinMountain" passHref>
           <IconGitHub fill={ fillColor } width="32" />
         </Link>
-        <Link href="https://www.linkedin.com/in/justinmountain/">
+        <Link href="https://www.linkedin.com/in/justinmountain/" passHref>
           <IconLinkedIn fill={ fillColor } width="32" />
         </Link>
-        <Link href="mailto:mountainj@gmail.com">
+        <Link href="mailto:mountainj@gmail.com" passHref>
           <IconEmail fill={ fillColor } width="32" />
         </Link>
       </div>

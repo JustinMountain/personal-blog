@@ -29,12 +29,12 @@ export default function FeaturedProject({ index, post }) {
                       lg:gap-16'>
 
       <div className={picSide}>
-        <Link href={`/posts/${post.slug}`} className="no-underline">
+        <Link href={`/posts/${post.slug}`} passHref className="no-underline">
           <CustomHeading size="h3" head={post.frontmatter.title} subhead={post.frontmatter.tags} />
         </Link>
       </div>
       
-      <Link href={`/posts/${post.slug}`} className={`w-full 
+      <Link href={`/posts/${post.slug}`} passHref className={`w-full 
                                                       xs:pt-4
                                                       md:pt-2
                                                       md:w-fit ${textSide} md:row-start-1 md:row-end-4`} >

@@ -1,18 +1,23 @@
 import React from 'react';
+import Image from 'next/image';
 import SocialLinks from '../utility/SocialLinks';
 import CustomHeading from '../utility/CustomHeading';
 import NavFooter from './NavFooter';
 
 export default function Footer() {
-
-  const website = "https://justinmountain.github.io/personal-blog/";
-
   return (
     <footer className="bg-primary text-white">
       <div className="flex flex-col max-w-screen-2xl mx-auto gap-4 px-2 pt-16 pb-8 md:py-16 md:flex-row
                           md:flex-row md:justify-between md:px-8">
         <div className="mx-auto md:w-64">
-          <img src="https://source.unsplash.com/random/400x400" className="md:w-64" />
+          <Image
+              src="/posts/justin.jpg"
+              width={400}
+              height={400}
+              title="Justin"
+              alt="Justin"
+              className="md:w-64"
+          />    
         </div>
         <div className="sm:mx-auto md:grow">
           <div className="flex flex-col max-w-sm mx-auto sm:w-96 md:w-auto md:mx-0">
