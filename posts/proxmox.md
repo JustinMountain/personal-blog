@@ -11,8 +11,6 @@ thumbnail: ''
 thumbalt: ''
 ---
 
-## Proxmox
-
 ### Table of Contents
 
 ### Steps to Setup a VM

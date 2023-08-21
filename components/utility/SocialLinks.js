@@ -5,9 +5,15 @@ import IconGitHub from '@/public/icons/IconGitHub';
 import IconLinkedIn from '@/public/icons/IconLinkedIn';
 import IconEmail from '@/public/icons/IconEmail';
 
-export default function SocialLinks({ align, fillColor }) {
+export default function SocialLinks({ align, fillColor, discuss }) {
 
   let alignment;
+  let discussText = "";
+
+  if (discuss) {
+    discussText = "Discuss with me:";
+  }
+  
 
   switch (align) {
     case "left":
@@ -20,7 +26,8 @@ export default function SocialLinks({ align, fillColor }) {
   
   return (
     <div className='flex'>
-      <div className={`flex ${alignment} gap-4 pt-4`}>
+      <div className={`flex ${alignment} gap-4 pt-4 items-center`}>
+        { discussText }
         <Link href="https://github.com/JustinMountain">
           <IconGitHub fill={ fillColor } width="32" />
         </Link>

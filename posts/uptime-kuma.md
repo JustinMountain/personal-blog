@@ -11,11 +11,6 @@ thumbnail: 'uptime-kuma-dashboard.jpg'
 thumbnail-alt: 'Dashboard of Uptime Kuma in my homelab'
 ---
 
-## Monitoring with Uptime Kuma
-
-[![Dashboard of Uptime Kuma in my homelab](uptime-kuma-dashboard.jpg "Uptime Kuma Dashboard")](uptime-kuma-dashboard.jpg)
-*Dashboard view of my homelab in Uptime Kuma.*
-
 ### Table of Contents
 
 ### 🛡️ Monitoring Basics

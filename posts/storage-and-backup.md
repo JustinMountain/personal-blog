@@ -11,14 +11,11 @@ thumbnail: 'storage-architecture.jpg'
 thumbalt: 'Architecture diagram for my backup strategy'
 ---
 
-## Storage and Backup
-
-[![Diagram of the structure of the backup solution](storage-architecture.jpg "Architecture Diagram")](storage-architecture.jpg)
-*The best time to organize and backup data was 20 years ago, the second best time is now. - Confucius*
-
 ### Table of Contents
 
 ### 💾 Dealing with Data Debt
+
+> The best time to organize and backup data was 20 years ago, the second best time is now. - Confucius, probably
 
 I had two serious data-related issues that I had been putting off for years:
 

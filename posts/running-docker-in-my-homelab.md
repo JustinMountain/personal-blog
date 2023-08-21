@@ -8,13 +8,8 @@ category: 'repository'
 tags: 'linux, homelab, docker'
 excerpt: "Docker is a powerful virualization tool that let's us deploy containerized applications. Learn more about how I implement docker in my homelab."
 thumbnail: 'docker-container-list.jpg'
-thumbalt: 'List of the docker containers in my homelab'
+thumbalt: 'Docker containers can be managed through Portainer'
 ---
-
-## Running Docker in my Homelab 
-
-[![List of the docker containers in my homelab](docker-container-list.jpg "Docker containers via Portainer")](docker-container-list.jpg)
-*Docker containers can be managed through Portainer.*
 
 ### Table of Contents
 

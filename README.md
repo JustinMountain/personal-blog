@@ -44,4 +44,13 @@ First-person voice
 1. Mobile nav needs animation on open/close
 2. Mobile nav needs *something* (full screen, opacity, ..?)
 3. Re-write short intro to each article
-4. Redo Project Card 
+4. Typography Sizing
+5. Social links are white, no hover effect
+
+
+
+6. Remove ## and image from top of each article
+
+
+
+7. Article colors and styling

@@ -6,19 +6,15 @@ import { sortDescendingByDate } from '../utils/sort';
 
 import Header from '@/components/chrome/Header';
 import SectionHero from '@/components/sections/hero/HeroHome';
-import SectionFeaturedProjects from '@/components/sections/projects/ProjectsFeatured';
-import SectionAbout from '@/components/sections/About';
+import HomeFeaturedProjects from '@/components/sections/projects/HomeFeaturedProjects';
 import Footer from '@/components/chrome/Footer';
 
 export default function Home({ posts }) {
-  const slicedPosts = posts.slice(0, 3);
-
   return (
     <>
       <Header />
       <SectionHero />
-      <SectionFeaturedProjects posts={slicedPosts} />
-      <SectionAbout />
+      <HomeFeaturedProjects posts={posts} />
       <Footer />
     </>
   );

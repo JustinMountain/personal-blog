@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 
-import Project from './Project';
+import EachProject from './EachProject';
 import FilterCheckbox from './FilterCheckbox';
 import CustomHeading from '@/components/utility/CustomHeading';
 
@@ -51,27 +51,34 @@ export default function ProjectsAll({ posts }) {
   const [tagDictState] = useState(tagDictionary);
 
   return (
-    <section className='bg-secondary pt-2 pb-2 px-4 md:px-8'>
+    <section className='bg-secondary pt-2 pb-2 px-4 
+                        md:px-8'>
       <div className='max-w-screen-xl mx-auto'>
-        <h3 className="text-light pt-16 pb-8">Filter all projects by tag:</h3>
 
-        <div className='flex flex-wrap items-center gap-x-5 gap-y-8 lg:col-start-1 lg:col-end-3'>
-          {uniqueTags.map((tag, index) => (
-              <FilterCheckbox key={index} tag={tag} state={tagDictState} onChange={filterResult}/>
-            ))}
+        <div className="max-w-sm mx-auto
+                        md:max-w-screen-xl">
+          <h3 className="text-light pt-16 pb-8">Filter all projects by tag:</h3>
+
+          <div className='flex flex-wrap items-center gap-x-5 gap-y-8'>
+            {uniqueTags.map((tag, index) => (
+                <FilterCheckbox key={index} tag={tag} state={tagDictState} onChange={filterResult}/>
+              ))}
+          </div>
+          <button className='flex bg-light px-4 py-2 mt-5 ml-auto rounded text-xl active:bg-accent' 
+            onClick={() => resetResult()}>Reset</button>
+
         </div>
 
-        <button className='flex bg-light px-4 py-2 mt-5 ml-auto rounded text-xl active:bg-accent' 
-            onClick={() => resetResult()}>Reset</button>
 
         {/* Takes the first four posts and creates cards for them */}
         {data.map((post, index) => (
-          <Project key={index} post={post} />
+          <EachProject key={index} post={post} />
         ))}
 
-        <div className="pt-8 pb-16">
+        <div className="pt-8 pb-16 max-w-sm mx-auto
+                        md:max-w-screen-xl">
           <CustomHeading size="h3" head="End of List" subhead="Why not reset the list or read an article?" />
-          <button className='bg-light px-4 py-2 mt-5 ml-auto rounded text-xl active:bg-accent' 
+          <button className='bg-light px-4 py-2 mt-16 ml-auto rounded text-xl active:bg-accent' 
             onClick={() => resetResult()}>Reset</button>
 
         </div>
@@ -80,5 +87,3 @@ export default function ProjectsAll({ posts }) {
     </section>
   )
 }
-
-// look into passing state into a component to look into simplifying the code a bit

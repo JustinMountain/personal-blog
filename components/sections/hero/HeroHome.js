@@ -5,11 +5,6 @@ import CustomHeading from '@/components/utility/CustomHeading'
 
 export default function HeroHome() {
 
-
-
-
-
-  
   return (
     <section className='bg-primary text-light text-center px-4 py-16 m-auto 
                           md:text-left 

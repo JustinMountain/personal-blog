@@ -8,15 +8,8 @@ category: 'documentation'
 tags: 'networking, docker, linux, homelab'
 excerpt: "Ads are the worst. Using the Pi-hole DNS sinkhole, it's possible to get rid of most of them on a home network."
 thumbnail: 'pihole-dashboard.jpg'
-thumbalt: "Pi-hole's dashboard"
+thumbalt: "More than half of the requests sent from my network to the internet are being blocked by PiHole"
 ---
-
-## Blocking Ads on My Home Network
-
-[![Pi-hole&#39;s dashboard](pihole-dashboard.jpg "Pi-hole's dashboard")](pihole-dashboard.jpg)
-*More than half of the requests sent from my network to the internet are being blocked!*
-
-> It's important to note that Pi-hole does not provide  network security. Network security is a job better suited for a Firewall or DMZ. 
 
 ### Table of Contents
 
@@ -26,6 +19,8 @@ I've been using an ad blocker in my web browser for as long as I knew they exist
 
 Originally designed to work with the Raspberry Pi, Pi-hole is a DNS sinkhole that works by intercepting DNS requests and checking if they match a list of blacklisted domains. If the requested site is on the list, the Pi-hole returns null, effectively saying *'there's no website at that address.'* Pi-hole can do a bunch of other things like handle DHCP and create local DNS, but here I'll be focusing on setting it up as a DNS sinkhole. I'll be running Pi-hole in a [Docker container](/posts/running-docker-in-my-homelab) on [my repurposed laptop server](/posts/repurposing-an-old-laptop)
 
+
+> It's important to note that Pi-hole does not provide  network security. Network security is a job better suited for a Firewall or DMZ. 
 
 ### 🥧 Installing Pi-hole
 

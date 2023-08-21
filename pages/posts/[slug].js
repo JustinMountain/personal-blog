@@ -2,29 +2,64 @@ import React from 'react'
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter';
-import Head from 'next/head';
 
 import Header from '@/components/chrome/Header';
 import markdownToHtml from '@/utils/markdownToHtml';
 import Footer from '@/components/chrome/Footer';
+import HeroOneProject from '@/components/sections/hero/HeroOneProject';
+import CustomHeading from '@/components/utility/CustomHeading';
+import ProjectCard from '@/components/sections/projects/ProjectCard';
+import SocialLinks from '@/components/utility/SocialLinks';
 
-export default function PostPage({ slug, frontmatter: { title, date }, htmlContent }) {
+export default function PostPage({ frontmatter, slug, htmlContent }) {
   return (
     <>
-      <Head>
-        <title>{`${title} - Justin Mountain`}</title>
-        <meta property="og:title" content={title} key="title" />
-      </Head>
-      <Header mainText="Justin Mountain" />
-      <div className="mx-auto my-8 max-w-screen-xl px-6 ">
-        <article className="prose mx-auto">
-          <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
-        </article>
+      <Header />
+
+      <HeroOneProject frontmatter={frontmatter} slug={slug} />
+
+      <div className="bg-secondary">
+
+        <div className="mx-auto max-w-screen-xl pt-16
+                        md:p-24
+                        lg:grid lg:grid-cols-3 lg:gap-2">
+
+          <div className="lg:col-start-1 lg:col-end-3">
+            <article className="prose mx-auto px-4 lg:px-0
+                                prose-invert
+                                prose-headings:font-normal
+                                prose-h3:text-2xl prose-h3:mt-4 first:prose-h3:mt-0 first:prose-h3:pt-0
+                                prose-h4:text-xl prose-h4:mb-4
+                                prose-ul:list-none first:prose-ul:pb-4
+                                prose-li:text-lg
+                                [&>a]:prose-li:no-underline
+                                prose-a:text-light
+                                hover:prose-a:text-accent
+                                prose-blockquote:border-accent prose-blockquote:bg-primary prose-blockquote:px-2 prose-blockquote:rounded-r-lg
+                                [&>p]:prose-blockquote:px-2 [&>p]:prose-blockquote:py-4 
+                                prose-p:pt-0
+                                prose-img:mb-0
+                                ">
+
+              <CustomHeading head="" subhead={frontmatter.tags} />
+
+              <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
+              <div className="pt-8 pb-24">
+                <SocialLinks fillColor="white" discuss={true} />
+              </div>
+
+            </article>
+          </div>
+
+          <div className="lg:col-start-3 lg:col-end-4">
+            <div className="hidden lg:inline">
+              <ProjectCard frontmatter={frontmatter} slug={slug} />
+
+            </div>
+          </div>
+        </div>
       </div>
-
-      {/* Call to Action: Read next post? Go back to all posts? */}
-
-      <Footer mainText="Copyright 2023 Justin Mountain" />
+      <Footer />
     </>
   )
 }

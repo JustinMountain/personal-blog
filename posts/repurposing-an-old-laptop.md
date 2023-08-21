@@ -11,11 +11,6 @@ thumbnail: 'repurpose-under-the-hood.jpg'
 thumbalt: 'The underside of the laptop with the cover removed'
 ---
 
-## Repurposing an Old Laptop as a Home Server
-
-[![The underside of the laptop with the cover removed](repurpose-under-the-hood.jpg "Under the hood")](repurpose-under-the-hood.jpg)
-*Under the hood of the soon to be repurposed laptop.*
-
 ### Table of Contents
 
 ### 💻 Laptop Specs

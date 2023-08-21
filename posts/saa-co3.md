@@ -11,8 +11,6 @@ thumbnail: 'aws-cert-saa-c03.jpg'
 thumbalt: 'Badge for the Solutions Architect Associate certification SAA-C03'
 ---
 
-## AWS Associate Certification Overview
-
 ### Study Plan and Execution
 
 I passed the Solutions Architect Associate certification SAA-C03 on 2023 August 8. While I was studying, I kept notes on the solutions to different problems. This reference guide was built from my notes as an easily searchable reference for high-level architectual solutions. 
@@ -23,7 +21,7 @@ I purchased the two Udemy course packages on 2023 July 12 and sat the exam on 20
 
 These notes are by no means exhaustive; there are services that were on my exam that are not present in this reference guide. I intend to update the guide as I continue to learn more about different solutions that can be solved through AWS architecture. 
 
-If you find any errors or glaring omissions, don't hesitate to contact me. 
+> If you find any errors or glaring omissions, don't hesitate to contact me. 
 
 ### Table of Contents
 

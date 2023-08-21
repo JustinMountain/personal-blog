@@ -11,8 +11,6 @@ thumbnail: ''
 thumbalt: ''
 ---
 
-## You Wouldn't Download a Media Server?!
-
 ### Table of Contents
 
 ### Who's Steering the Ship?
