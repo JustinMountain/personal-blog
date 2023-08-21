@@ -45,4 +45,5 @@ First-person voice
 2. Mobile nav needs *something* (full screen, opacity, ..?)
 3. Re-write short intro to each article
 4. Social links are white, no hover effect
-5. 
+5. Whitespace needs a pass
+6. Standardize px on components across all pages

@@ -37,10 +37,10 @@ export default function CustomHeading({ size, head, subhead }) {
 
   return (
     <div>
-      <span before={`${subheading}`} className={`before:text-accent before:content-[attr(before)] before:rounded-full
+      <div before={`${subheading}`} className={`before:text-accent before:content-[attr(before)] before:rounded-full
                                                   text-light`}>
         { heading }
-      </span>
+      </div>
     </div>
   );
 };

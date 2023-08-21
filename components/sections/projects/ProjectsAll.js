@@ -52,7 +52,9 @@ export default function ProjectsAll({ posts }) {
 
   return (
     <section className='bg-secondary pt-2 pb-2 px-4 
-                        md:px-8'>
+                        md:px-8
+                        md:px-16
+                        xl:px-24'>
       <div className='max-w-screen-xl mx-auto'>
 
         <div className="max-w-sm mx-auto
@@ -68,7 +70,6 @@ export default function ProjectsAll({ posts }) {
             onClick={() => resetResult()}>Reset</button>
 
         </div>
-
 
         {/* Takes the first four posts and creates cards for them */}
         {data.map((post, index) => (

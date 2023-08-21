@@ -2,16 +2,16 @@ import React from 'react'
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter';
-
 import Header from '@/components/chrome/Header';
-import markdownToHtml from '@/utils/markdownToHtml';
 import Footer from '@/components/chrome/Footer';
 import HeroOneProject from '@/components/sections/hero/HeroOneProject';
+import markdownToHtml from '@/utils/markdownToHtml';
 import CustomHeading from '@/components/utility/CustomHeading';
-import ProjectCard from '@/components/sections/projects/ProjectCard';
 import SocialLinks from '@/components/utility/SocialLinks';
+import SimilarPosts from '@/components/sections/SimilarPosts';
+import { sortDescendingByDate } from '../../utils/sort';
 
-export default function PostPage({ frontmatter, slug, htmlContent }) {
+export default function PostPage({ frontmatter, slug, htmlContent, similarPosts }) {
   return (
     <>
       <Header />
@@ -22,7 +22,8 @@ export default function PostPage({ frontmatter, slug, htmlContent }) {
 
         <div className="mx-auto max-w-screen-xl pt-16
                         md:p-24
-                        lg:grid lg:grid-cols-3 lg:gap-2">
+                        lg:px-16 lg:grid lg:grid-cols-3 lg:gap-2
+                        xl:px-24">
 
           <div className="lg:col-start-1 lg:col-end-3">
             <article className="prose mx-auto px-4 lg:px-0
@@ -44,7 +45,7 @@ export default function PostPage({ frontmatter, slug, htmlContent }) {
               <CustomHeading head="" subhead={frontmatter.tags} />
 
               <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
-              <div className="pt-8 pb-24">
+              <div className="py-8">
                 <SocialLinks fillColor="white" discuss={true} />
               </div>
 
@@ -53,7 +54,8 @@ export default function PostPage({ frontmatter, slug, htmlContent }) {
 
           <div className="lg:col-start-3 lg:col-end-4">
             <div className="hidden lg:inline">
-              <ProjectCard frontmatter={frontmatter} slug={slug} />
+
+              <SimilarPosts thisPost={frontmatter} similarPosts={similarPosts} />
 
             </div>
           </div>
@@ -81,13 +83,44 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params: { slug } }) {
+  // Get data for an individual post's page
   const markdownWithMeta = fs.readFileSync(path.join('posts', slug + '.md'), 'utf-8')
 
   const { data: frontmatter, content } = matter(markdownWithMeta)
   const htmlContent = await markdownToHtml(content);
 
+  // Get all post data for similar post component
+  const files = fs.readdirSync(path.join('posts'));
+
+  const posts = files.map((filename) => {
+    const slug = filename.replace('.md', '');
+
+    const markdownWithMeta = fs.readFileSync(path.join('posts', filename), 'utf-8')
+    const { data: frontmatter } = matter(markdownWithMeta)
+
+    return {
+      filename, slug, frontmatter
+    }
+  }).filter(post => post.frontmatter.published !== "no");
+
+  // Find all similar posts, sort by tag similarity
+  const theseTags = frontmatter.tags.split(", ");
+  let relatedPosts = posts.filter(post => {
+    const postTags = post.frontmatter.tags.split(', ');
+    const matchingTags = postTags.filter(tag => theseTags.includes(tag));
+    post.matchingTagCount = matchingTags.length
+    return matchingTags.length > 0; 
+  }).filter(post => post.frontmatter.tags !== frontmatter.tags);
+
+  if (relatedPosts.length === 0) {
+    relatedPosts = posts.filter(post => post.frontmatter.featured !== "no");
+  } else {
+    relatedPosts.sort((a, b) => b.matchingTagCount - a.matchingTagCount);
+  }
+
   return {
     props: {
+      similarPosts: relatedPosts.sort(sortDescendingByDate),
       slug, frontmatter, htmlContent
     }
   }

@@ -46,7 +46,7 @@ export default function HeroProjects({ posts }) {
           <div className="flex flex-col gap-8">
             <CustomHeading size="h3" head="Featured Projects" subhead="" />
             {filterResult.map((post, index) => (
-              <ProjectCard key={index} frontmatter={post.frontmatter} slug={post.slug} />
+              <ProjectCard key={index} frontmatter={post.frontmatter} slug={post.slug} bgColor="accent" />
             ))}
           </div>
 

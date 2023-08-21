@@ -23,8 +23,7 @@ export default function HeroOneProject({ frontmatter }) {
   return (
     <section className='bg-primary text-light text-center px-4 py-16 m-auto 
                           md:text-left md:px-16
-                          lg:px-24
-                          xl:py-32'>
+                          xl:px-24 xl:py-32'>
       <Head>
         <title>{frontmatter.title} - Justin Mountain</title>
       </Head>
