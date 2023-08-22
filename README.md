@@ -47,3 +47,4 @@ First-person voice
 4. Social links are white, no hover effect
 5. Whitespace needs a pass
 6. Standardize px on components across all pages
+7. Need new profile picture

@@ -25,7 +25,7 @@ export default function HeroOneProject({ frontmatter }) {
                           md:text-left md:px-16
                           xl:px-24 xl:py-32'>
       <Head>
-        <title>{frontmatter.title} - Justin Mountain</title>
+        <title>{`${frontmatter.title} - Justin Mountain`}</title>
       </Head>
 
       <div className="max-w-screen-2xl mx-auto
