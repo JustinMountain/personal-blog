@@ -7,6 +7,8 @@ import { sortDescendingByDate } from '../utils/sort';
 import Header from '@/components/chrome/Header';
 import SectionHero from '@/components/sections/hero/HeroHome';
 import HomeFeaturedProjects from '@/components/sections/projects/HomeFeaturedProjects';
+import Roadmap from '@/components/sections/Roadmap';
+import Contact from '@/components/sections/Contact';
 import Footer from '@/components/chrome/Footer';
 
 export default function Home({ posts }) {
@@ -15,6 +17,8 @@ export default function Home({ posts }) {
       <Header />
       <SectionHero />
       <HomeFeaturedProjects posts={posts} />
+      <Roadmap />
+      <Contact />
       <Footer />
     </>
   );

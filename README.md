@@ -48,3 +48,4 @@ First-person voice
 5. Whitespace needs a pass
 6. Standardize px on components across all pages
 7. Need new profile picture
+8. Home's `All Projects` button width restriction on small screens
