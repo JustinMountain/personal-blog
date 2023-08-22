@@ -3,6 +3,7 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import { sortDescendingByDate } from '../utils/sort';
+import Head from 'next/head'
 
 import Header from '@/components/chrome/Header';
 import SectionHero from '@/components/sections/hero/HeroHome';
@@ -14,6 +15,10 @@ import Footer from '@/components/chrome/Footer';
 export default function Home({ posts }) {
   return (
     <>
+      <Head>
+        <title>{`Justin Mountain`}</title>
+      </Head>
+
       <Header />
       <SectionHero />
       <HomeFeaturedProjects posts={posts} />

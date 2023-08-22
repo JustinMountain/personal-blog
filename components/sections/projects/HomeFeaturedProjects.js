@@ -22,7 +22,8 @@ export default function ProjectsFeatured({ posts }) {
           <FeaturedProject key={index} post={post} index={index} />
         ))}
 
-        <div className="flex justify-end">
+        <div className="max-w-sm mx-auto flex 
+                        md:max-w-full md:justify-end">
           <Button content="All Projects" href="/projectrs" buttonType="accent" />
         </div>
       </div>

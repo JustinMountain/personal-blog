@@ -1,12 +1,22 @@
 import React from "react";
 import Button from "../utility/Button";
 
-export default function NavMain() {
+export default function NavMain({ color }) {
+
+  let mainButtonColor = "";
+
+  switch (color) {
+    case "secondary":
+      mainButtonColor = "secondary";
+      break;
+    default:
+      mainButtonColor = "primary";
+    }
 
   const navLinks = [
-    {name:"Home", href:"/", color:"primary"},
-    {name:"Projects", href:"/projects", color:"primary"},
-    {name:"Contact", href:"mailto:mountainj@gmail.com", color:"accent"},
+    {name:"Home", href:"/", color:mainButtonColor},
+    {name:"Projects", href:"/projects", color:mainButtonColor},
+    {name:"Connect", href:"/connect", color:"accent"},
   ]
 
   const navHtml = navLinks.map((link, index) => (

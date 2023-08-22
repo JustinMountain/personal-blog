@@ -1,5 +1,4 @@
 import React from 'react'
-import Head from 'next/head'
 import Image from 'next/image'
 import SocialLinks from '@/components/utility/SocialLinks'
 import CustomHeading from '@/components/utility/CustomHeading'
@@ -10,9 +9,6 @@ export default function HeroHome() {
     <section className='bg-primary text-light text-center px-4 py-16 m-auto 
                           md:text-left 
                           xl:py-32'>
-      <Head>
-        <title>Justin Mountain</title>
-      </Head>
 
       <div className="max-w-screen-2xl mx-auto
                         md:grid md:grid-cols-2 md:gap-8 

@@ -14,10 +14,6 @@ export default function HeroProjects({ posts }) {
     <section className='bg-primary text-light p-4 pt-8 pb-16 m-auto
                           md:px-8 md:py-16
                           xl:py-32'>
-      <Head>
-        <title>Projects - Justin Mountain</title>
-      </Head>
-
 
       <div className="max-w-screen-2xl mx-auto
                         md:grid md:grid-cols-4 md:gap-2 md:gap-4

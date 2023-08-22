@@ -43,9 +43,17 @@ First-person voice
 
 1. Mobile nav needs animation on open/close
 2. Mobile nav needs *something* (full screen, opacity, ..?)
-3. Re-write short intro to each article
-4. Social links are white, no hover effect
-5. Whitespace needs a pass
-6. Standardize px on components across all pages
-7. Need new profile picture
-8. Home's `All Projects` button width restriction on small screens
+3. Social links are white, no hover effect
+
+### To Do
+
+0. Article summarizing the website
+
+1. Re-write short intro to each article
+2. Add Discord to social links
+
+3. Whitespace needs a pass / Standardize px on components across all pages
+
+4. Need new profile picture
+
+5. Hook up Contact form to Discord via Zapier

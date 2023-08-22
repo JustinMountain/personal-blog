@@ -7,7 +7,7 @@ export default function NavFooter() {
     {name:"Top", href:"#top", color:"primary"},
     {name:"Home", href:"/", color:"primary"},
     {name:"Projects", href:"/projects", color:"primary"},
-    {name:"Contact", href:"mailto:mountainj@gmail.com", color:"accent"},
+    {name:"Connect", href:"/connect", color:"accent"},
   ]
 
   const navHtml = navLinks.map((link, index) => (

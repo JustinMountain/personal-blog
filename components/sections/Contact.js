@@ -22,27 +22,27 @@ export default function Contact() {
 
             <div className="row-start-1 row-end-2
                             md:row-start-1 md:row-end-2 md:col-start-1 md:col-end-2">
-              <label for="name" 
+              <label htmlFor="name" 
                 className="block pt-4 md:pt-0 pb-2">
                   Name:
               </label>
-              <input type="text" id="name" name="name" placeholder="Justin Mountain"
+              <input type="text" id="name" name="name" placeholder="Your Name Here"
                 className="w-full px-4 py-2 rounded bg-primary border border-accent placeholder:text-light" />
             </div>
 
             <div className="row-start-2 row-end-3
                             md:row-start-1 md:row-end-2 md:col-start-2 md:col-end-3">
-              <label for="contact" 
+              <label htmlFor="contact" 
                 className="block pt-4 md:pt-0 pb-2">
                   Contact:
               </label>
-              <input type="text" id="contact" name="contact" placeholder="mountainj@gmail.com"
+              <input type="text" id="contact" name="contact" placeholder="You Email Here"
                 className="w-full px-4 py-2 rounded bg-primary border border-accent placeholder:text-light" />
             </div>
 
             <div className="row-start-3 row-end-5
                             md:row-start-2 md:row-end-4 md:col-start-1 md:col-end-3">
-              <label for="message" 
+              <label htmlFor="message" 
                 className="block pt-4 md:pt-0 pb-2">
                   Message:
               </label>
@@ -52,7 +52,7 @@ export default function Contact() {
 
             <div className="row-start-6 row-end-7 text-right 
                             md:row-start-4 md:row-end-5 md:col-start-1 md:col-end-3">
-              <input className="rounded px-4 py-2 bg-accent light-button hover:bg-light hover:light-button md:mt-8" type="submit" value="Contact" />
+              <input className="rounded px-4 py-2 bg-accent light-button hover:bg-light hover:light-button md:mt-8" type="submit" value="Connect" />
             </div>
           </form>
 

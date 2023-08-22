@@ -2,6 +2,7 @@ import React from 'react'
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter';
+import Head from 'next/head';
 import Header from '@/components/chrome/Header';
 import Footer from '@/components/chrome/Footer';
 import HeroOneProject from '@/components/sections/hero/HeroOneProject';
@@ -14,6 +15,10 @@ import { sortDescendingByDate } from '../../utils/sort';
 export default function PostPage({ frontmatter, slug, htmlContent, similarPosts }) {
   return (
     <>
+      <Head>
+        <title>{`${frontmatter.title} - Justin Mountain`}</title>
+      </Head>
+
       <Header />
 
       <HeroOneProject frontmatter={frontmatter} slug={slug} />
