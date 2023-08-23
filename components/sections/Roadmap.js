@@ -39,15 +39,17 @@ export default function Roadmap() {
                           col-start-2 col-end-9
                           xs:px-8 xs:py-6
                           md:ml-8">
-            <div className="pb-4">
+            <div className="pb-4
+                            xl:pb-8">
               <CustomHeading size="h3" head={contents[0].head} subhead={contents[0].subhead} />
             </div>
 
             <p before="&#x25CF;" className={`before:text-accent before:content-[attr(before)] before:text-5xl
                                               before:absolute before:-left-10 before:top-7
+                                              pt-0 text-lg
                                               xs:before:-left-14
-                                              pt-0
-                                              md:before:-left-20`}>
+                                              md:before:-left-20
+                                              xl:text-xl`}>
               {contents[0].p1}
             </p>
             <p className="py-0">
@@ -60,15 +62,17 @@ export default function Roadmap() {
                           col-start-2 col-end-9
                           xs:px-8 xs:py-6
                           md:ml-8">
-            <div className="pb-4">
+            <div className="pb-4
+                            xl:pb-8">
               <CustomHeading size="h3" head={contents[1].head} subhead={contents[1].subhead} />
             </div>
 
             <p before="&#x25CF;" className={`before:text-accent before:content-[attr(before)] before:text-5xl
                                               before:absolute before:-left-10 before:top-7
+                                              pt-0 text-lg
                                               xs:before:-left-14
-                                              pt-0
-                                              md:before:-left-20`}>
+                                              md:before:-left-20
+                                              xl:text-xl`}>
               {contents[1].p1}
             </p>
             <p className="py-0">
@@ -81,15 +85,17 @@ export default function Roadmap() {
                           col-start-2 col-end-9
                           xs:px-8 xs:py-6
                           md:ml-8">
-            <div className="pb-4">
+            <div className="pb-4
+                            xl:pb-8">
               <CustomHeading size="h3" head={contents[2].head} subhead={contents[2].subhead} />
             </div>
 
             <p before="&#x25CF;" className={`before:text-accent before:content-[attr(before)] before:text-5xl
                                               before:absolute before:-left-10 before:top-7
+                                              pt-0 text-lg
                                               xs:before:-left-14
-                                              pt-0
-                                              md:before:-left-20`}>
+                                              md:before:-left-20
+                                              xl:text-xl`}>
               {contents[2].p1}
             </p>
             <p className="py-0">

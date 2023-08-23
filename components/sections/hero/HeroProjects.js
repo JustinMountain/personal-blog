@@ -17,7 +17,9 @@ export default function HeroProjects({ posts }) {
 
                           md:col-start-1 md:col-end-3 md:pb-0 md:max-w-xl">
           <CustomHeading size="h2" head="Projects" subhead="Doing stuff and writing about it" />
-          <p className="">
+          <p className="text-lg
+                        md:max-w-xl md:pb-16
+                        xl:text-xl">
             These articles exist between documentation for my personal projects, my lifelong passion for learning, and my experience teaching and communicating ideas. 
           </p>
           <div className="pt-8">

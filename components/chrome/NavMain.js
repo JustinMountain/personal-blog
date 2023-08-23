@@ -20,7 +20,7 @@ export default function NavMain({ color }) {
   ]
 
   const navHtml = navLinks.map((link, index) => (
-    <li key={index} className="text-right flex justify-end py-8 pr-6 
+    <li key={index} className="text-right flex justify-end py-12 pr-6 
                                 md:pl-4 md:pr-0 md:py-2 md:mr-8 md:last:mr-0">
       <Button content={link.name} href={link.href} buttonType={link.color} />
     </li>

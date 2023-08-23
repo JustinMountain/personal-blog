@@ -50,7 +50,7 @@ export default function PostPage({ frontmatter, slug, htmlContent, similarPosts 
               <CustomHeading head="" subhead={frontmatter.tags} />
 
               <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
-              <div className="py-8">
+              <div className="pt-8">
                 <SocialLinks fillColor="white" discuss={true} />
               </div>
 

@@ -40,10 +40,10 @@ export default function EachProject({ post }) {
         />
       </Link>
 
-      <p className='text-white pt-4 pb-6
+      <p className='text-white pt-4 pb-6 text-lg
                     xs:pb-8
                     md:py-0
-                    xl:col-start-1 xl:col-end-3'>{post.frontmatter.excerpt}
+                    xl:col-start-1 xl:col-end-3 xl:text-xl'>{post.frontmatter.excerpt}
       </p>
 
       <div className="flex justify-end gap-4

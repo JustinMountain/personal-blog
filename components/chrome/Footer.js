@@ -29,9 +29,13 @@ export default function Footer() {
                           md:w-auto md:mx-0">
             <div>
               <CustomHeading size="h2" head="Justin Mountain" subhead="Junior Cloud Engineer" />
-              AWS | Docker | React | Next.js
+              <p className="text-lg pb-0
+                                xl:text-xl">
+                AWS | Docker | React | Next.js
+              </p>
             </div>
-            <div className="md:pl-1 md:pt-28">
+            <div className="md:pl-1 md:pt-24
+                            xl:pt-20">
               <SocialLinks align="left" fillColor="white" />
             </div>
           </div>

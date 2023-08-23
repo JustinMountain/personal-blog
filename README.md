@@ -53,7 +53,7 @@ First-person voice
 2. Need new profile picture (512x512)
 
 3. Hook up Contact form to Discord via Zapier / Add Discord to social links
-- Social Icon Size/Spacing
+- Social Icon Size/Spacing (remember footer)
 
 4. 
 

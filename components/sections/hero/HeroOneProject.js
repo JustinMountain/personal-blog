@@ -30,7 +30,9 @@ export default function HeroOneProject({ frontmatter }) {
                         md:col-start-1 md:col-end-2 md:max-w-xl">
           <CustomHeading size="h2" head={frontmatter.title} subhead={publishedLine} />
 
-          <p>
+          <p className="text-lg
+                        md:max-w-xl md:pb-16
+                        xl:text-xl">
             {frontmatter.excerpt}
           </p>
 

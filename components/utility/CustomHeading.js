@@ -8,19 +8,19 @@ export default function CustomHeading({ size, head, subhead }) {
 
   switch (size) {
     case "h2":
-      heading = <h2 className='pt-0'> { head } </h2>;
+      heading = <h2 className='pt-0 text-3xl xl:text-4xl'> { head } </h2>;
       break;
     
     case "h3":
-      heading = <h3 className='pt-0'> { head } </h3>;
+      heading = <h3 className='pt-0 text-2xl xl:text-3xl'> { head } </h3>;
       break;
 
     case "h4":
-      heading = <h4 className='pt-0'> { head } </h4>;
+      heading = <h4 className='pt-0 text-xl xl:text-2xl'> { head } </h4>;
       break;
 
     case "h5":
-      heading = <h5 className='pt-0'> { head } </h5>;
+      heading = <h5 className='pt-0 text-lg xl:text-xl'> { head } </h5>;
       break;
 
     case "h6":
@@ -37,7 +37,7 @@ export default function CustomHeading({ size, head, subhead }) {
 
   return (
     <div>
-      <div before={`${subheading}`} className={`before:text-accent before:content-[attr(before)]
+      <div before={`${subheading}`} className={`before:text-accent before:content-[attr(before)] before:text-md
                                                   text-light`}>
         { heading }
       </div>

@@ -24,8 +24,9 @@ export default function Header({ color }) {
 
   return (
     <header className={`${bgColor} text-light top-0`} id="top">
-      <div className='flex flex-col px-4 py-5 max-w-7xl m-auto 
+      <div className='flex flex-col px-4 py-6 max-w-7xl m-auto text-xl
                       md:flex-row md:px-8
+                      xl:py-8
                       2xl:px-0'>
         <div className="flex my-auto justify-between 
                         md:w-1/2 md:justify-start">
@@ -41,9 +42,9 @@ export default function Header({ color }) {
                         md:hidden'
             onClick={handleClick}>
             <div>
-              <div className='bg-light w-5 h-0.5 my-1'></div>
-              <div className='bg-light w-5 h-0.5 my-1'></div>
-              <div className='bg-light w-5 h-0.5 my-1'></div>
+              <div className='bg-light w-8 h-0.5 my-1'></div>
+              <div className='bg-light w-8 h-0.5 my-1'></div>
+              <div className='bg-light w-8 h-0.5 my-1'></div>
             </div>
           </button> 
         </div>

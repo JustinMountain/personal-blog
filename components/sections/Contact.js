@@ -23,7 +23,10 @@ export default function Contact() {
                             md:row-start-1 md:row-end-2 md:col-start-1 md:col-end-2">
               <label htmlFor="name" 
                 className="block pt-4 md:pt-0 pb-2">
-                  Name:
+                  <p className="text-lg pb-0
+                                xl:text-xl">
+                    Name:
+                  </p>
               </label>
               <input type="text" id="name" name="name" placeholder="Your Name Here"
                 className="w-full px-4 py-2 rounded bg-primary border border-accent placeholder:text-light" />
@@ -33,7 +36,10 @@ export default function Contact() {
                             md:row-start-1 md:row-end-2 md:col-start-2 md:col-end-3">
               <label htmlFor="contact" 
                 className="block pt-4 md:pt-0 pb-2">
-                  Contact:
+                  <p className="text-lg pb-0
+                                xl:text-xl">
+                    Contact:
+                  </p>
               </label>
               <input type="text" id="contact" name="contact" placeholder="You Email Here"
                 className="w-full px-4 py-2 rounded bg-primary border border-accent placeholder:text-light" />
@@ -43,7 +49,10 @@ export default function Contact() {
                             md:row-start-2 md:row-end-4 md:col-start-1 md:col-end-3">
               <label htmlFor="message" 
                 className="block pt-4 md:pt-0 pb-2">
-                  Message:
+                  <p className="text-lg pb-0
+                                xl:text-xl">
+                    Message:
+                  </p>
               </label>
               <textarea id="message" name="message" placeholder="Give me some details and I'll get back to you."
                 className="w-full h-full px-4 py-2 rounded bg-primary border border-accent placeholder:text-light"></textarea>

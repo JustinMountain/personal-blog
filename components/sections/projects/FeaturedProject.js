@@ -24,7 +24,6 @@ export default function FeaturedProject({ index, post }) {
 
   return (
     <div className='mx-auto my-8 max-w-lg
-                    
                     md:grid md:grid-cols-2 md:max-w-screen-xl md:gap-8 md:my-12
                     lg:my-16
                     2xl:gap-32'>
@@ -49,9 +48,10 @@ export default function FeaturedProject({ index, post }) {
         />
       </Link>
 
-      <p className='text-white pt-4 pb-6
+      <p className='text-white pt-4 pb-6 text-lg
                     xs:pb-8
-                    md:py-0'>{post.frontmatter.excerpt}
+                    md:py-0
+                    xl:text-xl'>{post.frontmatter.excerpt}
       </p>
 
       <div className="flex justify-end gap-4

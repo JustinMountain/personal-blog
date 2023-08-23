@@ -26,7 +26,9 @@ export default function SocialLinks({ align, fillColor, discuss }) {
   
   return (
     <div className='flex'>
-      <div className={`flex ${alignment} gap-4 pt-4 items-center`}>
+      <div className={`flex ${alignment} gap-4 items-center text-lg
+                        md:max-w-xl
+                        xl:text-xl`}>
         { discussText }
         <Link href="https://github.com/JustinMountain" passHref>
           <IconGitHub fill={ fillColor } width="32" />
