@@ -23,10 +23,11 @@ export default function FeaturedProject({ index, post }) {
   }
 
   return (
-    <div className='mx-auto my-8 pt-2 pb-8 max-w-sm
-                    xs:pb-10
-                    md:grid md:grid-cols-2 md:max-w-screen-xl md:gap-8
-                    lg:gap-16'>
+    <div className='mx-auto my-8 max-w-lg
+                    
+                    md:grid md:grid-cols-2 md:max-w-screen-xl md:gap-8 md:my-12
+                    lg:my-16
+                    2xl:gap-32'>
 
       <div className={picSide}>
         <Link href={`/posts/${post.slug}`} passHref className="no-underline">
@@ -40,8 +41,8 @@ export default function FeaturedProject({ index, post }) {
                                                       md:w-fit ${textSide} md:row-start-1 md:row-end-4`} >
         <Image
           src={`/posts/${post.frontmatter.thumbnail}`}
-          width={600}
-          height={400}
+          width={576}
+          height={384}
           title={post.frontmatter.title}
           alt={post.frontmatter.thumbalt}
           className="mx-auto"
@@ -49,8 +50,8 @@ export default function FeaturedProject({ index, post }) {
       </Link>
 
       <p className='text-white pt-4 pb-6
-                      xs:pb-8
-                      md:py-0'>{post.frontmatter.excerpt}
+                    xs:pb-8
+                    md:py-0'>{post.frontmatter.excerpt}
       </p>
 
       <div className="flex justify-end gap-4

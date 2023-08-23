@@ -1,6 +1,6 @@
-import React from 'react'
-import fs from 'fs'
-import path from 'path'
+import React from 'react';
+import fs from 'fs';
+import path from 'path';
 import matter from 'gray-matter';
 import Head from 'next/head';
 import Header from '@/components/chrome/Header';
@@ -25,13 +25,13 @@ export default function PostPage({ frontmatter, slug, htmlContent, similarPosts 
 
       <div className="bg-secondary">
 
-        <div className="mx-auto max-w-screen-xl pt-16
-                        md:p-24
-                        lg:px-16 lg:grid lg:grid-cols-3 lg:gap-2
-                        xl:px-24">
+        <div className="mx-auto max-w-lg py-16 px-4 
+                        md:max-w-7xl md:px-8
+                        lg:grid lg:grid-cols-3 lg:gap-8 lg:py-24
+                        2xl:px-0 2xl:gap-16">
 
           <div className="lg:col-start-1 lg:col-end-3">
-            <article className="prose mx-auto px-4 lg:px-0
+            <article className="max-w-5xl prose mx-auto
                                 prose-invert
                                 prose-headings:font-normal
                                 prose-h3:text-2xl prose-h3:mt-4 first:prose-h3:mt-0 first:prose-h3:pt-0
@@ -59,9 +59,7 @@ export default function PostPage({ frontmatter, slug, htmlContent, similarPosts 
 
           <div className="lg:col-start-3 lg:col-end-4">
             <div className="hidden lg:inline">
-
               <SimilarPosts thisPost={frontmatter} similarPosts={similarPosts} />
-
             </div>
           </div>
         </div>

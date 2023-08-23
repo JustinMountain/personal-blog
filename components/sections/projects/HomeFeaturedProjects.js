@@ -9,20 +9,20 @@ export default function ProjectsFeatured({ posts }) {
   const filterResult = posts.filter(post => post.frontmatter.featured === "yes");
 
   return (
-    <section className='bg-secondary py-24 px-8
-                        lg:px-16'>
-      <div className='m-auto max-w-screen-2xl'>
+    <section className='bg-secondary py-16 px-8
+                        lg:py-24'>
+      <div className='m-auto max-w-6xl
+                      2xl:max-w-7xl'>
 
-        <div className="text-center pb-4">
+        <div className="text-center">
           <CustomHeading size="h2" head="Featured Projects" subhead="" />
-
         </div>
 
         {filterResult.map((post, index) => (
           <FeaturedProject key={index} post={post} index={index} />
         ))}
 
-        <div className="max-w-sm mx-auto flex 
+        <div className="max-w-lg mx-auto flex 
                         md:max-w-full md:justify-end">
           <Button content="All Projects" href="/projectrs" buttonType="accent" />
         </div>

@@ -32,12 +32,12 @@ export default function ProjectCard({ index, frontmatter, slug, bgColor }) {
     }
 
   return (
-    <div className="mx-auto max-w-sm border-2 border-primary">
+    <div className="mx-auto border-2 border-primary">
       <div className="relative">
         <Image
           src={`/posts/${frontmatter.thumbnail}`}
-          width={384}
-          height={256}
+          width={576}
+          height={384}
           alt={frontmatter.thumbalt}
         />
         <div className="absolute top-0 bg-gradient-to-b to-none w-full h-3/4 px-2 py-1 from-secondary" >

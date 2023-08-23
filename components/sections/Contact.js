@@ -1,23 +1,22 @@
-import React from 'react'
-import CustomHeading from '@/components/utility/CustomHeading'
+import React from 'react';
+import CustomHeading from '@/components/utility/CustomHeading';
 
 export default function Contact() {
 
   return (
-    <section className='bg-secondary text-light text-center px-4 py-24 m-auto 
-                          md:text-left md:px-8
-                          lg:px-24
-                          xl:py-32'>
+    <section className='bg-secondary text-light text-center px-4 py-16 m-auto 
+                        md:text-left md:px-8
+                        lg:px-24 lg:py-24'>
 
       <div className="text-center">
         <CustomHeading size="h2" head="Interested in working together?" subhead="" />
       </div>
 
-      <div className="max-w-screen-lg mx-auto
-                        xl:grid-cols-6">
+      <div className="max-w-4xl mx-auto
+                      xl:grid-cols-6">
 
-          <form className="text-left pt-8 max-w-sm mx-auto grid grid-rows-5
-                            md:max-w-full md:grid-cols-2 md:grid-rows-4 md:gap-8
+          <form className="text-left mt-8 max-w-lg mx-auto grid grid-rows-5
+                            md:max-w-full md:grid-cols-2 md:grid-rows-4 md:gap-8 md:mt-12
                             lg:gap-x-16" action="action_page.php">
 
             <div className="row-start-1 row-end-2

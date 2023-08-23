@@ -50,10 +50,10 @@ First-person voice
 0. Article summarizing the website
 
 1. Re-write short intro to each article
-2. Add Discord to social links
+2. Need new profile picture (512x512)
 
-3. Whitespace needs a pass / Standardize px on components across all pages
+3. Hook up Contact form to Discord via Zapier / Add Discord to social links
+- Social Icon Size/Spacing
 
-4. Need new profile picture
+4. 
 
-5. Hook up Contact form to Discord via Zapier

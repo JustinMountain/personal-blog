@@ -2,7 +2,6 @@ import React from 'react';
 import { useState } from "react";
 import Link from 'next/link';
 import MainNav from './NavMain';
-import Button from '../utility/Button';
 
 export default function Header({ color }) {
 
@@ -25,12 +24,13 @@ export default function Header({ color }) {
 
   return (
     <header className={`${bgColor} text-light top-0`} id="top">
-      <div className='flex flex-col px-0 pr-4 py-5 max-w-screen-2xl m-auto 
-                        md:flex-row md:pl-4 md:pr-8'>
+      <div className='flex flex-col px-4 py-5 max-w-7xl m-auto 
+                      md:flex-row md:px-8
+                      2xl:px-0'>
         <div className="flex my-auto justify-between 
-                          md:w-1/2 md:justify-start">
+                        md:w-1/2 md:justify-start">
           <div>
-            <h1 className='control-link-color pl-4'>
+            <h1 className='control-link-color'>
               <Link href="/">
                 Justin Mountain
               </Link>
@@ -47,8 +47,8 @@ export default function Header({ color }) {
             </div>
           </button> 
         </div>
-        <div className={`bg-transparent justify-end absolute w-screen top-16 right-0 pb-8
-                          md:flex md:w-1/2 md:static md:pr-0 md:pb-0 ${buttonAddClass}`}>
+        <div className={`bg-primary justify-end absolute w-screen top-16 right-0 pb-8
+                          md:flex md:w-1/2 md:static md:bg-transparent md:pr-0 md:pb-0 ${buttonAddClass}`}>
           <MainNav color={color} />
         </div>
       </div>

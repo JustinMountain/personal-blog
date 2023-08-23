@@ -1,6 +1,5 @@
 import React from 'react';
 import { useState } from 'react';
-
 import EachProject from './EachProject';
 import FilterCheckbox from './FilterCheckbox';
 import CustomHeading from '@/components/utility/CustomHeading';
@@ -51,24 +50,24 @@ export default function ProjectsAll({ posts }) {
   const [tagDictState] = useState(tagDictionary);
 
   return (
-    <section className='bg-secondary pt-2 pb-2 px-4 
+    <section className='bg-secondary py-16 px-4 
                         md:px-8
-                        md:px-16
-                        xl:px-24'>
-      <div className='max-w-screen-xl mx-auto'>
-
-        <div className="max-w-sm mx-auto
-                        md:max-w-screen-xl">
-          <h3 className="text-light pt-16 pb-8">Filter all projects by tag:</h3>
+                        lg:py-24'>
+      <div className='mx-auto max-w-6xl
+                      2xl:max-w-7xl'>
+        <div className="max-w-lg mx-auto
+                        md:max-w-7xl">
+          <div className="pb-8">
+            <CustomHeading size="h3" head="Filter all projects by tag:" subhead="" />
+          </div>
 
           <div className='flex flex-wrap items-center gap-x-5 gap-y-8'>
             {uniqueTags.map((tag, index) => (
                 <FilterCheckbox key={index} tag={tag} state={tagDictState} onChange={filterResult}/>
               ))}
           </div>
-          <button className='flex bg-light px-4 py-2 mt-5 ml-auto rounded text-xl active:bg-accent' 
+          <button className='flex bg-light px-4 py-2 my-6 ml-auto rounded text-xl active:bg-accent' 
             onClick={() => resetResult()}>Reset</button>
-
         </div>
 
         {/* Takes the first four posts and creates cards for them */}
@@ -76,14 +75,12 @@ export default function ProjectsAll({ posts }) {
           <EachProject key={index} post={post} />
         ))}
 
-        <div className="pt-8 pb-16 max-w-sm mx-auto
-                        md:max-w-screen-xl">
+        <div className="pt-8 max-w-lg mx-auto
+                        md:max-w-7xl">
           <CustomHeading size="h3" head="End of List" subhead="Why not reset the list or read an article?" />
           <button className='bg-light px-4 py-2 mt-16 ml-auto rounded text-xl active:bg-accent' 
             onClick={() => resetResult()}>Reset</button>
-
         </div>
-
       </div>
     </section>
   )
