@@ -48,12 +48,10 @@ First-person voice
 ### To Do
 
 0. Article summarizing the website
+1. Need new profile picture (512x512) and new thank you picture for /connected
 
-1. Re-write short intro to each article
-2. Need new profile picture (512x512)
-
-3. Hook up Contact form to Discord via Zapier
+2. Re-write short intro to each article
 
 4. 
 
-Discord invite needs 30 day update unless I want to pay for the subscription (currently expires 2023/09/20)
+*Discord invite needs 30 day update unless I want to pay for the subscription (currently expires 2023/09/20)*
