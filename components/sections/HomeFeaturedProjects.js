@@ -2,7 +2,7 @@ import React from 'react';
 import Button from '@/components/utility/Button';
 import CustomHeading from '@/components/utility/CustomHeading';
 
-import FeaturedProject from './FeaturedProject';
+import FeaturedProject from './projects/FeaturedProject';
 
 export default function ProjectsFeatured({ posts }) {
 

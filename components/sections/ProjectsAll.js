@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
-import EachProject from './EachProject';
-import FilterCheckbox from './FilterCheckbox';
+import EachProject from './projects/EachProject';
+import FilterCheckbox from './projects/FilterCheckbox';
 import CustomHeading from '@/components/utility/CustomHeading';
 
 export default function ProjectsAll({ posts }) {

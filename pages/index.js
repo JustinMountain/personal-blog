@@ -4,10 +4,9 @@ import path from 'path';
 import matter from 'gray-matter';
 import { sortDescendingByDate } from '../utils/sort';
 import Head from 'next/head'
-
 import Header from '@/components/chrome/Header';
 import SectionHero from '@/components/sections/hero/HeroHome';
-import HomeFeaturedProjects from '@/components/sections/projects/HomeFeaturedProjects';
+import HomeFeaturedProjects from '@/components/sections/HomeFeaturedProjects';
 import Roadmap from '@/components/sections/Roadmap';
 import ContactForm from '@/components/sections/ContactForm';
 import Footer from '@/components/chrome/Footer';

@@ -43,7 +43,7 @@ export default function PostPage({ frontmatter, slug, htmlContent, similarPosts 
                                 [&>a]:prose-li:no-underline
                                 prose-a:text-light
                                 hover:prose-a:text-accent
-                                prose-blockquote:border-accent prose-blockquote:bg-primary prose-blockquote:px-2 prose-blockquote:rounded-r-lg
+                                prose-blockquote:border-accent prose-blockquote:border-r prose-blockquote:bg-primary prose-blockquote:px-2 prose-blockquote:rounded-r-lg
                                 [&>p]:prose-blockquote:px-2 [&>p]:prose-blockquote:py-4 
                                 prose-p:pt-0
                                 prose-img:mb-0

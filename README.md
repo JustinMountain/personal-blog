@@ -49,9 +49,7 @@ First-person voice
 
 0. Article summarizing the website
 1. Need new profile picture (512x512) and new thank you picture for /connected
-
 2. Re-write short intro to each article
-
 4. 
 
 *Discord invite needs 30 day update unless I want to pay for the subscription (currently expires 2023/09/20)*
