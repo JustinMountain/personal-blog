@@ -24,14 +24,14 @@ export default function HeroOneProject({ frontmatter }) {
                         md:text-left md:px-8
                         lg:py-24'>
       <div className="max-w-7xl mx-auto
-                      md:grid md:grid-cols-2 md:gap-8
+                      lg:grid lg:grid-cols-2 lg:gap-8
                       2xl:gap-32">
         <div className="max-w-lg mx-auto 
                         md:col-start-1 md:col-end-2 md:max-w-xl">
           <CustomHeading size="h2" head={frontmatter.title} subhead={publishedLine} />
 
           <p className="text-lg
-                        md:max-w-xl md:pb-16
+                        md:max-w-xl
                         xl:text-xl">
             {frontmatter.excerpt}
           </p>
@@ -41,15 +41,21 @@ export default function HeroOneProject({ frontmatter }) {
           </div>
           
           <div className="md:hidden">
-            <SocialLinks align="left" fillColor="white" discuss={true} />
+            <div className="py-8">
+              Discuss with me:
+            </div>
+            <SocialLinks align="left" bgColor="primary" />
           </div>
           <div className="hidden md:inline">
-            <SocialLinks align="left" fillColor="white" discuss={true} />
+            <div className="py-8">
+              Discuss with me:
+            </div>
+            <SocialLinks align="left" bgColor="primary" />
           </div> 
         </div>
 
         <div className="mx-auto pt-16 max-w-lg
-                        md:col-start-2 md:col-end-3 md:max-w-xl md:pt-0 ">
+                        md:col-start-2 md:col-end-3 md:max-w-xl lg:pt-0 ">
           <Image
             src={`/posts/${frontmatter.thumbnail}`}
             width={576}
@@ -59,8 +65,6 @@ export default function HeroOneProject({ frontmatter }) {
             className="mx-auto"
           />
         </div>
-
-
       </div>
     </section>
   )

@@ -22,8 +22,11 @@ export default function HeroProjects({ posts }) {
                         xl:text-xl">
             These articles exist between documentation for my personal projects, my lifelong passion for learning, and my experience teaching and communicating ideas. 
           </p>
-          <div className="pt-8">
-            <SocialLinks fillColor="white" discuss={true} />
+          <div className="">
+            <div className="py-8">
+              Discuss with me:
+            </div>
+            <SocialLinks  bgColor="primary" />
           </div>
         </div>
 

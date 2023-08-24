@@ -29,19 +29,19 @@ export default function HeroHome() {
                         xl:pt-32">
           <CustomHeading size="h2" head="Hi, I'm Justin" subhead="Junior Cloud Engineer" />
 
-          <p className="text-lg
+          <p className="text-lg pb-8
                         md:max-w-xl md:pb-16
                         xl:text-xl">
             Currently pursuing interests in full stack web development and DevOps.
           </p>
           
           <div className="md:hidden">
-            <SocialLinks align="center" fillColor="white" />
+            <SocialLinks align="center" bgColor="primary" />
           </div>
 
           <div className="hidden 
                           md:inline">
-            <SocialLinks align="left" fillColor="white" />
+            <SocialLinks align="left" bgColor="primary" />
           </div>
         </div>
       </div>

@@ -32,6 +32,8 @@ export default function PostPage({ frontmatter, slug, htmlContent, similarPosts 
 
           <div className="lg:col-start-1 lg:col-end-3">
             <article className="max-w-5xl prose mx-auto
+                                md:max-w-xl
+                                lg:max-w-full
                                 prose-invert
                                 prose-headings:font-normal
                                 prose-h3:text-2xl prose-h3:mt-4 first:prose-h3:mt-0 first:prose-h3:pt-0
@@ -51,7 +53,10 @@ export default function PostPage({ frontmatter, slug, htmlContent, similarPosts 
 
               <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
               <div className="pt-8">
-                <SocialLinks fillColor="white" discuss={true} />
+                <div className="py-8">
+                  Discuss with me:
+                </div>
+                <SocialLinks bgColor="secondary" discuss={true} />
               </div>
 
             </article>

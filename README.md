@@ -52,8 +52,8 @@ First-person voice
 1. Re-write short intro to each article
 2. Need new profile picture (512x512)
 
-3. Hook up Contact form to Discord via Zapier / Add Discord to social links
-- Social Icon Size/Spacing (remember footer)
+3. Hook up Contact form to Discord via Zapier
 
 4. 
 
+Discord invite needs 30 day update unless I want to pay for the subscription (currently expires 2023/09/20)

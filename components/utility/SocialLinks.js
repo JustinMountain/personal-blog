@@ -4,16 +4,11 @@ import Link from 'next/link';
 import IconGitHub from '@/public/icons/IconGitHub';
 import IconLinkedIn from '@/public/icons/IconLinkedIn';
 import IconEmail from '@/public/icons/IconEmail';
+import IconDiscord from '@/public/icons/IconDiscord';
 
-export default function SocialLinks({ align, fillColor, discuss }) {
+export default function SocialLinks({ align, bgColor }) {
 
-  let alignment;
-  let discussText = "";
-
-  if (discuss) {
-    discussText = "Discuss with me:";
-  }
-  
+  let alignment;  
 
   switch (align) {
     case "left":
@@ -25,19 +20,30 @@ export default function SocialLinks({ align, fillColor, discuss }) {
     }
   
   return (
-    <div className='flex'>
-      <div className={`flex ${alignment} gap-4 items-center text-lg
-                        md:max-w-xl
+    <div>
+      <div className={`flex ${alignment} gap-8 items-center text-lg
+                        md:max-w-xl md:gap-6
                         xl:text-xl`}>
-        { discussText }
         <Link href="https://github.com/JustinMountain" passHref>
-          <IconGitHub fill={ fillColor } width="32" />
+          <IconGitHub 
+          fill={ '#FFF' }
+          width="40" />          
         </Link>
         <Link href="https://www.linkedin.com/in/justinmountain/" passHref>
-          <IconLinkedIn fill={ fillColor } width="32" />
+          <IconLinkedIn 
+            fill={ '#FFF' }
+            width="40" />
+        </Link>
+        <Link href="https://discord.gg/PTy7Jm7hf" passHref>
+          <IconDiscord 
+            fill={ '#FFF' }
+            bgColor={ bgColor }
+            width="40" />
         </Link>
         <Link href="mailto:mountainj@gmail.com" passHref>
-          <IconEmail fill={ fillColor } width="32" />
+          <IconEmail 
+            fill={ '#FFF' }
+            width="40" />
         </Link>
       </div>
     </div>
