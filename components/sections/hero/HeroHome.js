@@ -29,12 +29,12 @@ export default function HeroHome() {
                         xl:pt-32">
           <CustomHeading size="h2" head="Hi, I'm Justin" subhead="Junior Cloud Engineer" />
 
-          <p className="text-lg pb-8
+          <p className="text-lg py-4
                         md:max-w-xl md:py-4
                         lg:pt-8">
             This is where I share my passion for learning. 
           </p>
-          <p className="text-lg pb-8
+          <p className="text-lg py-4
                         md:max-w-xl md:pt-4 md:pb-8
                         lg:pb-16">
             I write articles about homelab, self-hosting, the cloud, full stack web development, and DevOps.

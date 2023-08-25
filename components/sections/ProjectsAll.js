@@ -65,7 +65,8 @@ export default function ProjectsAll({ posts }) {
                 <FilterCheckbox key={index} tag={tag} state={tagDictState} onChange={filterResult}/>
               ))}
           </div>
-          <button className='flex bg-light px-4 py-2 my-6 ml-auto rounded text-xl active:bg-accent' 
+          <button className='flex bg-light px-4 py-2 my-6 ml-auto rounded text-lg active:bg-accent
+                              lg:text-xl' 
             onClick={() => resetResult()}>Reset</button>
         </div>
 
@@ -77,7 +78,8 @@ export default function ProjectsAll({ posts }) {
         <div className="pt-8 max-w-lg mx-auto
                         md:max-w-7xl">
           <CustomHeading size="h3" head="End of List" subhead="Why not reset the list or read an article?" />
-          <button className='bg-light px-4 py-2 mt-16 ml-auto rounded text-xl active:bg-accent' 
+          <button className='bg-light px-4 py-2 mt-16 ml-auto rounded text-lg active:bg-accent
+                              lg:text-xl' 
             onClick={() => resetResult()}>Reset</button>
         </div>
       </div>

@@ -11,7 +11,7 @@ import Roadmap from '@/components/sections/Roadmap';
 import ContactForm from '@/components/sections/ContactForm';
 import Footer from '@/components/chrome/Footer';
 
-export default function Projects({ index, posts }) {
+export default function Projects({ posts }) {
   return (
     <>
       <Head>

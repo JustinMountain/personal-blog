@@ -13,10 +13,10 @@ export default function Button({ content, href, buttonType, target }) {
       buttonStyle = "bg-secondary dark-button hover:bg-light hover:light-button";
       break;
     case "accent":
-      buttonStyle = "bg-accent light-button hover:bg-light hover:light-button";
+      buttonStyle = "bg-accent light-button text-primary hover:bg-light hover:light-button";
       break;
     case "light":
-      buttonStyle = "bg-light light-button hover:bg-accent hover:light-button";
+      buttonStyle = "bg-light light-button text-primary hover:bg-accent hover:light-button";
       break;
     default:
       buttonStyle = "text-white px-0";

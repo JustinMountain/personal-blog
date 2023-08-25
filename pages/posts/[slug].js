@@ -2,15 +2,15 @@ import React from 'react';
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
+import markdownToHtml from '@/utils/markdownToHtml';
+import sortDescendingByDate from '../../utils/sort';
 import Head from 'next/head';
 import Header from '@/components/chrome/Header';
-import Footer from '@/components/chrome/Footer';
 import HeroOneProject from '@/components/sections/hero/HeroOneProject';
-import markdownToHtml from '@/utils/markdownToHtml';
 import CustomHeading from '@/components/utility/CustomHeading';
 import SocialLinks from '@/components/utility/SocialLinks';
 import SimilarPosts from '@/components/sections/SimilarPosts';
-import { sortDescendingByDate } from '../../utils/sort';
+import Footer from '@/components/chrome/Footer';
 
 export default function PostPage({ frontmatter, slug, htmlContent, similarPosts }) {
   return (
@@ -40,6 +40,7 @@ export default function PostPage({ frontmatter, slug, htmlContent, similarPosts 
                                 prose-h4:text-xl prose-h4:mb-4
                                 prose-ul:list-none first:prose-ul:pb-4
                                 prose-li:text-lg
+                                prose-p:text-lg
                                 [&>a]:prose-li:no-underline
                                 prose-a:text-light
                                 hover:prose-a:text-accent
@@ -53,9 +54,9 @@ export default function PostPage({ frontmatter, slug, htmlContent, similarPosts 
 
               <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
               <div className="pt-8">
-                <div className="py-8">
+                <p className="text-lg py-8">
                   Discuss with me:
-                </div>
+                </p>
                 <SocialLinks bgColor="secondary" discuss={true} />
               </div>
 
@@ -64,7 +65,7 @@ export default function PostPage({ frontmatter, slug, htmlContent, similarPosts 
 
           <div className="lg:col-start-3 lg:col-end-4">
             <div className="hidden lg:inline">
-              <SimilarPosts thisPost={frontmatter} similarPosts={similarPosts} />
+              <SimilarPosts similarPosts={similarPosts} />
             </div>
           </div>
         </div>

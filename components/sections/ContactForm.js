@@ -127,7 +127,7 @@ export default function ContactForm() {
                               md:top-8 ${loadingState.loadingState}`} > 
               <IconLoading />
             </div>
-            <input required className="rounded px-4 py-2 bg-accent light-button hover:bg-light hover:light-button md:mt-8" type="submit" value="Connect" />
+            <input required className="rounded px-4 py-2 text-lg text-primary bg-accent hover:bg-light md:mt-8" type="submit" value="Connect" />
           </div>
         </form>
       </div>

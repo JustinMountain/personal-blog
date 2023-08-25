@@ -4,7 +4,7 @@ import Link from 'next/link';
 import CustomHeading from '@/components/utility/CustomHeading';
 import Button from '@/components/utility/Button';
 
-export default function ProjectCard({ index, frontmatter, slug, bgColor }) {
+export default function ProjectCard({ index, frontmatter, slug }) {
 
   let repo;
 
@@ -12,28 +12,9 @@ export default function ProjectCard({ index, frontmatter, slug, bgColor }) {
     repo = <Button content="Repository" href={frontmatter.repo} buttonType="light" target="_blank" />;
   }
 
-  let gradientColor;
-
-  switch (bgColor) {
-    case "primary":    
-      gradientColor = "primary";
-      break;
-    case "secondary":
-      gradientColor = "secondary";
-      break;
-    case "accent":
-      gradientColor = "accent";
-      break;
-    case "light":
-      gradientColor = "light";
-      break;
-    default:
-      gradientColor = "accent";
-    }
-
   return (
     <div className="mx-auto border-2 border-primary">
-      <div className="relative">
+      <div className="relative ">
         <Image
           src={`/posts/${frontmatter.thumbnail}`}
           width={576}

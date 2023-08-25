@@ -26,7 +26,7 @@ export default function FeaturedProject({ index, post }) {
     <div className='mx-auto my-8 max-w-lg
                     md:max-w-xl
                     lg:grid lg:grid-cols-2 lg:grid-rows-[1fr_2fr_2fr_1fr] lg:max-w-screen-xl lg:gap-x-16 lg:gap-y-4 lg:my-12 lg:my-16
-                    xl:gap-x-32'>
+                    xl:gap-x-24'>
 
       <div className={picSide}>
         <Link href={`/posts/${post.slug}`} passHref className="no-underline">
@@ -40,8 +40,8 @@ export default function FeaturedProject({ index, post }) {
                                                       lg:w-fit ${textSide} lg:row-start-1 lg:row-end-5`} >
         <Image
           src={`/posts/${post.frontmatter.thumbnail}`}
-          width={576}
-          height={384}
+          width={592}
+          height={395}
           title={post.frontmatter.title}
           alt={post.frontmatter.thumbalt}
           className="mx-auto"

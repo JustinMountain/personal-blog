@@ -2,7 +2,7 @@ import React from 'react'
 import ProjectCard from './projects/ProjectCard';
 import CustomHeading from '../utility/CustomHeading';
 
-export default function SimilarPosts({ thisPost, similarPosts }) {
+export default function SimilarPosts({ similarPosts }) {
 
   return (
     <div className="ml-2">
@@ -11,7 +11,7 @@ export default function SimilarPosts({ thisPost, similarPosts }) {
 
       {similarPosts.slice(0, 3).map((post, index) => (
         <div className="py-4" key={index} >
-          <ProjectCard frontmatter={post.frontmatter} slug={post.slug} bgColor="light" />
+          <ProjectCard frontmatter={post.frontmatter} slug={post.slug} />
         </div>        
       ))}
     </div>

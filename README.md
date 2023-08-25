@@ -1,53 +1,5 @@
-# Blog Template
+# Personal Blog as a Next.js Web Application
 
-## Commands
+This is the repository for my personal site. It's been built as a Next.js web application which you can view on [GitHub pages](https://justinmountain.github.io/personal-blog/).
 
-Run the server on localhost for development:
-```
-npm run dev
-```
-
-Build the project and export static site into the /out folder to test build:
-```
-npm run build
-```
-
-## Notes
-
-### Posts Style Guide
-
-First-person voice
-.yaml > .yml
-
-#### Bold 
-
-1. Names of UI locations: **Settings**, **Save**, etc
-
-#### Italic:
-
-1. Image captions.
-2. In text emphasis
-
-#### `code`
-
-1. Addresses: `https://192.168.1.100:3000`
-2. Paths: `/posts/running-docker-in-my-homelab.md`
-3. Code: `mkdir directory`
-
-## Coming Soon
-
-- Blog content styling
-- Veloserver upgrade with Proxmox
-
-### Polish
-
-1. Mobile nav needs animation on open/close
-2. Mobile nav needs *something* (full screen, opacity, ..?)
-3. Social links are white, no hover effect
-
-### To Do
-
-0. Article summarizing the website
-1. Need new profile picture (512x512) and new thank you picture for /connected
-
-*Discord invite needs 30 day update unless I want to pay for the subscription (currently expires 2023/09/20)*
+If you're interested in reading the documentation for the app, it can be found [in the repository](https://github.com/JustinMountain/personal-blog/blob/main/posts/proxmox.md) or on the [live application](/posts/creating-a-nextjs-blog).

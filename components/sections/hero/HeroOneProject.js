@@ -30,13 +30,13 @@ export default function HeroOneProject({ frontmatter }) {
                         md:col-start-1 md:col-end-2 md:max-w-xl">
           <CustomHeading size="h2" head={frontmatter.title} subhead={publishedLine} />
 
-          <p className="text-lg
+          <p className="text-lg py-4
                         md:max-w-xl">
             {frontmatter.excerpt}
           </p>
 
           {frontmatter.excerpt2 !== "" ? (
-            <p className="text-lg md:max-w-xl">{frontmatter.excerpt2}</p>
+            <p className="text-lg py-4 md:max-w-xl">{frontmatter.excerpt2}</p>
           ) : (
             ""
           )}
@@ -52,9 +52,9 @@ export default function HeroOneProject({ frontmatter }) {
             <SocialLinks align="left" bgColor="primary" />
           </div>
           <div className="hidden md:inline">
-            <div className="py-8">
+            <p className="text-lg py-8">
               Discuss with me:
-            </div>
+            </p>
             <SocialLinks align="left" bgColor="primary" />
           </div> 
         </div>

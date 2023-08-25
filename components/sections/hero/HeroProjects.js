@@ -18,14 +18,14 @@ export default function HeroProjects({ posts }) {
 
                           md:col-start-1 md:col-end-3 md:pb-0 md:max-w-xl">
           <CustomHeading size="h2" head="Projects" subhead="Doing stuff and writing about it" />
-          <p className="text-lg
+          <p className="text-lg py-4
                         md:max-w-xl md:pb-16">
             These articles exist between documentation for my personal projects, my lifelong passion for learning, and my experience teaching and communicating ideas. 
           </p>
           <div className="">
-            <div className="py-8">
+            <p className="text-lg py-8">
               Discuss with me:
-            </div>
+            </p>
             <SocialLinks  bgColor="primary" />
           </div>
         </div>
@@ -35,7 +35,7 @@ export default function HeroProjects({ posts }) {
           <div className="flex flex-col gap-8">
             <CustomHeading size="h3" head="Featured Projects" subhead="" />
             {filterResult.map((post, index) => (
-              <ProjectCard key={index} frontmatter={post.frontmatter} slug={post.slug} bgColor="accent" />
+              <ProjectCard key={index} frontmatter={post.frontmatter} slug={post.slug} />
             ))}
           </div>
         </div>
