@@ -31,10 +31,15 @@ export default function HeroOneProject({ frontmatter }) {
           <CustomHeading size="h2" head={frontmatter.title} subhead={publishedLine} />
 
           <p className="text-lg
-                        md:max-w-xl
-                        xl:text-xl">
+                        md:max-w-xl">
             {frontmatter.excerpt}
           </p>
+
+          {frontmatter.excerpt2 !== "" ? (
+            <p className="text-lg md:max-w-xl">{frontmatter.excerpt2}</p>
+          ) : (
+            ""
+          )}
 
           <div className="pt-8 pb-4">
             {repo}

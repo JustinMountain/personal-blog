@@ -23,7 +23,8 @@ export default function ProjectsFeatured({ posts }) {
         ))}
 
         <div className="max-w-lg mx-auto flex 
-                        md:max-w-full md:justify-end">
+                        md:max-w-xl
+                        lg:max-w-full lg:justify-end">
           <Button content="All Projects" href="/projectrs" buttonType="accent" />
         </div>
       </div>

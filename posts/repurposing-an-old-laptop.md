@@ -6,7 +6,8 @@ updated: '2023-02-18'
 repo: ''
 category: 'documentation'
 tags: 'linux, homelab, hardware'
-excerpt: "I started my homelab journey on my old laptop, repurposed as a home server."
+excerpt: "Every homelab starts somewhere and mine started on an old laptop. Read about how I made a few upgrades and dipped my toes into homelab and self-hosting by saving a broken laptop from becoming e-waste."
+excerpt2: ''
 thumbnail: 'repurpose-under-the-hood.jpg'
 thumbalt: 'The underside of the laptop with the cover removed'
 ---

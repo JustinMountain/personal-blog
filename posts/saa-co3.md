@@ -1,12 +1,13 @@
 ---
-title: 'AWS Solutions Architect Associate Certification Quick Reference'
+title: 'AWS SAA-C03 Quick Reference'
 featured: 'no'
 published: '2023-08-09'
 updated: '2023-08-09'
 repo: ''
 category: 'documentation'
 tags: 'aws, certification, cloud'
-excerpt: 'My reference guide for the Solutions Architect Associate certification.'
+excerpt: 'The AWS Solutions Architect Associate certification requires understanding how the different AWS services solve various architectural problems. While studying for the exam, I took notes on various solutions which are loosely organized into the four tested pillars of the well-architected framework.'
+excerpt2: ''
 thumbnail: 'aws-cert-saa-c03.jpg'
 thumbalt: 'Badge for the Solutions Architect Associate certification SAA-C03'
 ---

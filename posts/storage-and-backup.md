@@ -6,7 +6,8 @@ updated: '2023-06-15'
 repo: ''
 category: 'documentation'
 tags: 'linux, homelab, data management, docker'
-excerpt: 'A properly organized 3-2-1 backup strategy for all of the devices in my home keeps photos safe and files accessible.'
+excerpt: "My family's data is priceless, especially our photos. In order to protect our data, I organized a proper 3-2-1 backup strategy for all of the devices in our home to keep our photos safe and files accessible on our home network."
+excerpt2: "Continue reading to learn how I automated the backup and storage of all photos and files using Nextcloud for photo management and Syncthing for backing up to different mediums."
 thumbnail: 'storage-architecture.jpg'
 thumbalt: 'Architecture diagram for my backup strategy'
 ---

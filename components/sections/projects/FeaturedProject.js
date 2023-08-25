@@ -7,26 +7,27 @@ import Button from '@/components/utility/Button';
 export default function FeaturedProject({ index, post }) {
 
   let repo;
-  let picSide = "md:col-start-1 md:col-end-2";
-  let textSide = "md:col-start-2 md:col-end-3";
+  let picSide;
+  let textSide;
 
   if (post.frontmatter.repo !== "") {
     repo = <Button content="Repository" href={post.frontmatter.repo} buttonType="light" />;
   }
 
   if (index === 1) {
-    picSide = "md:col-start-1 md:col-end-2";
-    textSide = "md:col-start-2 md:col-end-3";
+    picSide = "lg:col-start-1 lg:col-end-2";
+    textSide = "lg:col-start-2 lg:col-end-3";
   } else {
-    picSide = "md:col-start-2 md:col-end-3";
-    textSide = "md:col-start-1 md:col-end-2";
+    picSide = "lg:col-start-2 lg:col-end-3";
+    textSide = "lg:col-start-1 lg:col-end-2";
   }
 
   return (
     <div className='mx-auto my-8 max-w-lg
-                    md:grid md:grid-cols-2 md:max-w-screen-xl md:gap-8 md:my-12
+                    md:max-w-xl
+                    lg:grid lg:grid-cols-2 lg:grid-rows-[1fr_2fr_2fr_1fr] lg:max-w-screen-xl lg:gap-x-8 lg:gap-y-4 lg:my-12
                     lg:my-16
-                    2xl:gap-32'>
+                    2xl:gap-x-32'>
 
       <div className={picSide}>
         <Link href={`/posts/${post.slug}`} passHref className="no-underline">
@@ -36,8 +37,8 @@ export default function FeaturedProject({ index, post }) {
       
       <Link href={`/posts/${post.slug}`} passHref className={`w-full 
                                                       xs:pt-4
-                                                      md:pt-2
-                                                      md:w-fit ${textSide} md:row-start-1 md:row-end-4`} >
+                                                      lg:pt-2
+                                                      lg:w-fit ${textSide} lg:row-start-1 lg:row-end-5`} >
         <Image
           src={`/posts/${post.frontmatter.thumbnail}`}
           width={576}
@@ -48,14 +49,17 @@ export default function FeaturedProject({ index, post }) {
         />
       </Link>
 
-      <p className='text-white pt-4 pb-6 text-lg
-                    xs:pb-8
-                    md:py-0
-                    xl:text-xl'>{post.frontmatter.excerpt}
+      <p className='text-white py-4 text-lg
+                    lg:py-0'>
+        {post.frontmatter.excerpt}
+      </p>
+      <p className='text-white py-4 text-lg
+                    lg:py-0'>
+        {post.frontmatter.excerpt2}
       </p>
 
-      <div className="flex justify-end gap-4
-                      md:justify-start">
+      <div className="flex justify-end gap-4 mt-4
+                      lg:justify-start lg:mt-0">
         {repo}
         <Button content="Read More" href={`/posts/${post.slug}`} buttonType="light" />
       </div>
