@@ -9,7 +9,7 @@ export default function ProjectCard({ index, frontmatter, slug, bgColor }) {
   let repo;
 
   if (frontmatter.repo !== "") {
-    repo = <Button content="Repository" href={frontmatter.repo} buttonType="light" />;
+    repo = <Button content="Repository" href={frontmatter.repo} buttonType="light" target="_blank" />;
   }
 
   let gradientColor;

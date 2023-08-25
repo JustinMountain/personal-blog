@@ -24,17 +24,17 @@ export default function SocialLinks({ align, bgColor }) {
       <div className={`flex ${alignment} gap-8 items-center text-lg
                         md:max-w-xl md:gap-6
                         xl:text-xl`}>
-        <Link href="https://github.com/JustinMountain" passHref>
+        <Link href="https://github.com/JustinMountain" target="_blank" passHref>
           <IconGitHub 
           fill={ '#FFF' }
           width="40" />          
         </Link>
-        <Link href="https://www.linkedin.com/in/justinmountain/" passHref>
+        <Link href="https://www.linkedin.com/in/justinmountain/" target="_blank" passHref>
           <IconLinkedIn 
             fill={ '#FFF' }
             width="40" />
         </Link>
-        <Link href="https://discord.gg/PTy7Jm7hf" passHref>
+        <Link href="https://discord.gg/PTy7Jm7hf" target="_blank" passHref>
           <IconDiscord 
             fill={ '#FFF' }
             bgColor={ bgColor }

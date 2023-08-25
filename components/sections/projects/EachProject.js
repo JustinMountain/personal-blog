@@ -9,7 +9,7 @@ export default function EachProject({ post }) {
   let repo;
 
   if (post.frontmatter.repo !== "") {
-    repo = <Button content="Repository" href={post.frontmatter.repo} buttonType="light" />;
+    repo = <Button content="Repository" href={post.frontmatter.repo} buttonType="light" target="_blank" />;
   }
 
   return (

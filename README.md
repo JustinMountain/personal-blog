@@ -50,8 +50,4 @@ First-person voice
 0. Article summarizing the website
 1. Need new profile picture (512x512) and new thank you picture for /connected
 
-4. Social Links to new tabs
-
-6. Repo button to new tab
-
 *Discord invite needs 30 day update unless I want to pay for the subscription (currently expires 2023/09/20)*

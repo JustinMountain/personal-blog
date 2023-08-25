@@ -1,7 +1,7 @@
 import React from "react";
 import Link from 'next/link';
 
-export default function Button({ content, href, buttonType }) {
+export default function Button({ content, href, buttonType, target }) {
 
   let buttonStyle;
 
@@ -23,7 +23,7 @@ export default function Button({ content, href, buttonType }) {
     }
   
   return (
-    <Link href={`${href}`} passHref className="no-underline">
+    <Link href={`${href}`} passHref className="no-underline" target={target}>
       <span className={`rounded px-4 py-2 text-md lg:text-lg ${buttonStyle}`}>
         { content }
       </span>

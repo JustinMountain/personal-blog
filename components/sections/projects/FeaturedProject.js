@@ -11,7 +11,7 @@ export default function FeaturedProject({ index, post }) {
   let textSide;
 
   if (post.frontmatter.repo !== "") {
-    repo = <Button content="Repository" href={post.frontmatter.repo} buttonType="light" />;
+    repo = <Button content="Repository" href={post.frontmatter.repo} buttonType="light" target="_blank" />;
   }
 
   if (index === 1) {
