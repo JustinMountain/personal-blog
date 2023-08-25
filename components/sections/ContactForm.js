@@ -86,8 +86,7 @@ export default function ContactForm() {
                           md:row-start-1 md:row-end-2 md:col-start-1 md:col-end-2">
             <label htmlFor="name" 
               className="block pt-4 md:pt-0 pb-2">
-                <p className="text-lg pb-0
-                              xl:text-xl">
+                <p className="text-lg pb-0">
                   Name:
                 </p>
             </label>
@@ -100,8 +99,7 @@ export default function ContactForm() {
                           md:row-start-1 md:row-end-2 md:col-start-2 md:col-end-3">
             <label htmlFor="contact" 
               className="block pt-4 md:pt-0 pb-2">
-                <p className="text-lg pb-0
-                              xl:text-xl">
+                <p className="text-lg pb-0">
                   Contact:
                 </p>
             </label>
@@ -114,8 +112,7 @@ export default function ContactForm() {
                           md:row-start-2 md:row-end-4 md:col-start-1 md:col-end-3">
             <label htmlFor="message" 
               className="block pt-4 md:pt-0 pb-2">
-                <p className="text-lg pb-0
-                              xl:text-xl">
+                <p className="text-lg pb-0">
                   Message:
                 </p>
             </label>

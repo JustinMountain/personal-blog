@@ -24,7 +24,7 @@ export default function Header({ color }) {
 
   return (
     <header className={`${bgColor} text-light top-0`} id="top">
-      <div className='flex flex-col px-4 py-6 max-w-7xl m-auto text-xl
+      <div className='flex flex-col px-4 py-6 max-w-7xl m-auto text-lg
                       md:flex-row md:px-8
                       xl:py-8
                       2xl:px-0'>

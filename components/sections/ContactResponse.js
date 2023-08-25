@@ -19,8 +19,7 @@ export default function ContactResponse() {
           <CustomHeading size="h2" head="Thank you for expressing interest in working together!" subhead="I'll get back to you soon." />
 
           <p className="text-lg pb-8 my-8
-                        md:max-w-xl md:pb-4
-                        xl:text-xl">
+                        md:max-w-xl md:pb-4">
             Until then check out one of the articles I&apos;ve written or connect on one of my socials.
           </p>
           

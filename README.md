@@ -51,9 +51,7 @@ First-person voice
 1. Need new profile picture (512x512) and new thank you picture for /connected
 
 4. Social Links to new tabs
-5. Remove typography scaling at huge screen size
-- Buttons can grow at lg (or xl? one lower than current
-- Fix header re-sizing issue)
+
 6. Repo button to new tab
 
 *Discord invite needs 30 day update unless I want to pay for the subscription (currently expires 2023/09/20)*

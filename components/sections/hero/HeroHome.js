@@ -30,9 +30,12 @@ export default function HeroHome() {
           <CustomHeading size="h2" head="Hi, I'm Justin" subhead="Junior Cloud Engineer" />
 
           <p className="text-lg pb-8
-                        md:max-w-xl md:pb-16
-                        xl:text-xl">
-            Currently pursuing interests in full stack web development and DevOps.
+                        md:max-w-xl md:py-8">
+            This is where I share my passion for learning. 
+          </p>
+          <p className="text-lg pb-8
+                        md:max-w-xl md:pb-16">
+            I write articles about homelab, self-hosting, the cloud, full stack web development, and DevOps.
           </p>
           
           <div className="md:hidden">

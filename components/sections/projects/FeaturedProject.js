@@ -25,9 +25,8 @@ export default function FeaturedProject({ index, post }) {
   return (
     <div className='mx-auto my-8 max-w-lg
                     md:max-w-xl
-                    lg:grid lg:grid-cols-2 lg:grid-rows-[1fr_2fr_2fr_1fr] lg:max-w-screen-xl lg:gap-x-8 lg:gap-y-4 lg:my-12
-                    lg:my-16
-                    2xl:gap-x-32'>
+                    lg:grid lg:grid-cols-2 lg:grid-rows-[1fr_2fr_2fr_1fr] lg:max-w-screen-xl lg:gap-x-16 lg:gap-y-4 lg:my-12 lg:my-16
+                    xl:gap-x-32'>
 
       <div className={picSide}>
         <Link href={`/posts/${post.slug}`} passHref className="no-underline">

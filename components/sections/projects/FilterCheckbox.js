@@ -18,7 +18,8 @@ export default function FilterCheckbox({ tag, state, onChange }) {
   return (
     <div>
       <input type="checkbox"  id={'check-' + tag} name={'check-' + tag} className="peer" onChange={handleCheckboxChange} hidden />
-      <label  htmlFor={'check-' + tag} className='cursor-pointer select-none bg-light peer-checked:bg-accent px-4 py-2 lg:my-1 last:mr-0 rounded'>{tag}</label> 
+      <label  htmlFor={'check-' + tag} className='cursor-pointer select-none bg-light peer-checked:bg-accent px-4 py-2 last:mr-0 rounded
+                                                  lg:text-lg lg:my-1 '>{tag}</label> 
     </div>
   )
 }

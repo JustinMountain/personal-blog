@@ -47,7 +47,7 @@ export default function PostPage({ frontmatter, slug, htmlContent, similarPosts 
                                 [&>p]:prose-blockquote:px-2 [&>p]:prose-blockquote:py-4 
                                 prose-p:pt-0
                                 prose-img:mb-0
-                                ">
+                                xl:prose-h3:text-3xl xl:prose-h4:text-2xl xl:prose-h5:text-xl">
 
               <CustomHeading head="" subhead={frontmatter.tags} />
 

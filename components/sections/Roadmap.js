@@ -48,8 +48,7 @@ export default function Roadmap() {
                                               before:absolute before:-left-10 before:top-7
                                               pt-0 text-lg
                                               xs:before:-left-14
-                                              md:before:-left-20
-                                              xl:text-xl`}>
+                                              md:before:-left-20`}>
               {contents[0].p1}
             </p>
             <p className="py-0">
@@ -71,8 +70,7 @@ export default function Roadmap() {
                                               before:absolute before:-left-10 before:top-7
                                               pt-0 text-lg
                                               xs:before:-left-14
-                                              md:before:-left-20
-                                              xl:text-xl`}>
+                                              md:before:-left-20`}>
               {contents[1].p1}
             </p>
             <p className="py-0">
@@ -94,8 +92,7 @@ export default function Roadmap() {
                                               before:absolute before:-left-10 before:top-7
                                               pt-0 text-lg
                                               xs:before:-left-14
-                                              md:before:-left-20
-                                              xl:text-xl`}>
+                                              md:before:-left-20`}>
               {contents[2].p1}
             </p>
             <p className="py-0">

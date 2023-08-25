@@ -24,7 +24,7 @@ export default function Button({ content, href, buttonType }) {
   
   return (
     <Link href={`${href}`} passHref className="no-underline">
-      <span className={`rounded px-4 py-2 text-md xl:text-lg ${buttonStyle}`}>
+      <span className={`rounded px-4 py-2 text-md lg:text-lg ${buttonStyle}`}>
         { content }
       </span>
     </Link>
