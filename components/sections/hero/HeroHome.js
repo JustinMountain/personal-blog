@@ -24,21 +24,24 @@ export default function HeroHome() {
         
 
         <div className="max-w-lg mx-auto pt-16 
-                        md:col-start-2 md:col-end-3 md:max-w-xl
+                        md:col-start-2 md:col-end-3 md:max-w-xl md:pt-12
                         lg:pt-24
                         xl:pt-32">
           <CustomHeading size="h2" head="Hi, I'm Justin" subhead="Junior Cloud Engineer" />
 
           <p className="text-lg pb-8
-                        md:max-w-xl md:py-8">
+                        md:max-w-xl md:py-4
+                        lg:pt-8">
             This is where I share my passion for learning. 
           </p>
           <p className="text-lg pb-8
-                        md:max-w-xl md:pb-16">
+                        md:max-w-xl md:pt-4 md:pb-8
+                        lg:pb-16">
             I write articles about homelab, self-hosting, the cloud, full stack web development, and DevOps.
           </p>
           
-          <div className="md:hidden">
+          <div className="max-w-xs mx-auto pt-8
+                          md:hidden">
             <SocialLinks align="center" bgColor="primary" />
           </div>
 

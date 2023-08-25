@@ -42,9 +42,9 @@ export default function Header({ color }) {
                         md:hidden'
             onClick={handleClick}>
             <div>
-              <div className='bg-light w-8 h-0.5 my-1'></div>
-              <div className='bg-light w-8 h-0.5 my-1'></div>
-              <div className='bg-light w-8 h-0.5 my-1'></div>
+              <div className='bg-light w-12 h-0.5 my-1'></div>
+              <div className='bg-light w-12 h-0.5 my-1'></div>
+              <div className='bg-light w-12 h-0.5 my-1'></div>
             </div>
           </button> 
         </div>
