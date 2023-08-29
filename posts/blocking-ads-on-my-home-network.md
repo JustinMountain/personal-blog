@@ -1,30 +1,26 @@
 ---
 title: 'Blocking Ads on My Home Network'
+featured: 'no'
 published: '2023-02-23'
 updated: '2023-02-23'
 repo: ''
 category: 'documentation'
 tags: 'networking, docker, linux, homelab'
-excerpt: "Ads are the worst. Using the Pi-hole DNS sinkhole, it's possible to get rid of most of them on a home network."
+excerpt: "With Pi-hole, it's possible to block certain sites on a network, to prevent devices from relaying personal data to the Internet, and to help protect a network from sites known to inject malicious code. It also helps block unwanted ads on the internet."
+excerpt2: ''
 thumbnail: 'pihole-dashboard.jpg'
-thumbnail-alt: 'Pi-hole&#39;s dashboard'
+thumbalt: "More than half of the requests sent from my network to the internet are being blocked by PiHole"
 ---
-
-## Blocking Ads on My Home Network
-
-[![Pi-hole&#39;s dashboard](pihole-dashboard.jpg "Pi-hole's dashboard")](pihole-dashboard.jpg)
-*More than half of the requests sent from my network to the internet are being blocked!*
-
-> It's important to note that Pi-hole does not provide  network security. Network security is a job better suited for a Firewall or DMZ. 
 
 ### Table of Contents
 
-### 🚧 Why Block Ads?
+### 🚧 Why Pi-hole?
 
 I've been using an ad blocker in my web browser for as long as I knew they existed. They do the job they're supposed to do and they do it very well and they often do it better than the solution outlined below. The problem is that they only work in the browser; they won't block application telemetry nor will they work on mobile devices. I wanted a solution that would work for all devices on my local network. Enter Pi-hole.
 
 Originally designed to work with the Raspberry Pi, Pi-hole is a DNS sinkhole that works by intercepting DNS requests and checking if they match a list of blacklisted domains. If the requested site is on the list, the Pi-hole returns null, effectively saying *'there's no website at that address.'* Pi-hole can do a bunch of other things like handle DHCP and create local DNS, but here I'll be focusing on setting it up as a DNS sinkhole. I'll be running Pi-hole in a [Docker container](/posts/running-docker-in-my-homelab) on [my repurposed laptop server](/posts/repurposing-an-old-laptop)
 
+> It's important to note that Pi-hole does not provide  network security. Network security is a job better suited for a Firewall or DMZ. 
 
 ### 🥧 Installing Pi-hole
 

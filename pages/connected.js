@@ -3,26 +3,22 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import { sortDescendingByDate } from '../utils/sort';
-import Head from 'next/head'
+import Head from 'next/head';
 import Header from '@/components/chrome/Header';
-import SectionHero from '@/components/sections/hero/HeroHome';
-import HomeFeaturedProjects from '@/components/sections/HomeFeaturedProjects';
-import Roadmap from '@/components/sections/Roadmap';
-import ContactForm from '@/components/sections/ContactForm';
+import ContactResponse from '@/components/sections/ContactResponse';
+import ProjectsAll from '@/components/sections/ProjectsAll';
 import Footer from '@/components/chrome/Footer';
 
-export default function Home({ posts }) {
+export default function Connected({posts}) {
   return (
     <>
       <Head>
-        <title>{`Justin Mountain`}</title>
+        <title>Connected - Justin Mountain</title>
       </Head>
 
       <Header />
-      <SectionHero />
-      <HomeFeaturedProjects posts={posts} />
-      <Roadmap />
-      <ContactForm />
+      <ContactResponse />
+      <ProjectsAll posts={posts} />
       <Footer />
     </>
   );

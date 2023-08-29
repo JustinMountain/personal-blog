@@ -1,19 +1,16 @@
 ---
 title: 'Repurposing an Old Laptop as a Home Server'
+featured: 'no'
 published: '2023-02-18'
 updated: '2023-02-18'
 repo: ''
 category: 'documentation'
 tags: 'linux, homelab, hardware'
-excerpt: "I started my homelab journey on my old laptop, repurposed as a home server."
+excerpt: "Every homelab starts somewhere and mine started on an old laptop. Read about how I made a few upgrades and dipped my toes into homelab and self-hosting by saving a broken laptop from becoming e-waste."
+excerpt2: ''
 thumbnail: 'repurpose-under-the-hood.jpg'
-thumbnailAlt: 'The underside of the laptop with the cover removed'
+thumbalt: 'The underside of the laptop with the cover removed'
 ---
-
-## Repurposing an Old Laptop as a Home Server
-
-[![The underside of the laptop with the cover removed](repurpose-under-the-hood.jpg "Under the hood")](repurpose-under-the-hood.jpg)
-*Under the hood of the soon to be repurposed laptop.*
 
 ### Table of Contents
 

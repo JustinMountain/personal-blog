@@ -1,19 +1,16 @@
 ---
 title: 'Monitoring with Uptime Kuma'
+featured: 'no'
 published: '2023-03-28'
 updated: '2023-03-28'
 repo: ''
 category: 'documentation'
 tags: 'linux, homelab, docker, monitoring'
-excerpt: "Uptime Kuma is a free and open source network monitoring utility."
+excerpt: "Uptime Kuma is a free and open source network monitoring utility. It works by sending health checks over different protocols and can send notifications to different endpoints when services become unavailable."
+excerpt2: ''
 thumbnail: 'uptime-kuma-dashboard.jpg'
 thumbnail-alt: 'Dashboard of Uptime Kuma in my homelab'
 ---
-
-## Monitoring with Uptime Kuma
-
-[![Dashboard of Uptime Kuma in my homelab](uptime-kuma-dashboard.jpg "Uptime Kuma Dashboard")](uptime-kuma-dashboard.jpg)
-*Dashboard view of my homelab in Uptime Kuma.*
 
 ### Table of Contents
 

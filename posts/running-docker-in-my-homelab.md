@@ -1,23 +1,22 @@
 ---
 title: 'Running Docker in my Homelab'
+featured: 'yes'
 published: '2023-03-05'
 updated: '2023-03-28'
 repo: 'https://github.com/JustinMountain/docker-compose'
 category: 'repository'
 tags: 'linux, homelab, docker'
-excerpt: "Docker is a powerful virualization tool that let's us deploy containerized applications. Learn more about how I implement docker in my homelab."
+excerpt:  "Docker is a powerful virualization tool that allows us to deploy containerized applications. Application dependencies are part of the container rather than the host operating system, making containerized applications easily reproducible and independent from one another."
+excerpt2: "This documentation explains how I use some of the different features and capabilities of Docker in my homelab. If you're interested in checking out the different services that I'm running, check out the GitHub repository."
 thumbnail: 'docker-container-list.jpg'
-thumbnail-alt: 'List of the docker containers in my homelab'
+thumbalt: 'Docker containers can be managed through Portainer'
 ---
-
-## Running Docker in my Homelab 
-
-[![List of the docker containers in my homelab](docker-container-list.jpg "Docker containers via Portainer")](docker-container-list.jpg)
-*Docker containers can be managed through Portainer.*
 
 ### Table of Contents
 
 ### 🐋 Docker Setup
+
+> These notes are about how I use Docker in my homelab. If you're interested in checking out the different services that I'm running, check out the [GitHub repository](https://github.com/JustinMountain/docker-compose)
 
 What is Docker? Simply put, Docker let's us add containers that include everything needed for an application to run. This streamlines the setup process for applications because we don't need to worry about installing dependencies or having different versions of the same dependency on one system - everything we need is packaged in the container. Containers are also independent of the host operating system and therefore work the same regardless of the Operating System they are being run on. 
 

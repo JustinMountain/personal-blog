@@ -23,34 +23,10 @@
     /* @apply font-alegreya; */
     /* @apply font-roboto-slab; */
   }
-
-  h2 {
-    @apply text-3xl py-2;
-  }
-  
-  h3 {
-    @apply text-2xl py-2;
-  }
-  
-  p {
-    @apply py-4 text-lg break-words;
-  }
-  
-  a {
-    @apply text-blue-500 underline;
-  }
-  
-  a:hover {
-    @apply text-blue-800;
-  }
 }
 
-@layer components {
-  .invert-link-color > a {
+/* @layer components {
+  .control-link-color > a {
     @apply text-white no-underline;
   }
-
-  .btn-gray {
-    @apply p-2 mx-20 my-2 invert-link-color bg-gray-800 rounded-lg;
-  }
-}
+} */

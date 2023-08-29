@@ -1,5 +1,6 @@
 ---
 title: 'Proxmox'
+featured: 'no'
 published: 'no'
 updated: ''
 repo: ''
@@ -7,10 +8,8 @@ category: 'documentation'
 tags: 'linux, homelab, data management'
 excerpt: 'Ensuring a proper backup strategy is an important part of a digital life.'
 thumbnail: ''
-thumbnail-alt: ''
+thumbalt: ''
 ---
-
-## Proxmox
 
 ### Table of Contents
 

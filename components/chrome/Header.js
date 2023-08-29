@@ -1,9 +1,9 @@
 import React from 'react';
-import Link from 'next/link';
 import { useState } from "react";
+import Link from 'next/link';
 import MainNav from './NavMain';
 
-export default function Header() {
+export default function Header({ color }) {
 
   const [btnState, setBtnState] = useState(false);
   let buttonAddClass = btnState ? '': 'hidden';
@@ -11,28 +11,46 @@ export default function Header() {
   function handleClick() {
     setBtnState(btnState => !btnState);
   };
+  
+  let bgColor = "";
+
+  switch (color) {
+    case "secondary":
+      bgColor = "bg-secondary";
+      break;
+    default:
+      bgColor = "bg-primary";
+    }
 
   return (
-    <header className="bg-gray-800 text-white top-0">
-      <div className='flex flex-col px-8 py-5 max-w-screen-2xl m-auto md:flex-row'>
-        <div className="flex my-auto justify-between md:w-1/2 md:justify-start">
+    <header className={`${bgColor} text-light top-0`} id="top">
+      <div className='flex flex-col px-4 py-6 max-w-7xl m-auto text-lg
+                      md:flex-row md:px-8
+                      xl:py-8
+                      2xl:px-0'>
+        <div className="flex my-auto justify-between 
+                        md:w-1/2 md:justify-start">
           <div>
-            <h1 className='invert-link-color'>
-              <Link href="/">Justin Mountain</Link>
+            <h1 className='control-link-color'>
+              <Link href="/">
+                Justin Mountain
+              </Link>
             </h1>
           </div>
           <button 
-            className='my-auto justify-end md:hidden'
+            className='my-auto justify-end 
+                        md:hidden'
             onClick={handleClick}>
             <div>
-              <div className='bg-white w-5 h-0.5 my-1'></div>
-              <div className='bg-white w-5 h-0.5 my-1'></div>
-              <div className='bg-white w-5 h-0.5 my-1'></div>
+              <div className='bg-light w-12 h-0.5 my-1'></div>
+              <div className='bg-light w-12 h-0.5 my-1'></div>
+              <div className='bg-light w-12 h-0.5 my-1'></div>
             </div>
           </button> 
         </div>
-        <div className={`bg-gray-800 justify-end absolute w-screen top-16 right-0 md:flex md:w-1/2 md:static md:pr-0 ${buttonAddClass}`}>
-          <MainNav />
+        <div className={`bg-primary justify-end absolute w-screen top-16 right-0 pb-8
+                          md:flex md:w-1/2 md:static md:bg-transparent md:pr-0 md:pb-0 ${buttonAddClass}`}>
+          <MainNav color={color} />
         </div>
       </div>
     </header>

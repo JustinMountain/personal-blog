@@ -1,0 +1,32 @@
+import React from "react";
+import Link from 'next/link';
+
+export default function Button({ content, href, buttonType, target }) {
+
+  let buttonStyle;
+
+  switch (buttonType) {
+    case "primary":    
+      buttonStyle = "bg-primary dark-button hover:bg-light hover:light-button";
+      break;
+    case "secondary":
+      buttonStyle = "bg-secondary dark-button hover:bg-light hover:light-button";
+      break;
+    case "accent":
+      buttonStyle = "bg-accent light-button text-primary hover:bg-light hover:light-button";
+      break;
+    case "light":
+      buttonStyle = "bg-light light-button text-primary hover:bg-accent hover:light-button";
+      break;
+    default:
+      buttonStyle = "text-white px-0";
+    }
+  
+  return (
+    <Link href={`${href}`} passHref className="no-underline" target={target}>
+      <span className={`rounded px-4 py-2 text-md lg:text-lg ${buttonStyle}`}>
+        { content }
+      </span>
+    </Link>
+  );
+};
