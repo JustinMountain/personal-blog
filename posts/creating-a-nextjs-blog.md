@@ -21,14 +21,36 @@ Run the server on localhost for development:
 npm run dev
 ```
 
-Build the project and export static site into the /out folder to test build:
+Build the project for production:
 ```
 npm run build
+```
+
+Start the server for production:
+```
+npm run start
 ```
 
 ### Design Draft in Figma
 
 https://www.figma.com/file/vBJbP0DIyuI6HGeUNQLHu7/Personal-Site?type=design&node-id=0-1&mode=design&t=fh1JiBER6Ivuluzm-0
+
+### Building the Docker Images
+
+```
+# Commands for nginx (from /nginxproxy)
+docker build -t nginxproxy . --no-cache
+docker run -p 80:80 nginxproxy
+
+# Commands for application (from /)
+docker build -t personalblog . --no-cache
+docker run -p 3000:3000 personalblog
+```
+
+```
+# Cleanup unused and inactive docker containers, networks, images, and cache
+docker system prune
+```
 
 ### Used Dependencies
 
