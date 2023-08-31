@@ -30,7 +30,7 @@ export default function Roadmap() {
                         xs:gap-8
                         md:pr-16 md:gap-y-12">
           {/* The Line */}
-          <div className="border border-r-1 border-y-0 border-l-0 border-accent
+          <div className="border border-r-2 border-y-0 border-l-0 border-accent
                           col-start-1 col-end-2 row-start-1 row-end-4">
           </div>
 
@@ -46,12 +46,12 @@ export default function Roadmap() {
 
             <p before="&#x25CF;" className={`before:text-accent before:content-[attr(before)] before:text-5xl
                                               before:absolute before:-left-10 before:top-7
-                                              pt-0 text-lg
+                                              text-lg
                                               xs:before:-left-14
                                               md:before:-left-20`}>
               {contents[0].p1}
             </p>
-            <p className="py-0">
+            <p className="text-lg pt-4">
               {contents[0].p2}
             </p>
           </div>
@@ -68,12 +68,12 @@ export default function Roadmap() {
 
             <p before="&#x25CF;" className={`before:text-accent before:content-[attr(before)] before:text-5xl
                                               before:absolute before:-left-10 before:top-7
-                                              pt-0 text-lg
+                                              text-lg
                                               xs:before:-left-14
                                               md:before:-left-20`}>
               {contents[1].p1}
             </p>
-            <p className="py-0">
+            <p className="text-lg pt-4">
               {contents[1].p2}
             </p>
           </div>
@@ -90,12 +90,12 @@ export default function Roadmap() {
 
             <p before="&#x25CF;" className={`before:text-accent before:content-[attr(before)] before:text-5xl
                                               before:absolute before:-left-10 before:top-7
-                                              pt-0 text-lg
+                                              text-lg
                                               xs:before:-left-14
                                               md:before:-left-20`}>
               {contents[2].p1}
             </p>
-            <p className="py-0">
+            <p className="text-lg pt-4">
               {contents[2].p2}
             </p>
           </div>

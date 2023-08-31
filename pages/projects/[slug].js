@@ -3,7 +3,7 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import markdownToHtml from '@/utils/markdownToHtml';
-import sortDescendingByDate from '../../utils/sort';
+import { sortDescendingByDate } from '../../utils/sort';
 import Head from 'next/head';
 import Header from '@/components/chrome/Header';
 import HeroOneProject from '@/components/sections/hero/HeroOneProject';
@@ -38,6 +38,7 @@ export default function PostPage({ frontmatter, slug, htmlContent, similarPosts 
                                 prose-headings:font-normal
                                 prose-h3:text-2xl prose-h3:mt-4 first:prose-h3:mt-0 first:prose-h3:pt-0
                                 prose-h4:text-xl prose-h4:mb-4
+                                prose-h5:text-xl prose-h5:italic prose-h5:text-light
                                 prose-ul:list-none first:prose-ul:pb-4
                                 prose-li:text-lg
                                 prose-p:text-lg
@@ -77,7 +78,7 @@ export default function PostPage({ frontmatter, slug, htmlContent, similarPosts 
 
 export async function getStaticPaths() {
 
-  const files = fs.readdirSync(path.join('posts'))
+  const files = fs.readdirSync(path.join('projects'))
 
   const paths = files.map(filename => ({
     params: {
@@ -93,18 +94,18 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params: { slug } }) {
   // Get data for an individual post's page
-  const markdownWithMeta = fs.readFileSync(path.join('posts', slug + '.md'), 'utf-8')
+  const markdownWithMeta = fs.readFileSync(path.join('projects', slug + '.md'), 'utf-8')
 
   const { data: frontmatter, content } = matter(markdownWithMeta)
   const htmlContent = await markdownToHtml(content);
 
   // Get all post data for similar post component
-  const files = fs.readdirSync(path.join('posts'));
+  const files = fs.readdirSync(path.join('projects'));
 
   const posts = files.map((filename) => {
     const slug = filename.replace('.md', '');
 
-    const markdownWithMeta = fs.readFileSync(path.join('posts', filename), 'utf-8')
+    const markdownWithMeta = fs.readFileSync(path.join('projects', filename), 'utf-8')
     const { data: frontmatter } = matter(markdownWithMeta)
 
     return {

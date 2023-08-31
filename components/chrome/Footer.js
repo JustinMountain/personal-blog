@@ -14,7 +14,7 @@ export default function Footer() {
         <div className="mx-auto 
                         md:w-64">
           <Image
-              src="/posts/justin.jpg"
+              src="/images/justin.jpg"
               width={400}
               height={400}
               title="Justin"

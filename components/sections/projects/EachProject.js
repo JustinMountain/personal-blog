@@ -20,18 +20,18 @@ export default function EachProject({ post }) {
 
       <div className="md:col-start-1 md:col-end-2
                       xl:col-start-1 xl:col-end-3">
-        <Link href={`/posts/${post.slug}`} passHref className="no-underline">
+        <Link href={`/projects/${post.slug}`} passHref className="no-underline">
           <CustomHeading size="h3" head={post.frontmatter.title} subhead={post.frontmatter.tags} />
         </Link>
       </div>
       
-      <Link href={`/posts/${post.slug}`} passHref className="w-full 
+      <Link href={`/projects/${post.slug}`} passHref className="w-full 
                                                               xs:pt-4
                                                               md:pt-0
                                                               md:w-fit md:col-start-2 md:col-end-3 md:row-start-1 md:row-end-4 md:ml-8
                                                               xl:w-fit xl:col-start-3 xl:col-end-4 xl:row-start-1 xl:row-end-5" >
         <Image
-          src={`/posts/${post.frontmatter.thumbnail}`}
+          src={`/projects/${post.frontmatter.thumbnail}`}
           width={512}
           height={341}
           title={post.frontmatter.title}
@@ -50,7 +50,7 @@ export default function EachProject({ post }) {
                       md:justify-start
                       lg:mt-8">
         {repo}
-        <Button content="Read More" href={`/posts/${post.slug}`} buttonType="light" />
+        <Button content="Read More" href={`/projects/${post.slug}`} buttonType="light" />
       </div>
     </div>
   )

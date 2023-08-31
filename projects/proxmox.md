@@ -101,6 +101,22 @@ I may need to redo `gh auth login` step and generate a new token. I set the curr
 8. git clone <repo>
 9. Install Code Server via docker
 
+#### Commands
+
+Run the server on localhost for development:
+```
+npm run dev
+```
+
+Build the project for production:
+```
+npm run build
+```
+
+Start the server for production:
+```
+npm run start
+```
 
 #### Notes
 

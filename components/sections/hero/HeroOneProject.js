@@ -62,7 +62,7 @@ export default function HeroOneProject({ frontmatter }) {
         <div className="mx-auto pt-16 max-w-lg
                         md:col-start-2 md:col-end-3 md:max-w-xl lg:pt-0 ">
           <Image
-            src={`/posts/${frontmatter.thumbnail}`}
+            src={`/projects/${frontmatter.thumbnail}`}
             width={576}
             height={384}
             title={frontmatter.title}

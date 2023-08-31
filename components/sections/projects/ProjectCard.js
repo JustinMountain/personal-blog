@@ -16,13 +16,13 @@ export default function ProjectCard({ index, frontmatter, slug }) {
     <div className="mx-auto border-2 border-primary">
       <div className="relative ">
         <Image
-          src={`/posts/${frontmatter.thumbnail}`}
+          src={`/projects/${frontmatter.thumbnail}`}
           width={576}
           height={384}
           alt={frontmatter.thumbalt}
         />
         <div className="absolute top-0 bg-gradient-to-b to-none w-full h-3/4 px-2 py-1 from-secondary" >
-          <Link href={`/posts/${slug}`} passHref className="no-underline">
+          <Link href={`/projects/${slug}`} passHref className="no-underline">
             <CustomHeading size="h3" head={frontmatter.title} subhead={frontmatter.tags} />
           </Link>
         </div>
@@ -30,7 +30,7 @@ export default function ProjectCard({ index, frontmatter, slug }) {
         <div className="absolute bottom-6 right-4">
           <div className="flex justify-end gap-4">
             {repo}
-            <Button content="Read More" href={`/posts/${slug}`} buttonType="light" />
+            <Button content="Read More" href={`/projects/${slug}`} buttonType="light" />
           </div>
         </div>
       </div>

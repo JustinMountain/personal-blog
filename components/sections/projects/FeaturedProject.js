@@ -29,17 +29,17 @@ export default function FeaturedProject({ index, post }) {
                     xl:gap-x-24'>
 
       <div className={picSide}>
-        <Link href={`/posts/${post.slug}`} passHref className="no-underline">
+        <Link href={`/projects/${post.slug}`} passHref className="no-underline">
           <CustomHeading size="h3" head={post.frontmatter.title} subhead={post.frontmatter.tags} />
         </Link>
       </div>
       
-      <Link href={`/posts/${post.slug}`} passHref className={`w-full 
+      <Link href={`/projects/${post.slug}`} passHref className={`w-full 
                                                       xs:pt-4
                                                       lg:pt-2
                                                       lg:w-fit ${textSide} lg:row-start-1 lg:row-end-5`} >
         <Image
-          src={`/posts/${post.frontmatter.thumbnail}`}
+          src={`/projects/${post.frontmatter.thumbnail}`}
           width={592}
           height={395}
           title={post.frontmatter.title}
@@ -60,7 +60,7 @@ export default function FeaturedProject({ index, post }) {
       <div className="flex justify-end gap-4 mt-4
                       lg:justify-start lg:mt-0">
         {repo}
-        <Button content="Read More" href={`/posts/${post.slug}`} buttonType="light" />
+        <Button content="Read More" href={`/projects/${post.slug}`} buttonType="light" />
       </div>
     </div>
   )

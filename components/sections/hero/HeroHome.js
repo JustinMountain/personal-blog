@@ -14,7 +14,7 @@ export default function HeroHome() {
         <div className="max-w-lg mx-auto 
                         md:col-start-1 md:col-end-2 md:max-w-xl">
           <Image
-            src="/posts/justin.jpg"
+            src="/images/justin.jpg"
             width={576}
             height={576}
             title="Justin"
