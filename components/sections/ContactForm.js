@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import CustomHeading from '@/components/utility/CustomHeading';
-import IconLoading from '@/public/icons/IconLoading';
+import IconLoading from '@/components/utility/icons/IconLoading';
 
 export default function ContactForm() {
 

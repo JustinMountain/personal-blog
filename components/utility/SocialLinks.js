@@ -1,10 +1,10 @@
 import React from 'react';
 import Link from 'next/link';
 
-import IconGitHub from '@/public/icons/IconGitHub';
-import IconLinkedIn from '@/public/icons/IconLinkedIn';
-import IconEmail from '@/public/icons/IconEmail';
-import IconDiscord from '@/public/icons/IconDiscord';
+import IconGitHub from '@/components/utility/icons/IconGitHub';
+import IconLinkedIn from '@/components/utility/icons/IconLinkedIn';
+import IconEmail from '@/components/utility/icons/IconEmail';
+import IconDiscord from '@/components/utility/icons/IconDiscord';
 
 export default function SocialLinks({ align, bgColor }) {
 
