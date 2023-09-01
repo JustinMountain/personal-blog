@@ -20,7 +20,8 @@
     "remark": "^14.0.2",
     "remark-parse": "^10.0.1",
     "remark-rehype": "^10.1.0",
-    "remark-toc": "^8.0.1"
+    "remark-toc": "^8.0.1",
+    "sharp": "^0.32.5"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.9",

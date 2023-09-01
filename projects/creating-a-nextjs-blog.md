@@ -1,12 +1,12 @@
 ---
-title: 'A Bespoke Blog as a Next.js Web Application'
+title: 'My Home on the Internet'
 featured: 'no'
-published: ''
+published: 'no'
 updated: ''
 repo: 'https://github.com/JustinMountain/personal-blog'
 category: ''
 tags: 'aws, cloud, nextjs, docker'
-excerpt: ''
+excerpt: 'I built myself a bespoke blog as a place to store my documentation and share my projects. The blog was built as a Next.js web application and deployed on AWS. '
 excerpt2: ''
 thumbnail: 'uptime-kuma-dashboard.jpg'
 thumbnail-alt: 'This is not actually the right picture yet. How do I make a picture for a website?'
@@ -89,7 +89,7 @@ I extended Tailwind with the [Tailwind Typography](https://tailwindcss.com/docs/
 
 #### Cool things
 
-Along the way, I learned some of the nuances of using React, Next.js, and webdev in general. These are the types ofthings that might come up again in the future, so I'm documenting them here for future reference.
+Along the way, I learned some of the nuances of using React, Next.js, and webdev in general. These are the types of things that might come up again in the future, so I'm documenting them here for future reference.
 
 I used React's State object to accomplish a few interesting things in this project. The list of all projects works by storing an array that contains all of the frontmatter for the files under /projects in State. Input checkboxes are created dynamically from the list of all tags from all projects. The state of the checkboxes is used to create a dictionary, which is then used to re-render the list according to the State of each checkbox (only displaying projects where all checked tags are true). A reset button is used to return the State to the default position and uncheck the inputs.
 
@@ -165,12 +165,21 @@ It will always be a work in progress, but it's at a point where I'm happy to sha
 
 The next few upgrades will be shifting from a public VPC to a private one. I'd like to restrict access even further as a security practice. I also want to create a user script file that can be run to setup a new instance. I will need to figure out a solution to the nginx config file requiring an instance IP. Both of these are steps towards completing a CI/CD pipeline for the project. Once a new server can be automated, automating deployment on code updates will be the next step. 
 
+Capture logs 
+
+Pre-deployment Testing
+
 #### Polish
 
 The following things need to be addressed before this part of the project will be considered complete. These are minor things that shouldn't take too long each.
 
 1. Mobile nav needs animation on open/close
 2. Mobile nav needs *something* (full screen, opacity, ..?)
-3. Consolidate to docker-compose.yaml on a separate docker network
-4. Solve the 'sharp' warning that appears (also maybe some of the lazy loading?)
+3. Do better for image optimization. Can I change what image is sent based on a media query?
 
+
+
+Re-deploy recent update
+Edit and finish the article
+
+and organize Todoist

@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  nginx: 
+    build: ./nginxproxy
+    ports:
+      - 80:80
+    restart: unless-stopped
+  nextapplication:
+    build: ./
+    depends_on:
+        - nginx
+    restart: unless-stopped
