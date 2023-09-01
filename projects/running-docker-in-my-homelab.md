@@ -102,7 +102,7 @@ service:
       - /path/to/mydata:/app/data
 ```
 
-Each method has benefits and drawbacks, but I like to make directories because it allows for a more simple [backup solution](/posts/storage-and-backup).
+Each method has benefits and drawbacks, but I like to make directories because it allows for a more simple [backup solution](/projects/storage-and-backup).
 
 ### 📶 Networks
 

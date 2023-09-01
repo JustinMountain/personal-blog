@@ -89,9 +89,9 @@ After entering the password I made during Linux installation, I had command line
 
 ### 🙋 What's Next?
 
-Now that the laptop is officially a server, it's time to start using it as such. I'll be using [Docker on this server](/posts/running-docker-in-my-homelab) on this server to host and manage different services, like [Pi-hole for blocking ads on my home network](/posts/blocking-ads-on-my-home-network), the open-source media server Jellyfin, WordPress, and more. 
+Now that the laptop is officially a server, it's time to start using it as such. I'll be using [Docker on this server](/projects/running-docker-in-my-homelab) on this server to host and manage different services, like [Pi-hole for blocking ads on my home network](/projects/blocking-ads-on-my-home-network), the open-source media server Jellyfin, WordPress, and more. 
 
-On the hardware side of things, I would love to explore adding a mirrored boot drive to improve the availability and reliabilityof my home server and compliment my [backup solution](/posts/storage-and-backup). Although I don't think it's strictly necessary, it feels like a best practice and the added redundancy would improve the reliability of the server. I removed the DVD drive while I was inside the laptop and I believe I can use a Slimline SATA adapter to put a second SSD inside the chasis. 
+On the hardware side of things, I would love to explore adding a mirrored boot drive to improve the availability and reliabilityof my home server and compliment my [backup solution](/projects/storage-and-backup). Although I don't think it's strictly necessary, it feels like a best practice and the added redundancy would improve the reliability of the server. I removed the DVD drive while I was inside the laptop and I believe I can use a Slimline SATA adapter to put a second SSD inside the chasis. 
 
 [![Sata port for the DVD drive](repurpose-slimline-sata-port.jpg "Slimline SATA port")](repurpose-slimline-sata-port.jpg)
 *Is this the future home of a redundant boot drive?*

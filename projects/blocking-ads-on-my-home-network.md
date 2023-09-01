@@ -18,7 +18,7 @@ thumbalt: "More than half of the requests sent from my network to the internet a
 
 I've been using an ad blocker in my web browser for as long as I knew they existed. They do the job they're supposed to do and they do it very well and they often do it better than the solution outlined below. The problem is that they only work in the browser; they won't block application telemetry nor will they work on mobile devices. I wanted a solution that would work for all devices on my local network. Enter Pi-hole.
 
-Originally designed to work with the Raspberry Pi, Pi-hole is a DNS sinkhole that works by intercepting DNS requests and checking if they match a list of blacklisted domains. If the requested site is on the list, the Pi-hole returns null, effectively saying *'there's no website at that address.'* Pi-hole can do a bunch of other things like handle DHCP and create local DNS, but here I'll be focusing on setting it up as a DNS sinkhole. I'll be running Pi-hole in a [Docker container](/posts/running-docker-in-my-homelab) on [my repurposed laptop server](/posts/repurposing-an-old-laptop)
+Originally designed to work with the Raspberry Pi, Pi-hole is a DNS sinkhole that works by intercepting DNS requests and checking if they match a list of blacklisted domains. If the requested site is on the list, the Pi-hole returns null, effectively saying *'there's no website at that address.'* Pi-hole can do a bunch of other things like handle DHCP and create local DNS, but here I'll be focusing on setting it up as a DNS sinkhole. I'll be running Pi-hole in a [Docker container](/projects/running-docker-in-my-homelab) on [my repurposed laptop server](/projects/repurposing-an-old-laptop)
 
 > It's important to note that Pi-hole does not provide  network security. Network security is a job better suited for a Firewall or DMZ. 
 
@@ -33,7 +33,7 @@ mkdir pihole
 sudo nano docker-compose.yaml
 ```
 
-I copied the provided docker-compose file into nano (right-clicking in the editor will paste the contents of the clipboard). There were a few small changes that needed to be made to this file: I changed the `TZ` to `America/New_York`, uncommented the `WEBPASSWORD` field, and added a password. Passwords are not (and should not!) be stored in the `docker-compose.yaml` file, and are instead stored in a `.env` file sibling to it. Check out my post on [Docker compose](/posts/running-docker-in-my-homelab) if you want to know more. 
+I copied the provided docker-compose file into nano (right-clicking in the editor will paste the contents of the clipboard). There were a few small changes that needed to be made to this file: I changed the `TZ` to `America/New_York`, uncommented the `WEBPASSWORD` field, and added a password. Passwords are not (and should not!) be stored in the `docker-compose.yaml` file, and are instead stored in a `.env` file sibling to it. Check out my post on [Docker compose](/projects/running-docker-in-my-homelab) if you want to know more. 
 
 Every time I have reached this stage of the installation, I've been greeted with an issue related to port 53, seemingly caused by Ubuntu's systemd-resolved service already running on port 53. I found a [post outlining a solution](https://discourse.pi-hole.net/t/docker-unable-to-bind-to-port-53/45082/7), and run the following commands:
 

@@ -15,7 +15,7 @@ thumbalt: ''
 
 ### Who's Steering the Ship?
 
-After I self-hosted Nextcloud to [store my family's photos](/posts/storage-and-backup), I decided that I wanted to centralize media streaming in our home as well. For us, this is about subtitles. We live in a bilingual house: English and Brazilian Portuguese. Brazilian Portuguese is rarely found on the streaming platforms and none of the DVDs that I own come with them. 
+After I self-hosted Nextcloud to [store my family's photos](/projects/storage-and-backup), I decided that I wanted to centralize media streaming in our home as well. For us, this is about subtitles. We live in a bilingual house: English and Brazilian Portuguese. Brazilian Portuguese is rarely found on the streaming platforms and none of the DVDs that I own come with them. 
 
 I am in no way advocating for piracy. If we want to watch a movie that we own, there is no easy and reliable way to do so in the way that is best for our family. Open source to the rescue! 
 
@@ -25,7 +25,7 @@ The media server that I have setup here is the Servarr or *arr stack. Everything
 
 The server that I'm using to host this media stack has a DVD drive, so a future project is going to be taking further inspiration from [Jeff Geerling](https://www.youtube.com/watch?v=RZ8ijmy3qPo) to create a complete pipeline for backing up our DVDs. For now, we are relying on the community's help.
 
-This media server downloads media files and stores them in a centralized location. It generates meta-data for the media and downloads subtitles that suit the file. It then uses the Jellyfin app to broadcast and share the media locally on our home network. This enables our family to watch our media the way that works best for us. Again, I am in no way advocating for piracy [of any kind](/posts/blocking-ads-on-my-home-network).
+This media server downloads media files and stores them in a centralized location. It generates meta-data for the media and downloads subtitles that suit the file. It then uses the Jellyfin app to broadcast and share the media locally on our home network. This enables our family to watch our media the way that works best for us. Again, I am in no way advocating for piracy [of any kind](/projects/blocking-ads-on-my-home-network).
 
 The docker-compose file I used for this setup can be found on my [GitHub page](https://github.com/JustinMountain/docker-compose).
 
@@ -86,7 +86,7 @@ The rest of the stack can now be added to the docker-compose file. The torrent p
 
 #### Automate container restart to renew IP
 
-With the complete stack up and running it's possible to [skip ahead to setup](/posts/media-server#complete-the-servarr), but I have added a cronjob which restarts the stack every morning at 3:30 AM. I do this mostly to ensure that the VPN connection hasn't timed out and that the stack is always behind a fresh VPN connection. 
+With the complete stack up and running it's possible to [skip ahead to setup](/projects/media-server#complete-the-servarr), but I have added a cronjob which restarts the stack every morning at 3:30 AM. I do this mostly to ensure that the VPN connection hasn't timed out and that the stack is always behind a fresh VPN connection. 
 
 On the virtual machine hosting the stack, I created the following script called `restartContainers.sh`:
 

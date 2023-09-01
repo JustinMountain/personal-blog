@@ -20,7 +20,7 @@ As the complexity continues to grow in my homelab, it's becoming more and more d
 
 Uptime Kuma allows me to setup an assortment of different monitors, create alerts on those monitors which send webhooks to a plethora of different services, and setup dashboards for easy to understand graphs showing which services are up and which are down. All of this makes Uptime Kuma a great tool to provide insight into- and alerts for- my home network and the different public services I want to monitor.
 
-This documentation assumes that Uptime Kuma has been setup and deployed. I have information about setting up and using docker [here](/posts/running-docker-in-my-homelab) or you can see the docker-compose.yaml file I use on [GitHub](https://github.com/JustinMountain/docker-compose/tree/main/UptimeKuma).
+This documentation assumes that Uptime Kuma has been setup and deployed. I have information about setting up and using docker [here](/projects/running-docker-in-my-homelab) or you can see the docker-compose.yaml file I use on [GitHub](https://github.com/JustinMountain/docker-compose/tree/main/UptimeKuma).
 
 ### 🏓 Monitoring via Ping
 
@@ -62,7 +62,7 @@ To set up an HTTP(s) monitor:
 
 ### 🔎 Monitoring DNS Resolution
 
-DNS resolution monitoring involves checking if a domain name can be resolved to an IP address correctly. Monitoring DNS resolution in this way will help let me know if my [Pi-hole](/posts/blocking-ads-on-my-home-network) is correctly forwarding DNS resolutions to its resolution server. It could also let me know if the Pi-hole is working by checking against a domain that is on a blocklist.
+DNS resolution monitoring involves checking if a domain name can be resolved to an IP address correctly. Monitoring DNS resolution in this way will help let me know if my [Pi-hole](/projects/blocking-ads-on-my-home-network) is correctly forwarding DNS resolutions to its resolution server. It could also let me know if the Pi-hole is working by checking against a domain that is on a blocklist.
 
 To setup a DNS resolution monitor:
 
