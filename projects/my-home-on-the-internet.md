@@ -1,20 +1,20 @@
 ---
 title: 'My Home on the Internet'
-featured: 'no'
-published: '2023-08-31'
-updated: '2023-08-31'
+featured: 'yes'
+published: '2023-09-01'
+updated: '2023-09-01'
 repo: 'https://github.com/JustinMountain/personal-blog'
 category: ''
 tags: 'aws, cloud, nextjs, docker'
-excerpt: 'I built myself a bespoke blog as a place to store my documentation and share my projects. The blog lives on AWS on an EC2 instance behind an application load balancer.'
-excerpt2: 'The blog was built as a Next.js web application and deploys as a Docker container which allows for easy updates to the production environment.'
-thumbnail: 'bespoke-blog.jpg'
-thumbnail-alt: 'This is not actually the right picture yet. How do I make a picture for a website?'
+excerpt: 'I built myself a bespoke blog as a place to store my documentation and share my projects. The blog lives in a Docker container on an AWS EC2 instance behind an Application Load Balancer with forced TLS connections.'
+excerpt2: 'The Dockerized deployment allows for easy updates to production and places the Next.js application behind an Nginx proxy.'
+thumbnail: 'blog-imports.jpg'
+thumbnail-alt: 'A snippet of code from the application.'
 ---
 
 ### Table of Contents
 
-### A Bespoke Blog as a Next.js Web Application
+### 📰 A Bespoke Blog as a Next.js Web Application
 
 I like working on projects that that are a mix between what something I want to learn and something that I need. The golden zone is when I can also include something on that I have recently learned. This project hit all three points with app development, a personal portfolio website, and deploying to the AWS infrastrcture. 
 
@@ -24,15 +24,15 @@ I chose to pursue React and Next.js instead of Wordpress even though I was desig
 
 Iterating on these skills in the next project will allow me to again focus on a few key skills while refining the ones learned through this exercise. The focus of the next project likely being the inclusion of a PostgresSQL database, an API, and TypeScript. 
 
-### Design
+### 👷🏻 Designing the Site
 
-#### Design Draft in Figma
+#### 🎨 Drafting in Figma
 
 Design is definitely not my strong suit which makes it even more important to start with a design. I leveraged some of the experience I gained at the marketing agency and used [Figma](https://www.figma.com/file/vBJbP0DIyuI6HGeUNQLHu7/Personal-Site?type=design&node-id=0-1&mode=design&t=fh1JiBER6Ivuluzm-0) to iterate over some ideas and inspiration to come up with a draft. The design is ultimately just a design and the outcome will inevitably be different, but the starting point allows the first code draft to have a cohesive vision. This is invaluable and I will continue the practice in future projects.
 
 I considered all of the different components that I would need to create and drafted what they could look on mobile as well as desktop. After a few iterations, I was was happy with the direction the site was headed.
 
-#### Posts Style Guide
+#### 🕺🏻 Posts Style Guide
 
 With the design in place, I defined some style guidelines to make sure that everything would stay uniform page to page. This became especially important when I implemented the CMS for my posts, since I would be writing in markdown that would contain code snippets, descriptions, and more. I wanted to define what different emphasis meant.
 
@@ -44,23 +44,23 @@ With the design in place, I defined some style guidelines to make sure that ever
 
 I try to have a consistent first-person voice as well. This blog is ultimately for me and my reference, which means a lot of the text I write ends up as me talking to myself. This can manifest in declarative *do this* but also descriptive *I did this*. It also keeps everything very personal, which for a personal blog, makes sense.
 
-### Build / Dev
+### 🏗️ Building Interactions from Ideas
 
 With guidance in place, it was time to implement. I chose to build this as a Next.js app as and React, Next.js, and Tailwind CSS were all new to me when I started. I could have also included TypeScript, but by leaning my understanding of JavaScript rather than also also learning TypeScript, I can focus on the core of React and Next.js. This also leaves a clearly definied path for the next project-as-a-learning-experience: TypeScript, which will pair nicely with implementing a backend since type sensitivity will become more relevant when reading and writing information in a database.
 
-#### Generating Markup from Markdown
+#### 🔼 Generating Markup from Markdown
 
 The blog dynamically generates the project pages from markdown files. There are a few lines of frontmatter in each file which describe the metadata - title, published date, thumbnail, etc - and the rest of the file is written with markdown syntax. While this does create some limitations, the dynamic creation is an invaluable time-saver and the limitations are no more strict than more standard CMS approaches. 
 
 A few packages are being used to accomplish this. First, the gray-matter package converts the frontmatter and content into an object that can be used in the site's components. Then, the [remark and rehype packages](https://github.com/JustinMountain/personal-blog/blob/main/utils/markdownToHtml.js) are used to convert the content of the article into HTML that can be *dangerously* set into the component at runtime. The objects and HTML are then passed as props to the page createed under a dynamic route. 
 
-#### Styling the Site
+#### 🖌️ Styling the Site
 
 [Tailwind, autoprefixer, postcss] come pre-packaged with Next.js. Although I had never used Tailwind, I was comfortable with CSS so utilizing Tailwind's utility classes was straight-forward and was easy to pick up. 
 
 I extended Tailwind with the [Tailwind Typography](https://tailwindcss.com/docs/typography-plugin) plugin to allow me to also control the styling of the HTML generated from markdown. This allowed ne to declare the style for the [dynamically created project pages](https://github.com/JustinMountain/personal-blog/blob/main/pages/projects/%5Bslug%5D.js) in one spot and in the same way as the style is being declared for the rest of the application.
 
-#### Cool things
+#### 📚 Cool Things Learned Along the Way
 
 Along the way, I learned some of the nuances of using React, Next.js, and web development in general. As these are the types of things that might come up again in the future, I'm documenting them here for future reference.
 
@@ -76,9 +76,9 @@ Of course, I could've just used one `<div>` for the subheading and another for t
 
 The last part that I want to document is that the Connect form submits to Discord. Discord provides an API that is easy to use, so setting up a channel and a webhook was a straightforward process. The form also uses State to create an Object that Discord understands, which is then sent and posted in a private channel via the Webhook Bot. 
 
-### Implementation
+### 🌐 Deploying to the Internet
 
-#### Building the Docker Images
+#### 🐋 Building the Docker Images
 
 With the blog build and running locally, it was time to put it on the Internet. Next.js works over port 3000, so first I needed to setup a reverse proxy so the application would be available over port 80. To this end, I created a `default.conf` file to setup the proxy and a simple `Dockerfile` to generate an Nginx reverse proxy which could be easily deployed on EC2. The proxy contains some simple rate limiting as well as the structure for load balancing and a backend server, but neither of those are being used at this time. 
 
@@ -116,7 +116,7 @@ Now, the entire application can be spun up and accessible on port 80 of the host
 docker-compose up -d --build
 ```
 
-#### Putting it on AWS
+#### 📦 Deploying to AWS
 
 Even though I've decided to implement Docker containers, I put the application on an EC2 instance instead of using ECS. This is primilarly for practice managing the infrastructure of the application. Setting it up in this way is also describing the steps that I will automate into Infrastructure as Code and build into a CI/CD pipleline. 
 
@@ -143,7 +143,7 @@ To force an HTTPs connection between the client and server, I edited the HTTP li
 
 Finally, I created an alias record for the Hosted Zone in Route 53 which points to the ALB. Once of all this was setup, the Next.js web application was available at the domain name securely over HTTPs. It could take between 24 and 48 hours for the DNS records to propgate and therefore for the domain name to forward to the server correctly, but it only took about 30 minutes when I setup this server.
 
-### To Do
+### 🔎 What's Left?
 
 Now that the blog is available on the internet, I can focus on optimizations and behind the scenes types of things to further my learning. The most important part is now it's online and I can reference it on [LinkedIn](https://www.linkedin.com/in/justinmountain/) and put it on my resume.
 
@@ -153,7 +153,7 @@ I want to create a user script file that can be run to setup a new instance. Thi
 
 As for other upgrades and optimizations, I'd like to shift from a public VPC to a private one. I'd also like a way of capturing all of the logs that the nginx container is generating and setup some pre-deployment tests. I've pushed to deployment slightly broken functions, so creating a build environment that tests to ensure a few conditions are met could be a good way of preventing that from happening or even worse: not knowing something is broken. 
 
-#### Polish
+#### 💅🏻 Polish
 
 The following things need to be addressed before this part of the project will be considered complete. These are minor things that shouldn't take too long each.
 

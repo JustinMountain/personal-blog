@@ -1,6 +1,6 @@
 ---
 title: 'Running Docker in my Homelab'
-featured: 'yes'
+featured: 'no'
 published: '2023-03-05'
 updated: '2023-03-28'
 repo: 'https://github.com/JustinMountain/docker-compose'
