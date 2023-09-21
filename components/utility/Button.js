@@ -7,16 +7,16 @@ export default function Button({ content, href, buttonType, target }) {
 
   switch (buttonType) {
     case "primary":    
-      buttonStyle = "bg-primary dark-button hover:bg-light hover:light-button";
+      buttonStyle = "bg-primary hover:bg-light hover:text-primary";
       break;
     case "secondary":
-      buttonStyle = "bg-secondary dark-button hover:bg-light hover:light-button";
+      buttonStyle = "bg-secondary hover:bg-light hover:text-secondary";
       break;
     case "accent":
-      buttonStyle = "bg-accent light-button text-primary hover:bg-light hover:light-button";
+      buttonStyle = "bg-accent text-primary hover:bg-light";
       break;
     case "light":
-      buttonStyle = "bg-light light-button text-primary hover:bg-accent hover:light-button";
+      buttonStyle = "bg-light text-primary hover:bg-accent";
       break;
     default:
       buttonStyle = "text-white px-0";
