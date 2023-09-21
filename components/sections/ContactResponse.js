@@ -36,7 +36,7 @@ export default function ContactResponse() {
         <div className="max-w-lg mx-auto 
                         md:col-start-2 md:col-end-3 md:max-w-xl">
           <Image
-            src="/posts/justin.jpg"
+            src="/images/justin.jpg"
             width={576}
             height={576}
             title="Justin"
