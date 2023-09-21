@@ -132,7 +132,7 @@ I left **Permissions** > **Account permissions** untouched.
 
 Click 'Generate Token' and copy it. DO NOT LOSE IT.
 
-Switch back to the SSH connection to the server and enter `gh auth login`. Follow the instructions on screen, selecting *GitHub.com*, then *HTTPS*, then *Y*, and finally paste the authentication token copied from GitHub.com above. If you lost the token you will need to generate a new one. 
+Switch back to the SSH connection to the server and enter `gh auth login`. Follow the instructions on screen, selecting *GitHub.com*, then *HTTPS*, the *Paste an authentication token*, then *Y*, and finally paste the authentication token copied from GitHub.com above. If you lost the token you will need to generate a new one. 
 
 #### 🪞 Clone the Repo
 
