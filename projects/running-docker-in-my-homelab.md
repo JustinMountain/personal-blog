@@ -22,13 +22,9 @@ What is Docker? Simply put, Docker let's us add containers that include everythi
 
 In addition to being isolated from the host OS, containers are also isolated from other containers. This means, for example, there's no conflict having two different MySQL databases, each with their own `Users` table, because the two databases have no idea the other exists. It's possible to solve this problem with virtual (or physical) machines, but that solution requires a lot more technical overhead than simply deploying a container.
 
-Installing Docker is relatively simple, just follow the [instructions on Docker's website](https://docs.docker.com/engine/install/ubuntu/) using the **Install using the repository** section. The only notable point here is that I had to manually install `docker-compose`, an additional package that let's us define container settings using yaml files:
+Installing Docker is relatively simple, just follow the [instructions on Docker's website](https://docs.docker.com/engine/install/ubuntu/) using the **Install using the repository** section. 
 
-```
-sudo apt install docker-compose
-```
-
-Another *nice to have* is adding the current user to the docker group. This allows docker commands to be run without `sudo` and entering a password. Use this with intention and restart the host after running the prompt to have the changes come into effect:
+One *nice to have* is adding the current user to the docker group. This allows docker commands to be run without `sudo` and entering a password. Use this with intention and restart the host after running the prompt to have the changes come into effect:
 
 ```
 # Add user to the docker group if not done during docker setup
@@ -37,9 +33,9 @@ sudo usermod -aG docker $USER
 
 ### 📝 Using Docker-Compose
 
-The `docker-compose` command allows us to pre-define parameters for a new docker container in a `.yaml` file. Its primary functionality is to define and configure stacks of docker containers to work together in an easy-to-read and unified location. When using `docker-compose` in this way, it is important that the containers are declared before the are necessary. In my [Nextcloud docker-compose.yaml](https://github.com/JustinMountain/docker-compose/blob/main/Nextcloud/docker-compose.yaml), for example, the declaration of the Postgres container must come before the Redis container because Redis is dependent on Postgres to function. The Nextcloud container requires both and is itself a requirement for the Nginx container.
+The `docker compose` command allows us to pre-define parameters for a new docker container in a `.yaml` file. Its primary functionality is to define and configure stacks of docker containers to work together in an easy-to-read and unified location. When using `docker compose` in this way, it is important that the containers are declared before the are necessary. In my [Nextcloud docker-compose.yaml](https://github.com/JustinMountain/docker-compose/blob/main/Nextcloud/docker-compose.yaml), for example, the declaration of the Postgres container must come before the Redis container because Redis is dependent on Postgres to function. The Nextcloud container requires both and is itself a requirement for the Nginx container.
 
-That is not the only benefit that using `docker-compose` can bring to the homelab. By declaring the variables and parameters of a container in a file, it provides an easy reference for all of the initialization settings as well as a way of easily reproducing containers with the same settings. These benefits could also be done by writing the traditional docker commands in a script - something I will certainly be exploring in the future - but there's something to be said about the readability of `.yaml` files. Speaking of readability, there are two things worth highlighting:
+That is not the only benefit that using `docker compose` can bring to the homelab. By declaring the variables and parameters of a container in a file, it provides an easy reference for all of the initialization settings as well as a way of easily reproducing containers with the same settings. These benefits could also be done by writing the traditional docker commands in a script - something I will certainly be exploring in the future - but there's something to be said about the readability of `.yaml` files. Speaking of readability, there are two things worth highlighting:
 
 1. Passwords are stored inside `.env` files sibling to each docker-compose.yaml:
 
