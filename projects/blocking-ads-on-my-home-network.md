@@ -1,8 +1,8 @@
 ---
 title: 'Blocking Ads on My Home Network'
 featured: 'no'
-published: '2023-02-23'
-updated: '2023-02-23'
+published: 'no'
+updated: 'no'
 repo: ''
 category: 'documentation'
 tags: 'networking, docker, linux, homelab'

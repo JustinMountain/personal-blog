@@ -19,6 +19,7 @@ thumbalt: ''
 - Turn off "Set up this disk as an LVM group"
 - Setup extra drives if necessary/mounted in proxmox when prompted
   - Confirm drive mounts via `lsblk -f` and `sudo fdisk -l`
+- Install OpenSSH server    
 - sudo apt update && sudo apt upgrade -y
 
 Optional Mount extra disks
@@ -31,7 +32,7 @@ Optional Mount extra disks
 - `lsblk` to confirm
 
 2. Install QEMU Agent
-- sudo apt-get install qemu-guest-agent
+- sudo apt-get install qemu-guest-agent -y
 - shutdown, enable qemu agent in options, reboot
 - then `systemctl status qemu-guest-agent` to check its active
 
@@ -47,7 +48,7 @@ network:
   ethernets:
     ens18: # network adapter
       dhcp4: no
-      addresses: [192.168.1.240/24] # Static IP Don't forget to change this! 
+      addresses: [192.168.1.245/24] # Static IP Don't forget to change this! 
       routes:
         - to: default
           via: 192.168.1.1 # default gateway 
@@ -75,7 +76,7 @@ https://docs.docker.com/engine/install/ubuntu/
 
 ### Automation
 
-Figure out a way to automate (ansible?) the mainteneence of VMs:
+Figure out a way to automate (ansible?) the maintenence of VMs:
 
 1. Deleting unused docker images
 2. update/upgrade
@@ -99,6 +100,9 @@ Figure out a way to automate (ansible?) the mainteneence of VMs:
 I may need to redo `gh auth login` step and generate a new token. I set the current one to expire in 7 days
 
 8. git clone <repo>
+
+9. Add server to Putty? 
+
 9. Install Code Server via docker
 
 #### Commands

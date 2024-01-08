@@ -56,7 +56,19 @@ sudo mount -a
 ```
 
 Once these steps have been completed, files can be copied from the virtual machine to BrontosaurNAS via NFS by simply copying or moving the files into the linked directory. 
- 
+
+#### Downloading ISOs
+
+After downloading an ISO via Deluge, it will need to be manually moved from the virtual machine to somewhere else on the network. There are ways to automate this as well, but it's not something that comes up often enough to dedicate the time to setting it up at the moment.
+
+```
+# Make a folder on the target drive
+mkdir /media/brontosaurnas/folder_name
+
+# Copy the file over
+cp downloads/folder_name/ /media/brontosaurnas/folder_name
+```
+
 ### Starting the Stack with Gluetun
 
 Gluetun is an [open-source](https://github.com/qdm12/gluetun) tunnel that is deployed as a docker container. It allows a docker stack to have a dedicated VPN connection. I currently use NordVPN and followed its published [Gluetun wiki entry](https://github.com/qdm12/gluetun-wiki/blob/main/setup/providers/nordvpn.md) for establishing a VPN connection. 
