@@ -6,7 +6,7 @@ export default function NavFooter() {
   const navLinks = [
     {name:"Top", href:"#top", color:"primary"},
     {name:"Home", href:"/", color:"primary"},
-    {name:"Projects", href:"/projects", color:"primary"},
+    {name:"Docs", href:"/projects", color:"primary"},
     {name:"Connect", href:"/connect", color:"accent"},
   ]
 

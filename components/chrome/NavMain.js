@@ -15,7 +15,7 @@ export default function NavMain({ color }) {
 
   const navLinks = [
     {name:"Home", href:"/", color:mainButtonColor},
-    {name:"Projects", href:"/projects", color:mainButtonColor},
+    {name:"Documentation", href:"/projects", color:mainButtonColor},
     {name:"Connect", href:"/connect", color:"accent"},
   ]
 

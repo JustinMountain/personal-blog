@@ -4,12 +4,12 @@ import CustomHeading from '@/components/utility/CustomHeading';
 export default function Roadmap() {
 
   const contents = [
-    {head:"This Website", subhead:"In Progress", 
+    {head:"Our Civic Voice", subhead:"In Progress", 
+      p1:"I'm currently in the process of building out an API to conenct Canadians with their local representatives.", 
+      p2:"Our Civic Voice will remove the confusion between who to contact about different civil issues, giving each Canadian a means to connect with the appropriate representative for different issues."},
+    {head:"This Website", subhead:"Ongoing", 
       p1:"This website was written as a Next.js web application and is being deployed as a docker container running on an EC2 instance.", 
       p2:"I'm currently working on a complete CI/CD pipeline to push changes to the production environment."},
-    {head:"Recipe Application", subhead:"Upcoming", 
-      p1:"I plan to create an app that answer's the question, 'What should we make for dinner tonight? You should be able to search by what's in the fridge, a type of food you want to eat.", 
-      p2:"Stretch goals for this project include allowing multiple users, and allowing those users to share recipes and mealplans. I'd also like to add recipe discovery using a swipe left/right interface."},
     {head:"Homelab", subhead:"Ongoing", 
       p1:"Expanding the capabilities of my homelab is always underway.", 
       p2:"I'm currently in the process of moving most of my services to a new Proxmox host under dedicated VMs. I hope to learn more about LXC containers, using Ansible to deploy/maintain services, and create a Networking/Admin VM."},

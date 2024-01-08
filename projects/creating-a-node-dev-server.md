@@ -1,8 +1,8 @@
 ---
 title: 'Creating a Next.js Development Server'
 featured: 'no'
-published: '2023/09/20'
-updated: '2023/09/20'
+published: 'no'
+updated: 'no'
 repo: ''
 category: 'documentation'
 tags: 'docker, linux, node'

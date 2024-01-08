@@ -27,7 +27,7 @@ export default function HeroHome() {
                         md:col-start-2 md:col-end-3 md:max-w-xl md:pt-12
                         lg:pt-24
                         xl:pt-32">
-          <CustomHeading size="h2" head="Hi, I'm Justin" subhead="Junior Cloud Engineer" />
+          <CustomHeading size="h2" head="Hi, I'm Justin" subhead="Junior Developer" />
 
           <p className="text-lg py-4
                         md:max-w-xl md:py-4

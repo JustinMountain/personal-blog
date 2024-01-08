@@ -21,8 +21,8 @@ export default function Home({ posts }) {
       <Header />
       <SectionHero />
       <HomeFeaturedProjects posts={posts} />
-      <Roadmap />
-      <ContactForm />
+      {/* <Roadmap /> */}
+      {/* <ContactForm /> */}
       <Footer />
     </>
   );

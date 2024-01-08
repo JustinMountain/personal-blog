@@ -28,11 +28,11 @@ export default function Footer() {
                           sm:w-96 
                           md:w-auto md:mx-0">
             <div>
-              <CustomHeading size="h2" head="Justin Mountain" subhead="Junior Cloud Engineer" />
+              <CustomHeading size="h2" head="Justin Mountain" subhead="Junior Developer" />
               <p className="text-lg pt-4 pb-2
                             lg:pb-1
                             xl:text-xl xl:pb-4">
-                AWS | Docker | React | Next.js
+                AWS | Docker | React | Next.js | Express
               </p>
             </div>
             <div className="pt-8
