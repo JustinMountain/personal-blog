@@ -187,6 +187,8 @@ The entire project should now be available in a web browser at `<ip address>:844
 
 ### 📢 Installing Node.js
 
+> This is out of date... need to update
+
 The repo has been cloned, but the project won't run until we install Node.js and the project's dependencies on the system. 
 
 ```
