@@ -13,7 +13,7 @@ thumbalt: ''
 
 ### Table of Contents
 
-### Who's Steering the Ship?
+### 🛞 Who's Steering the Ship?
 
 After I self-hosted Nextcloud to [store my family's photos](/projects/storage-and-backup), I decided that I wanted to centralize media streaming in our home as well. We live in a bilingual house: English and Brazilian Portuguese. Brazilian Portuguese is rarely found on the streaming platforms and none of the DVDs that I own come with them. 
 
@@ -27,11 +27,11 @@ This media server downloads media files and stores them in a centralized locatio
 
 The `compose.yml` file used for this server can be found on my [GitHub page](https://github.com/JustinMountain/homelab/tree/main/docker/servarr). 
 
-### Network Mounting
+### 🖇️ Network Mounting
 
 I've used a virtual machine to host this servarr stack and I will be using the NFS feature on BrontosaurNAS to hold the files. NFS mounts are made inside `compose.yml` and an explanation on creating NFS mounts with Docker can be found [here](/projects/running-docker-in-my-homelab).
 
-#### NFS Mount via fstab 
+#### 🗒️ NFS Mount via fstab 
 
 Prior to implementing NFS mounts directly in the `compose.yml` files, I mounted to the host system. I've decided to keep this information, but it is possibly outdated.
 
@@ -59,7 +59,7 @@ sudo mount -a
 
 Once these steps have been completed, files can be copied from the virtual machine to BrontosaurNAS via NFS by simply copying or moving the files into the linked directory. 
 
-### Starting the Stack with Gluetun
+### 🚇 Starting the Stack with Gluetun
 
 Gluetun is an [open-source](https://github.com/qdm12/gluetun) tunnel that is deployed as a docker container. It allows a docker stack to have a dedicated VPN connection. I currently use NordVPN and followed its published [Gluetun wiki entry](https://github.com/qdm12/gluetun-wiki/blob/main/setup/providers/nordvpn.md) for establishing a VPN connection. 
 
@@ -143,11 +143,11 @@ crontab -e
 
 With the cronjob created the complete stack will be spun down and back up every 4 hours.
 
-### Complete Servarr Setup
+### ✅ Complete Servarr Setup
 
 With confirmation that the VPN tunnel is working as expected, it's time to add the rest of the Servarr stack. 
 
-#### qBittorrent
+#### 🔽 qBittorrent
 
 First, we need to figure out the default admin password for the container. We can do this by using `sudo docker logs qbittorrent` and finding the line in the logs showing the default passwsord. 
 
@@ -159,7 +159,7 @@ In the same **Tools** > **Options** > **Downloads** window, under **Saving Manag
 
 Previously, I used Deluge instead of qBittorrent. This was because the WebUI for Deluge includes the IP it is using to access the Internet in the bottom-right corner. I've changed, however, because I was able to add the darkmode extension for qBittorrent and not for Deluge.
 
-#### Sonarr / Radarr / Lidarr / Readarr
+#### 💡 Sonarr / Radarr / Lidarr / Readarr
 
 Setting up the four content discovery applications is relatively straight forward:
 
@@ -169,7 +169,7 @@ To connect these apps with qBittorrent, we should go to **Settings** then **Down
 
 Finally, we need to collect the various API keys that will allow us to centralize some of the management moving forward. Go to **Settings** > **General** > **Security** and scroll down to the API key and copy one for each of these applications, saving them in a note, since we'll need them in a couple of places later.
 
-#### Prowlarr
+#### 🐯 Prowlarr
 
 Prowlarr allows us to organize the indexers that the rest of the stack will use to find the correct files. It is not necessary, but the small extra step here streamlines management of the other containers in the Servarr stack. 
 
@@ -189,7 +189,7 @@ In Prowlarr, go to **Settings** then **Indexers** and under **Indexer Proxies**,
 
 Now, when adding an Indexer, if there is a warning that the site uses CloudFlare DDoS protection, add the "FlareSolverr" tags in "Tags."
 
-#### Bazarr
+#### 📜 Bazarr
 
 Now that we can search for our media, it's time to find our subtitles. Bazarr is another sibling piece of open-source software to do just that. It leverages the OpenSubtitles.com API to find missing subtitles for all of the files in our library. Since Bazarr was pointed to the media location for our files, it will scan those directories to find which files are missing subtitles.
 
@@ -205,11 +205,11 @@ Finally, we need to connect to Sonarr and Radarr in a similar way that we did wi
 
 Now the stack is complete and we can search for our media files and have subtitles found for them automatically. 
 
-### Enjoying the Content
+### 📺 Enjoying the Content
 
 At the moment, music and books are being ignored. I just have this setup for Movies and TV Shows through a [Jellyfin](https://github.com/JustinMountain/homelab/tree/main/docker/jellyfin) server. We then use an app canned "Infuse" on our Apple TV to stream the content. I have not setup the Music and Book equivalents and don't really have any plan too. Adding Lidarr and Readarr was simply done as an exercise in completeness.
 
-### Future 
+### 🥏 Future 
 
 The next logical step is to complete the missing piece missing above and add servers for Music and Book content. This isn't a pressing need, however, as this type of content doesn't require the same multi-lingual synchronization that inspired the rest of the build. 
 

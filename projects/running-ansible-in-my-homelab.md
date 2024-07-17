@@ -14,7 +14,7 @@ thumbalt: ""
 
 ### Table of Contents
 
-### Installing Ansible
+### 🅰️ Installing Ansible
 
 
 > This was written using WSL as the Ansible control node and being executed on an Ubuntu 22.04 VM inside of Proxmox.
@@ -42,7 +42,7 @@ python3 -m pip install --user ansible
 python3 -m pip install --upgrade --user ansible
 ```
 
-### Setting Up An Inventory
+### 📋 Setting Up An Inventory
 
 Ansible uses inventory files to track the servers that it should manage. First, we need to make a hosts file, `./ansible/inventory/hosts`.
 
@@ -80,7 +80,7 @@ The `--user justin --ask-pass` flags on this refer to this user and password for
 [![Ping Pong](ansible-ping-pong.jpg "A successful ansible ping pong response")](ansible-ping-pong.jpg)
 *A successful ansible ping pong response*
 
-### Automating Key-Based Authentication
+### 🗝️ Automating Key-Based Authentication
 
 Ansible is at its best when it's used to automate tasks, so let's create an SSH key and an Ansible playbook to copy it over:
 
@@ -284,9 +284,9 @@ Host Sandbox
   IdentityFile C:\Users\Justin\.ssh\admin
 ```
 
-### Using Variables
+### 🗶 Using Variables
 
-#### In the `hosts` file
+#### #️⃣ In the `hosts` file
 
 It's possible to streamline the use of variables by including them in the hosts file. For example, adding the Ansible Host's username can be done by adding the following to the top of the `hosts` file if all servers will use the same `ansible_user`: 
 
@@ -302,7 +302,7 @@ When each of the servers in the inventory will have a different `ansible_user`, 
 192.168.1.229 ansible_user=justin
 ```
 
-### Using Ansible Vault to Store Passwords
+### 🔒 Using Ansible Vault to Store Passwords
 
 Some actions, like updating `apt` require a sudo password. It's not fun to type one out for each server in the inventory file, nor is it a good idea to store them in plain text. We can create a variable to store the password and encrypt that file for ansible to use:
 
@@ -368,9 +368,9 @@ This newly created variable can be called in the playbooks using the same method
   - ~/.ansible/vault/ansible_become_pass.yml
 ```
 
-### Using Conditions
+### ❔ Using Conditions
 
-#### On File Existence
+#### 🙇 On File Existence
 
 Sometimes when we run the `apt update && upgrade` commands, we need to restart the kernel. Luckily, Ansible allows us to create conditions and we can leverage this to tell our playbook to restart the target machine if a reboot is necessary by adding the following as tasks two and three to the `apt-update-upgrade.yml` file: 
 
@@ -398,7 +398,7 @@ The completed `apt-update-upgrade.yml` file now runs the update and upgrade comm
 [![Conditions in action](ansible-conditions.jpg "Conditions in action")](ansible-conditions.jpg)
 *Conditions in action*
 
-#### On File Contents
+#### 💼 On File Contents
 
 We can also create conditions to check the contents of files. We can leverage this in our situation by modify `ssh-key-setup.yml` to check if our Ansible SSH key present on the target before copying it over.
 
@@ -421,7 +421,7 @@ Now we can use the `authorized_keys_decoded` variable to create `when` condition
 
 **Picture of the completed file?**
 
-### Introduction to Idempotency
+### 🀚 Introduction to Idempotency
 
 Up to now, we have been using Ansible to make actions (or not) depending on the existence/contents of a file. Through Ansible, we can leverage idempotency, which I like to think of as declarative state. With idempotency, we can not only have Ansible follow through with conditional actions, but we can tell Ansible what we want the desired state of our server to be. In other words, we can tell Ansible that we want a certain package to be present and Ansible will only act if necessary. 
 
@@ -447,7 +447,7 @@ The most important line here is `state: present`. This instructs Ansible to make
 [![Idempotency in action](ansible-idempotency.jpg "Idempotency in action")](ansible-idempotency.jpg)
 *Idempotency in action*
 
-### Creating Ansible Roles from Playbooks
+### 🎚️ Ansible Roles from Playbooks
 
 Roles can be used to take groups of tasks and objectify them, making them modular and reusable. What we've been writing in our playbooks are better used as roles, which can then be called be playbooks alone or alongside other roles. 
 
@@ -584,7 +584,7 @@ With that complete, we should be able to run the playbook on a freshly installed
 ansible-playbook -i ./ansible/inventory/hosts ./ansible/server-setup-proxmox-ubuntu2204.yml --ask-vault-pass
 ```
 
-### Up Next
+### 🦾 Up Next
 
 Now that I'm able to put a server into an initiated state, things can start to branch out from here. I should learn how to make a template so that I can skip both the manual installation phase *and* save some compute doing `apt update && apt upgrade`.
 
