@@ -14,6 +14,14 @@ thumbnail-alt: ''
 
 ### Table of Contents
 
+
+ansible-playbook -i ./ansible/inventory/hosts ./ansible/setup-uptime-kuma.yml --ask-vault-pass
+
+
+
+
+
+
 ### Intro
 
 As we [learned before](), Ansible Roles are collections of various tasks, variables, files, templates, and handlers and what makes them extra powerful is the ability to share them via [Ansible Galaxy](https://galaxy.ansible.com/ui/). Through this Ansible community, we can leverage some of the awesome work that others have done to automate more complicated and repetitive tasks. One such tasks is installing Docker. 
@@ -81,3 +89,14 @@ I need to look at templates and copying files/directories
 
 
 
+```
+- name: Deploy Docker stack
+  community.docker.docker_compose_v2:
+    project_name: my_project
+    project_src: /path/to/docker-compose.yml
+    state: present
+
+```
+
+
+Need to consider cleaning up volumes/images and a separate playbook to take down

@@ -100,8 +100,13 @@ service:
 
 Each method has benefits and drawbacks, but I like to make directories because it allows for a more simple [backup solution](/projects/storage-and-backup).
 
+#### NFS Volumes
+
 ### 📶 Networks
 
 Docker networks are virtual networks that allow containers to communicate with each other. Containers that are connected to the same network can communicate with each other using their IP addresses, even if they are running on different Docker hosts.
 
 This allows us to have multiple containers chained together. In the [WordPress example](https://github.com/JustinMountain/docker-compose/blob/main/Wordpress/docker-compose.yaml), we have a `docker-compose.yaml` file which contains three different containers: MySQL, phpmyadmin, and WordPress. By using docker networks, these three containers are effectively working together as an isolated set in their own network. Since our containers are kept on a separate network, there is no miscommunication between other copies of the same service. This makes it easier to build complex, distributed applications.
+
+### Dockerfile
+
