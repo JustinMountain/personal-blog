@@ -6,9 +6,10 @@ updated: '2024-07-15'
 repo: ''
 category: 'documentation'
 tags: 'linux, homelab, docker, media'
-excerpt: 'Occupying the grey zone.'
+excerpt:  "Servarr helps me and my family enjoy our Movie and TV content the way we want and without the internet. The container stack delivers us the appropriate subtitles for our content locally in our home network."
+excerpt2: "This container stack swims in grey waters."
 thumbnail: ''
-thumbalt: ''
+thumbalt: 'Sailing grey waters with the Servarr stack'
 ---
 
 ### Table of Contents
