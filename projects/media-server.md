@@ -2,13 +2,13 @@
 title: "You Wouldn't Download a Media Server?!"
 featured: 'no'
 published: '2023-08-13'
-updated: '2024-07-15'
-repo: ''
+updated: '2024-09-06'
+repo: 'https://github.com/JustinMountain/homelab/tree/main/docker/servarr'
 category: 'documentation'
 tags: 'linux, homelab, docker, media'
 excerpt:  "Servarr helps me and my family enjoy our Movie and TV content the way we want and without the internet. The container stack delivers us the appropriate subtitles for our content locally in our home network."
 excerpt2: "This container stack swims in grey waters."
-thumbnail: ''
+thumbnail: 'media-happy-equation.jpg'
 thumbalt: 'Sailing grey waters with the Servarr stack'
 ---
 
@@ -16,23 +16,26 @@ thumbalt: 'Sailing grey waters with the Servarr stack'
 
 ### 🛞 Who's Steering the Ship?
 
-After I self-hosted Nextcloud to [store my family's photos](/projects/storage-and-backup), I decided that I wanted to centralize media streaming in our home as well. We live in a bilingual house: English and Brazilian Portuguese. Brazilian Portuguese is rarely found on the streaming platforms and none of the DVDs that I own come with them. 
+After I self-hosted Nextcloud to [store my family's photos](/projects/storage-and-backup), I decided that I wanted to centralize media streaming in our home as well. We live in a bilingual house: English and Brazilian Portuguese. Brazilian Portuguese is rarely found on the streaming platforms and none of the DVDs that I own come with subtitles or dubbing in it. 
 
-I am in no way advocating for piracy. If we want to watch a movie that we own, there is no easy and reliable way to do so in the way that is best for our family. Open source to the rescue! 
+When my family wants to watch a movie that we own, there is no easy and reliable way to do so in the way that works best for our family. Open source to the rescue! 
+
+> This documentation does not condone piracy.
 
 The media server that I have setup here is the Servarr or *arr stack. Everything is open-source and it allows our family to watch our movies in the way that works best for us. 
 
-**Picture of Lord of the Rings DVDs**
+[![Lord of the Rings DVD box sets](media-lotr-extended.jpg "Extended edition is best edition")](media-lotr-extended.jpg)
+*Lord of the Rings DVD box sets.*
 
-This media server downloads media files and stores them in a centralized location. It generates meta-data for the media and downloads subtitles that suit the file. It then uses the Jellyfin app to broadcast and share the media locally on our home network. This enables our family to watch our media the way that works best for us. Again, I am in no way advocating for piracy [of any kind](/projects/blocking-ads-on-my-home-network).
+This media server downloads media files and stores them in a centralized location. It generates meta-data for the media and downloads subtitles that suit the file. Then, it uses the Jellyfin app to broadcast and share the media locally on our home network. This enables our family to watch our media the way that works best for us. Again, I am in no way advocating for piracy [of any kind](/projects/blocking-ads-on-my-home-network).
 
 The `compose.yml` file used for this server can be found on my [GitHub page](https://github.com/JustinMountain/homelab/tree/main/docker/servarr). 
 
 ### 🖇️ Network Mounting
 
-I've used a virtual machine to host this servarr stack and I will be using the NFS feature on BrontosaurNAS to hold the files. NFS mounts are made inside `compose.yml` and an explanation on creating NFS mounts with Docker can be found [here](/projects/running-docker-in-my-homelab).
+I've used a virtual machine to host this servarr stack and I will be using the NFS feature on BrontosaurNAS to hold the files. NFS mounts are made inside `compose.yml` and an explanation on creating NFS mounts with Docker can be found [here](/projects/running-docker-in-my-homelab#nfs-volumes).
 
-#### 🗒️ NFS Mount via fstab 
+#### 🗒️ NFS Mount via fstab (alternative)
 
 Prior to implementing NFS mounts directly in the `compose.yml` files, I mounted to the host system. I've decided to keep this information, but it is possibly outdated.
 
@@ -64,14 +67,14 @@ Once these steps have been completed, files can be copied from the virtual machi
 
 Gluetun is an [open-source](https://github.com/qdm12/gluetun) tunnel that is deployed as a docker container. It allows a docker stack to have a dedicated VPN connection. I currently use NordVPN and followed its published [Gluetun wiki entry](https://github.com/qdm12/gluetun-wiki/blob/main/setup/providers/nordvpn.md) for establishing a VPN connection. 
 
-The first thing we have to do is find our public IP address. To do this from the virtual machine: 
+The first thing I did was find my public IP address. To do this from the virtual machine: 
 
 ```
 # Output the current public IP address of the host machine
 curl -s https://ipinfo.io/ip
 ```
 
-With that information on hand, we can setup and launch this first container. Since all of the other containers depend on this one, isolating it and knowing that it's working as expected is paramount. Once the Gluetun container has spun up, we can check confirm that the stack is communicating with the Internet via the VPN:
+With that information on hand, I could setup and launch this first container. Since all of the other containers depend on this one, isolating it and knowing that it's working as expected is paramount. Once the Gluetun container has spun up, I confirmed that the stack is communicating with the Internet via the VPN:
 
 ```
 # Exec into the container
@@ -87,9 +90,9 @@ The rest of the `compose.yml` file is setup such that the other containers acces
 
 The rest of the stack can now be added to the `compose.yml` file. 
 
-#### Automate container restart to renew IP
+#### 🔄 Automating Container Restart to Renew IP
 
-With the complete stack up and running it's possible to [skip ahead to setup](/projects/media-server#complete-servarr-setup), but I have added a cronjob which restarts the stack every morning at 3:30 AM. I do this mostly to ensure that the VPN connection hasn't timed out and that the stack is always behind a fresh VPN connection. 
+With Gluetun up and running, it's possible to [skip ahead to setup the Servarr stack](/projects/media-server#complete-servarr-setup), but I have decided to add a cronjob which restarts the stack every morning at 3:30 AM. I do this mostly to ensure that the VPN connection hasn't timed out and that the stack is always behind a fresh VPN connection. 
 
 On the virtual machine hosting the stack, I created the following script called `restartStack.sh`:
 
@@ -144,19 +147,19 @@ crontab -e
 
 With the cronjob created the complete stack will be spun down and back up every 4 hours.
 
-### ✅ Complete Servarr Setup
+### ✅ Completing the Servarr Setup
 
-With confirmation that the VPN tunnel is working as expected, it's time to add the rest of the Servarr stack. 
+With confirmation that the VPN tunnel is working as expected, it was time to add the rest of the Servarr stack. 
 
 #### 🔽 qBittorrent
 
-First, we need to figure out the default admin password for the container. We can do this by using `sudo docker logs qbittorrent` and finding the line in the logs showing the default passwsord. 
+First, I needed to figure out the default admin password for the container. I did this this using `docker logs qbittorrent` and finding the line in the logs which output the default password. 
 
-To change the password, go to **Tools** > **Options** > **Web UI**. Under **Authentication**, we can change the default password.
+To change the password, I went to **Tools** > **Options** > **Web UI**. Under **Authentication**, I could change the default password.
 
-I like to change a few of the default settings as well, just to make things a little more supervised. Again under **Tools** > **Options** > **Downloads**, check "Do not start the download automatically" under **When adding a torrent**. The next line is "Torrent stop condition," where I like to choose "Files checked." This ensures that the final download of the torrent needs to be manually checked.
+I changed a few of the default settings as well, just to make things a little more supervised. Again under **Tools** > **Options** > **Downloads**, I checked "Do not start the download automatically" under **When adding a torrent**. The next line is "Torrent stop condition," where I chose "Files checked." This ensures that the final download of the torrent needs to be manually initiated.
 
-In the same **Tools** > **Options** > **Downloads** window, under **Saving Management**, I also ceck "Keep incomplete torrents in: /downloads/incomplete". This way it's easier to see at a glance from the NFS share location which files are left incomplete.
+In the same **Tools** > **Options** > **Downloads** window, under **Saving Management**, I also checked "Keep incomplete torrents in: /downloads/incomplete". This way it's easier to see at a glance from the NFS share location which files are left incomplete.
 
 Previously, I used Deluge instead of qBittorrent. This was because the WebUI for Deluge includes the IP it is using to access the Internet in the bottom-right corner. I've changed, however, because I was able to add the darkmode extension for qBittorrent and not for Deluge.
 
@@ -164,54 +167,58 @@ Previously, I used Deluge instead of qBittorrent. This was because the WebUI for
 
 Setting up the four content discovery applications is relatively straight forward:
 
-First, under **Settings** then **Media Management**, check "Rename Episodes" for Sonarr or "Movies," "Tracks," and "Books" for Radarr, Lidarr, and Readarr, respectively. I also like to check "Unmonitor Deleted Episodes" (or its corresponding choice), though there doesn't seem to be one for Lidarr.
+First, under **Settings** then **Media Management**, I checked "Rename Episodes" for Sonarr or "Movies," "Tracks," and "Books" for Radarr, Lidarr, and Readarr, respectively. I also checked "Unmonitor Deleted Episodes" (or its corresponding choice), though there doesn't seem to be one for Lidarr.
 
-To connect these apps with qBittorrent, we should go to **Settings** then **Download Clients**, and add qBittorrent and using the default values.
+To connect these apps with qBittorrent, I went to **Settings** then **Download Clients**, and added qBittorrent using the default values.
 
-Finally, we need to collect the various API keys that will allow us to centralize some of the management moving forward. Go to **Settings** > **General** > **Security** and scroll down to the API key and copy one for each of these applications, saving them in a note, since we'll need them in a couple of places later.
+Finally, I collected the various API keys that will allow me to centralize some of the management moving forward. Go to **Settings** > **General** > **Security** and scrolled down to the API key and copied it for each of these applications, since I would need them in a couple of places later.
 
 #### 🐯 Prowlarr
 
-Prowlarr allows us to organize the indexers that the rest of the stack will use to find the correct files. It is not necessary, but the small extra step here streamlines management of the other containers in the Servarr stack. 
+Prowlarr allows me to organize the indexers that the rest of the stack will use to find the correct files. It is not necessary, but the extra step here streamlines management of the other containers in the Servarr stack. 
 
-The first thing we have to do is setup authentication between Prowlarr and its sibling applications:
+The first thing I did was setup authentication between Prowlarr and its sibling applications:
 
-Under **Settings** then **Apps**, add each of the applications above one by one. The default values should be good enough, simply paste the API key and test the connection. 
+Under **Settings** then **Apps**, I added each of the applications above one by one. The default values were good enough along with pasting the API key and testing the connection. 
 
-Now we can add Indexers which are the sources for the torrents that will be downloaded and used. Go to **Indexers** and choose "Add Indexer" and then find one or more to add. Some require a workaround for CloudFlare DDoS protection, which is covered by FlareSolverr below.
+Next, I added Indexers (the torrent sources). I went to **Indexers** and chose "Add Indexer" and then found one or more to add. Some required a workaround for CloudFlare DDoS protection, which is covered by FlareSolverr below.
 
-With the Indexers setup, we can search and send downloads directly from Prowlarr by connecting it to qBittorrent by going to **Settings** then **Download Clients**, and adding qBittorrent using the default values. Through the APIs, however, all of the Indexers have been synced to each of the specialized applications and I believe they provide a better experience. The benefit here is that we add our Indexers all in one spot, rather than individually for each application. 
+With the Indexers setup, I could now search and send downloads directly from Prowlarr by connecting it to qBittorrent by going to **Settings** then **Download Clients**, and adding qBittorrent using the default values. Through the APIs, however, all of the Indexers have been synced to each of the specialized applications and I believe they provide a better experience. The benefit here is that I can add Indexers all in one spot, rather than individually inside each application. 
 
-##### FlareSolverr
+##### ☁️ FlareSolverr
 
-Some of the Indexers are behind CloudFlare DDoS protection, which prevents Prowlarr from accessing them. Luckily, FlareSolverr can get around this by creating an environment to forward requests through.
+Some of the Indexers are behind CloudFlare DDoS protection, which prevents Prowlarr from accessing them. Luckily, FlareSolverr gets around this by creating an environment to forward requests through.
 
-In Prowlarr, go to **Settings** then **Indexers** and under **Indexer Proxies**, add a new FlareSolverr proxy. Under the "Tags" option, add "FlareSolverr."
+In Prowlarr, I went to **Settings** then **Indexers** and under **Indexer Proxies**, added a new FlareSolverr proxy. Under the "Tags" option, I added "FlareSolverr."
 
-Now, when adding an Indexer, if there is a warning that the site uses CloudFlare DDoS protection, add the "FlareSolverr" tags in "Tags."
+Now, when adding an Indexer, if there is a warning that the site uses CloudFlare DDoS protection, I add the "FlareSolverr" tag in "Tags."
 
 #### 📜 Bazarr
 
-Now that we can search for our media, it's time to find our subtitles. Bazarr is another sibling piece of open-source software to do just that. It leverages the OpenSubtitles.com API to find missing subtitles for all of the files in our library. Since Bazarr was pointed to the media location for our files, it will scan those directories to find which files are missing subtitles.
+With searching for media setup, it was time to find subtitles. Luckily there's another sibling piece of open-source software to do just that: Bazarr. Bazarr leverages the OpenSubtitles.com API to find missing subtitles for all of the files in my library. Since Bazarr was pointed to the media location for our files, it scans those directories to find which files are missing subtitles.
 
-All of the following will be done under the **Settings** menu.
+> Since writing up this documentation, I bought an Apple TV and a subscription to the Infuse app. Infuse has built-in subtitle searching which is a much better user experience when the Bazarr-served subtitle doesn't sync with the file. This has mostly made Bazarr unneccessary.
 
-First, we need to add the languages to track in the **Languages** section. In the "Language Filter" field, choose which languages should be queried. In the "Languages Profiles" subsection, click "Add New Profile" and create one for each language you added in "Language Filter."
+All of the Bazarr setup was done under the **Settings** menu.
 
-In the **Providers** subsection, we want to Add 'OpenSubtitles.com' with proper credentials, and I have also added "Supersubtitles," "TVSubtitles" and "YIFY Subtitles."
+First, I needed to add the languages to track in the **Languages** section. In the "Language Filter" field, I chose which languages I wanted. In the "Languages Profiles" subsection, I clicked  "Add New Profile" and created one for each language I added in "Language Filter."
 
-Under the **Subtitles** section, I like to turn off the "Use Embedded Subtitles" option to force a download and I toggle "Common Fixes" on.  I have found these subtitles load more reliably than some of the embedded ones, so this ensures that we have subtitles available. 
+In the **Providers** subsection, I added 'OpenSubtitles.com' with my credentials, and I also added "Supersubtitles," "TVSubtitles" and "YIFY Subtitles."
 
-Finally, we need to connect to Sonarr and Radarr in a similar way that we did with Prowlarr above. In each of their respective sections, enable the service toggle and paste the API key from the appropriate service. I like to enable "Download Only Monitored" to not download unnecessary subtitles and then save in order to setup the Path Mapping. The Path Mapping should be `/tv/` for both Sonarr and Bazarr (or `/movies/` for Radarr and so on) if nothing changed in the `compose.yml` file. 
+Under the **Subtitles** section, I turned off the "Use Embedded Subtitles" option to force a download and I toggled "Common Fixes" on. I have found these subtitles load more reliably than some of the embedded ones, so this ensures that I have subtitles available. 
 
-Now the stack is complete and we can search for our media files and have subtitles found for them automatically. 
+Finally, I needed to connect to Sonarr and Radarr in a similar way that I did with Prowlarr above. In each of their respective sections, I enabled the service toggle and copied over the API key from the appropriate service. I enabled "Download Only Monitored" to not download unnecessary subtitles and then saved in order to setup the Path Mapping. The Path Mapping should be `/tv/` for both Sonarr and Bazarr (or `/movies/` for Radarr) if nothing changed in the `compose.yml` file. 
 
 ### 📺 Enjoying the Content
 
-At the moment, music and books are being ignored. I just have this setup for Movies and TV Shows through a [Jellyfin](https://github.com/JustinMountain/homelab/tree/main/docker/jellyfin) server. We then use an app canned "Infuse" on our Apple TV to stream the content. I have not setup the Music and Book equivalents and don't really have any plan too. Adding Lidarr and Readarr was simply done as an exercise in completeness.
+In order to playback the content, I have setup a [Jellyfin server](https://github.com/JustinMountain/homelab/tree/main/docker/jellyfin). The server is available in a browser client and it can also be accessed via third-party applications. My current third-party app of choice is [Infuse](https://firecore.com/infuse) on the Apple TV.
+
+Setting up the Jellyfin server is quite straight-forward and involves choosing a library type, name, and selecting the internal directories (`/data/tv` and `/data/movies`) in the `compose.yml` which were mapped to the NFS shares.
+
+I have not setup the Music and Book equivalents and don't really have any plan too. Adding Lidarr and Readarr was, at this point, done as an exercise in completeness.
 
 ### 🥏 Future 
 
-The next logical step is to complete the missing piece missing above and add servers for Music and Book content. This isn't a pressing need, however, as this type of content doesn't require the same multi-lingual synchronization that inspired the rest of the build. 
+The next step is to complete the missing piece missing above and add servers for Music and Book content. This isn't a pressing need, however, as this type of content doesn't require the same multi-lingual synchronization that inspired the rest of the build and there's just something special about picking up a book. 
 
-The server that I'm using to host this media stack has a DVD drive, so I would like a future project to be take further inspiration from [Jeff Geerling](https://www.youtube.com/watch?v=RZ8ijmy3qPo) and create a complete pipeline for backing up our DVDs. For now, we are relying on the community's help.
+I would also like to take further inspiration from [Jeff Geerling](https://www.youtube.com/watch?v=RZ8ijmy3qPo) and create a complete pipeline for backing up our DVDs using the DVD drive that is part of the server I am using to host this stack. For now, my family relies on the community's help.
