@@ -20,11 +20,13 @@ I use RBC, which only lets me retrieve a certain amount of file through their sy
 
 For Debit and Savings accounts, I used the filter funciton on the Account Summary page to select the range I wanted to import, loaded all of the entries for my range, copied them into Excel and created the appropriate columns.
 
-Moving forward I will go to **My Accounts** > **Account Services** menu > **Download transactions**. I can choose `.ofx` or `.qfx` filetypes, though since CIBC exports to `.qfx` I will likely use that one for consistency.
+Moving forward I will go to **Products & Services** > **Account Services** menu > **Download transactions**. CIBC exports to `.qfx` for *Quicken*, so I will be downloading in that filetype for consistency between the accounts.
 
-CIBC Import didn't include two transactions. Data was taken on 2024/07/20, items actually purchased on the 19th, and posted on 22. I need to double check that these items actually get withdrawn next time I pull from CIBC.
+To Download CIBC transactions, go to **More** on the left side menu, select **Download Transactions**
 
-Go to **More** on the left side, select **Download Transactions**
+
+Sometimes there is a delay between a purchase being made and it showing up in the account. Any transactions falling in this category will be remedied in the subsequent download, even if the date the transaction was posted has already passed.
+
 
 ### Next
 
