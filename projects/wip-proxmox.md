@@ -16,74 +16,46 @@ thumbalt: ''
 
 ### Steps to Setup a VM
 
-1. Setup
+
+#### Init new VM in Proxmox GUI
+
+> Make sure to note the DHCP-given IP address
+
 - Turn off "Set up this disk as an LVM group"
 - Setup extra drives if necessary/mounted in proxmox when prompted
   - Confirm drive mounts via `lsblk -f` and `sudo fdisk -l`
 - Install OpenSSH server    
 - sudo apt update && sudo apt upgrade -y
 
-Optional Mount extra disks
-- `lsblk` to confirm extra drive
-- `fdisk` > `d` to delete all partitions > primary partition > partition number > first sector > last sector `w` to save
-- `lsblk` to cofirm creation and size
-- `mkfs -t ext4 /dev/sdb1` to format
-- `mkdir /faststorage` to make a folder to mount to the new partition
-- `mount /dev/sdb1 /faststorage` to mount
-- `lsblk` to confirm
+#### Setup with Ansible
 
-2. Install QEMU Agent
-- sudo apt-get install qemu-guest-agent -y
-- shutdown, enable qemu agent in options, reboot
-- then `systemctl status qemu-guest-agent` to check its active
+1. Under `ansible/inventory/hosts` place the DHCP IP address under `server_setup_proxmox`
+2. In `ansible/playbooks/init/group_vars/server_setup_promox.yml`, update the desired IP and user info from the setup process.
+3. ssh to server at its DHCP address or otherwise add host's fingerprint to your known_hosts file
+4. Run `ansible-playbook -i ./ansible/inventory/hosts ./ansible/playbooks/init/server-setup-proxmox-ubuntu2404.yml --ask-vault-pass`
 
-3. Make static IP
-- `ip addr`: find the network adapter we are using
-- `sudo nano /etc/netplan/0` <... tab to autocomplete into the file>
-- enter into the yaml file in the directory
+#### SSH Connection with VSCode
+
+I had to copy the SSH key from WSL `\\wsl.localhost\Ubuntu\home\wsl\.ssh` to my Windows user at `C:\Users\Justin\.ssh`, then run `ssh-add admin` from `C:\Users\Justin\.ssh` in the terminal.
+
+Once I did this, I could add the following to my ssh `config` file:
 
 ```
-network:
-  version: 2
-  renderer: networkd
-  ethernets:
-    ens18: # network adapter
-      dhcp4: no
-      addresses: [192.168.1.245/24] # Static IP Don't forget to change this! 
-      routes:
-        - to: default
-          via: 192.168.1.1 # default gateway 
-      nameservers:
-          addresses: [1.1.1.1,8.8.8.8] # dns resolution
+Host server-name
+  HostName 192.168.1.245
+  User justin
+  IdentityFile /mnt/c/Users/Justin/.ssh/admin
 ```
 
-- reboot
-
-4. Install Docker
-
-https://docs.docker.com/engine/install/ubuntu/
-
-5. Install Syncthing for data backup
-
-
-
----
-
-1. Setup Uptime Kuma and connect to Discord
-2. Setup PiHole
-3. Setup Unbound
-4. Learn LXC Containers for PiHole OR the other one?
-
+And finally, I can connect to the remote server over SSH in VS Code.
 
 ### Automation
 
-Figure out a way to automate (ansible?) the maintenence of VMs:
+Figure out a way to automate the maintenence of VMs:
 
 1. Deleting unused docker images
 2. update/upgrade
 3. Output logs for drive capacity
-
-
 
 ### Running a Node Development Server in Proxmox
 
@@ -123,15 +95,4 @@ Start the server for production:
 npm run start
 ```
 
-#### Notes
-
-I need a way to automate (containerize?) the app.
-
-Currently it needs to install all of the above steps, as well a few dependencies before it will work.
-- At the time of writign: gray-matter, tailwindcss, autoprefixer, @tailwindcss/typography, unified, remark-parse, 
-
-I want to be able to push an update and have a new instance be generated under an ASG which then tears down the old instance.
-
-Maybe this is done with containers, maybe it's done by spinning up an instance: requires investigation.
-
-
+### Notes
