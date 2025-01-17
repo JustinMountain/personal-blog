@@ -16,6 +16,9 @@ thumbnail-alt: ''
 
 ### Intro
 
+[![Vizualization of the minimal Azure configuration](azure-example-min.jpg "Minimal Azure Configuration")](azure-example-min.jpg)
+*Vizualization of the minimal Azure configuration.*
+
 
 
 ### Next
