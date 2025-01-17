@@ -236,3 +236,43 @@ npm run build
 # Start the server for production
 npm run start
 ```
+
+
+### Copied Notes (Running a Node Development Server in Proxmox)
+
+#### Steps
+
+1. Install VM A La Proxmox tutorial
+2. Install Node (https://snapcraft.io/install/node/ubuntu)
+3. Install Next.js (https://nextjs.org/docs/getting-started/installation)
+4. Install Git (https://git-scm.com/download/linux)
+5. Setup Git username (https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-personal-account-on-github/managing-email-preferences/setting-your-commit-email-address) and email (https://docs.github.com/en/get-started/getting-started-with-git/setting-your-username-in-git)
+6. Install GitHub CLI Tool (https://github.com/cli/cli/blob/trunk/docs/install_linux.md)
+7. Cache credentials (https://docs.github.com/en/get-started/getting-started-with-git/caching-your-github-credentials-in-git)
+
+
+I may need to redo `gh auth login` step and generate a new token. I set the current one to expire in 7 days
+
+8. git clone <repo>
+
+9. Add server to Putty? 
+
+9. Install Code Server via docker
+
+#### Commands
+
+Run the server on localhost for development:
+```
+npm run dev
+```
+
+Build the project for production:
+```
+npm run build
+```
+
+Start the server for production:
+```
+npm run start
+```
+

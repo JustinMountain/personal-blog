@@ -14,15 +14,47 @@ thumbalt: ''
 
 ### Table of Contents
 
-# Proxmox Setup
+### Intro
 
-## Boot
+StegosaurNAS
+LXC Candidates
+1. 101 PiHole (After old NAS is decomm'd)
+
+1. 112 TrueNAS
+1. 113 Proxmox Backup Server?
+
+Tyrannoserver
+LXC Candidates
+1. 100 PiHole
+1. 102 Unbound
+1. 103 Wireguard
+1. 105 Jellyfin
+
+1. 111 TrueNAS (SATA)
+
+1. 121 Dev
+1. 122 Sandbox
+
+1. 131 Servarr
+1. 132 Services
+
+1. 141 Windows (GPU, Bluetooth Card)
+1. 142 Linux (GPU, Bluetooth Card)
+
+
+
+
+
+### Proxmox Setup
+
+BIOS Settings (see photo)
+
+#### On Boot
 
 I used two 250gb drives in a zfs RAID1 mirror
 
-## Post Installation
 
-BIOS Settings
+#### Post Installation
 
 Run the `Proxmox VE Post Install` and `Proxmox VE CPU Scaling Governor` scripts from `https://community-scripts.github.io/ProxmoxVE/scripts`.
 
@@ -30,9 +62,10 @@ NVMe Pool:
 1. Mirror
 1. Compression `lz4`
 
-## Enabling PCIe Passthrough
 
-### Update the GRUB Bootloader
+### Enabling PCIe Passthrough
+
+#### Update the GRUB Bootloader
 
 `nano /etc/default/grub`
 
@@ -45,7 +78,7 @@ to `GRUB_CMDLINE_LINUX_DEFAULT="quiet intel_iommu=on iommu=pt"`
 
 Validate with `dmesg | grep -e DMAR -e IOMMU`
 
-### Update Kernel Modeules
+#### Update Kernel Modeules
 
 `nano /etc/modules`
 
@@ -60,9 +93,31 @@ vfio_virqfd
 
 `reboot`
 
-Validate with `dmesg | grep -i vfio`
+Validate with `dmesg | grep -e DMAR -e IOMMU -e AMD-Vi` and look for "Remapping enabled"
 
-## TrueNAS VM
+
+### Connecting an NFS Share
+
+First, enable permissions in NAS software for the IP to access the share.
+
+```
+# Create the mount point
+sudo apt-get install nfs-common
+sudo mkdir /mnt/nfsshare
+
+# Test the mount
+sudo mount -t nfs -o rw,nfsvers=4 server_ip:/shared/directory /mnt/nfsshare
+
+# Make permanent via fstab
+server_ip:/shared/directory /mnt/nfsshare nfs rw,nfsvers=4 0 0
+```
+
+### Connecting an SMB Share
+
+
+
+
+### TrueNAS VM
 
 Download the TrueNAS Scale ISO from `https://www.truenas.com/download-truenas-scale/`
 
@@ -107,7 +162,10 @@ install TrueNAS
 
 Add > PCI Device > Raw Device > Choose the SATA Controller, Check `PCI-Express`
 
-### Set Static IP
+Now availabel at `192.168.1.xxx` as seen in the console 
+
+
+#### Set Static IP
 
 Go to the Network tab
 
@@ -120,7 +178,7 @@ Add gateway when prompted
 Reboot the VM, and it should now be accessible at the new IP (Can confirm via console, or the WebUI)
 
 
-### Create an SMB Share
+#### Create an SMB Share
 
 1. Create a Pool
 `Storage > Create Pool`
@@ -153,12 +211,12 @@ Select `Save Access Control List`
 
 
 
-## Windows VM
+### Windows VM
 
 Downlaod the Windows ISO from `https://www.microsoft.com/en-us/software-download/windows11`
 Download the latest Windows VirtIO Drivers from `https://pve.proxmox.com/wiki/Windows_VirtIO_Drivers#Using_the_ISO`
 
-### Disabling GPU Drivers from Host
+#### Disabling GPU Drivers from Host
 
 `lspci -nn` on host shell to find device id (looks like `01:00.0`) and device hex code (looks like `1a2b:3c4d`)
 
@@ -182,7 +240,7 @@ update-initramfs -u -k all
 reboot
 ```
 
-### Creating the VM
+#### Creating the VM
 
 OS:
 Guest OS: Microsoft Windows
@@ -214,7 +272,7 @@ Then go to the Windows VM in Proxmox and again go to Hardware > Add > USB Device
 Select `Use USB Vendor/Device ID` and choose the Device ID found above to pass through the Bluetooth controller.
 
 
-### Setting Up Windows
+#### Setting Up Windows
 
 I don't have a product key
 
@@ -242,6 +300,8 @@ In the command prompt type `oobe\bypassnro`
 
 Once the install is complete, open VirtIO ISO and scroll down to `virtio-win-gt-x64` to instsll the rest of the drivers.
 
+Turn on the network device in Hardware tab
+
 Activated Windows via `https://github.com/massgravel/Microsoft-Activation-Scripts`
 
 Turn on Remote Desktop
@@ -256,14 +316,63 @@ Find and install Bluetooth drivers for the card, if it didn't happen automatical
 Download:
 1. Firefox
 1. 7zip
-1. Winaero Tweaker
+1. paint.net
+1. vlc
+
 
 Manually set IP address and dns info
 
 I disabled `Hardware > Display` so Sunshine would work properly
 
+### Jellyfin LXC
 
-## Development VM (Ubuntu)
+Create a priv LXC
+Under options turn on SMB (or NFS)
+`apt update && apt upgrade -y`
+From (https://jellyfin.org/docs/general/installation/linux) use `wget -O- https://repo.jellyfin.org/install-debuntu.sh | bash`
+
+LXC on Proxmox: https://jellyfin.org/docs/general/administration/hardware-acceleration/intel#lxc-on-proxmox
+I didn't do passthrough
+
+
+Mount SMB Shares:
+
+```
+sudo apt install cifs-utils
+
+sudo mkdir -p /mnt/truenas/entertainment
+
+sudo mount -t cifs //192.168.1.111/entertainment /mnt/truenas/entertainment -o username=jellyfin,password=password
+
+
+# Add to fstab
+//192.168.1.111/entertainment /mnt/truenas/entertainment cifs username=jellyfin,password=password 0 0
+
+```
+
+
+### Development VM (Ubuntu)
+
+### Old Notes (Steps to Setup a VM)
+
+#### Init new VM in Proxmox GUI
+
+> Make sure to note the DHCP-given IP address
+
+- Turn off "Set up this disk as an LVM group"
+- Setup extra drives if necessary/mounted in proxmox when prompted
+  - Confirm drive mounts via `lsblk -f` and `sudo fdisk -l`
+- Install OpenSSH server    
+- sudo apt update && sudo apt upgrade -y
+
+#### Setup with Ansible
+
+1. Under `ansible/inventory/hosts` place the DHCP IP address under `server_setup_proxmox`
+2. In `ansible/playbooks/init/group_vars/server_setup_promox.yml`, update the desired IP and user info from the setup process.
+3. ssh to server at its DHCP address or otherwise add host's fingerprint to your known_hosts file
+4. Run `ansible-playbook -i ./ansible/inventory/hosts ./ansible/playbooks/init/server-setup-proxmox-ubuntu2404.yml --ask-vault-pass`
+
+### New Notes
 
 Download the Ubuntu Server ISO from `https://ubuntu.com/download/server`
 
@@ -305,123 +414,17 @@ This installs Docker and moves the SSH keys
 
 Now I can SSH from the proxmox-win11 machine with `ssh -i 'C:\Users\Justin/.ssh/proxmox-win11' justin@192.168.1.121`
 
---- Uo to here is `ansible-init` snapshot
 
 
-The use Ansible to Install:
-1. Terraform
-1. Code Server
-
-
-1. Create TrueNAS Share
-1. Mount TrueNAS to VM to start transferring files
-1. Setup Servarr stack in new VM
-1. Setup Services stack in new VM
-
-1. Multiple docker networks and traefik - Jim's Garage has a video somewhere
-
-
-
-
-### Connecting an NFS Share
-
-First, enable permissions in NAS software for the IP to access the share.
-
-```
-# Create the mount point
-sudo apt-get install nfs-common
-sudo mkdir /mnt/nfsshare
-
-# Test the mount
-sudo mount -t nfs -o rw,nfsvers=4 server_ip:/shared/directory /mnt/nfsshare
-
-# Make permanent via fstab
-server_ip:/shared/directory /mnt/nfsshare nfs rw,nfsvers=4 0 0
-```
-
-
-
-## Sandbox VM
-
-For deployment testing
-
-## Servarr
-
-## Services
-
-## Bonus Gaming on Linux
-
-Download the Ubuntu Desktop ISO from `https://ubuntu.com/download/desktop`
-
-## Sources
-
-Jim's Garage 2 gpus
-Craft Computing Proxmox 8.0 - PCIe Passthrough
-Virtualize Windows 11 with Proxmox the Right Way!
-Proxmox GPU Passthrough: The Ultimate Guide for Windows VMs! - Barmine Tech
-
-
-StegosaurNAS
-LXC Candidates
-1. 101 PiHole (After old NAS is decomm'd)
-
-1. 112 TrueNAS
-1. 113 Proxmox Backup Server?
-
-Tyrannoserver
-LXC Candidates
-1. 100 PiHole
-1. 102 Unbound
-1. 103 Wireguard
-1. 105 Jellyfin
-
-1. 111 TrueNAS (SATA)
-
-1. 121 Dev
-1. 122 Sandbox
-
-1. 131 Servarr
-1. 132 Services (iGPU)
-
-1. 141 Windows (GPU, Bluetooth Card)
-1. 142 Linux (GPU, Bluetooth Card)
-
-
-
-
-
-### Notes
+#### automating ssh keys added to the agent
 
 `eval "$(ssh-agent -s)"`
 `ssh-add ~/.ssh/private_key`
 
 
-
-
-
-## Old
-
-### Steps to Setup a VM
-
-
-#### Init new VM in Proxmox GUI
-
-> Make sure to note the DHCP-given IP address
-
-- Turn off "Set up this disk as an LVM group"
-- Setup extra drives if necessary/mounted in proxmox when prompted
-  - Confirm drive mounts via `lsblk -f` and `sudo fdisk -l`
-- Install OpenSSH server    
-- sudo apt update && sudo apt upgrade -y
-
-#### Setup with Ansible
-
-1. Under `ansible/inventory/hosts` place the DHCP IP address under `server_setup_proxmox`
-2. In `ansible/playbooks/init/group_vars/server_setup_promox.yml`, update the desired IP and user info from the setup process.
-3. ssh to server at its DHCP address or otherwise add host's fingerprint to your known_hosts file
-4. Run `ansible-playbook -i ./ansible/inventory/hosts ./ansible/playbooks/init/server-setup-proxmox-ubuntu2404.yml --ask-vault-pass`
-
 #### SSH Connection with VSCode
+
+If a device has native VS Code support, it's possible to use this method instead to remote into `devbuntu`:
 
 I had to copy the SSH key from WSL `\\wsl.localhost\Ubuntu\home\wsl\.ssh` to my Windows user at `C:\Users\Justin\.ssh`, then run `ssh-add admin` from `C:\Users\Justin\.ssh` in the terminal.
 
@@ -436,74 +439,102 @@ Host server-name
 
 And finally, I can connect to the remote server over SSH in VS Code.
 
-### Automation
-
-Figure out a way to automate the maintenence of VMs:
-
-1. Deleting unused docker images
-2. update/upgrade
-3. Output logs for drive capacity
-
-### Running a Node Development Server in Proxmox
-
-#### Steps
-
-1. Install VM A La Proxmox tutorial
-2. Install Node (https://snapcraft.io/install/node/ubuntu)
-3. Install Next.js (https://nextjs.org/docs/getting-started/installation)
-4. Install Git (https://git-scm.com/download/linux)
-5. Setup Git username (https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-personal-account-on-github/managing-email-preferences/setting-your-commit-email-address) and email (https://docs.github.com/en/get-started/getting-started-with-git/setting-your-username-in-git)
-6. Install GitHub CLI Tool (https://github.com/cli/cli/blob/trunk/docs/install_linux.md)
-7. Cache credentials (https://docs.github.com/en/get-started/getting-started-with-git/caching-your-github-credentials-in-git)
 
 
-I may need to redo `gh auth login` step and generate a new token. I set the current one to expire in 7 days
 
-8. git clone <repo>
+### Bonus Gaming on Linux
 
-9. Add server to Putty? 
+Download the Ubuntu Desktop ISO from `https://ubuntu.com/download/desktop`
 
-9. Install Code Server via docker
+###  Sources
 
-#### Commands
+Jim's Garage 2 gpus
+Craft Computing Proxmox 8.0 - PCIe Passthrough
+Virtualize Windows 11 with Proxmox the Right Way!
+Proxmox GPU Passthrough: The Ultimate Guide for Windows VMs! - Barmine Tech
 
-Run the server on localhost for development:
-```
-npm run dev
-```
 
-Build the project for production:
-```
-npm run build
-```
-
-Start the server for production:
-```
-npm run start
-```
 
 ### Notes
 
-#### Jellyfin LXC
+#### NVMe issues
 
-Create a priv LXC
-Under options turn on SMB (or NFS)
-`apt update && apt upgrade -y`
-From (https://jellyfin.org/docs/general/installation/linux) use `wget -O- https://repo.jellyfin.org/install-debuntu.sh | bash`
+`lspci -nn` to find the device id (`xx:xx.x` numneric) and vendor id (`xxxx:xxxx` in hex) at the beginning and end of the appropriate line, respectively.
 
-LXC on Proxmox: https://jellyfin.org/docs/general/administration/hardware-acceleration/intel#lxc-on-proxmox
-I didn't do passthrough
+`ls -l /sys/bus/pci/devices/` to find the right path for the appropriate devices (like `../../../devices/pci0000:00/0000:00:06.0/0000:02:00.0` with the device id above at the end)
 
+`/sys/devices/pci0000\:00/` to find the right sub-directories using the path found above.
 
-Mount SMB Shares:
+I found the following:
+```
+# NVMe Device @ 02:00.0
+/sys/devices/pci0000:00/0000:00:06.0/0000:02:00.0
+
+# NVMe Device @ 03:00.0
+/sys/devices/pci0000:00/0000:00:1a.0/0000:03:00.0
+
+# Confirm that they match the vendor id above, should match first four hex
+cat /sys/devices/pci0000:00/0000:00:06.0/0000:02:00.0/vendor
+cat /sys/devices/pci0000:00/0000:00:1a.0/0000:03:00.0/vendor
+
+# Confirm d3cold_allowed is "1"
+cat /sys/devices/pci0000:00/0000:00:06.0/0000:02:00.0/d3cold_allowed
+cat /sys/devices/pci0000:00/0000:00:1a.0/0000:03:00.0/d3cold_allowed
+```
+
+Get inspired by the script at (https://bbs.archlinux.org/viewtopic.php?pid=2206758#p2206758)
 
 ```
-mkdir -p /mnt/truenas/entertainment
-sudo mount -t cifs //192.168.1.111/entertainment /mnt/truenas/entertainment -o username=jellyfin,password=password 0 0
-password
-# Add to fstab
-//192.168.1.111/entertainment /mnt/truenas/entertainment cifs username=jellyfin,password=password 0 0
+#!/bin/bash
+#  
+# Adopted from nbanba
+# Found at https://bbs.archlinux.org/viewtopic.php?pid=2206758#p2206758
+# Problem: NVME drive goes to d3cold and never go back to d0
+# Solution: Disallow d3cold power state on the drives
+#
+
+echo "------------------------------------------------------"
+echo "DISABLE D3COLD ON NVME"
+echo "------------------------------------------------------"
+echo " "
+
+# Set paths for nvme devices
+_BUS_ROOT='/sys/devices/pci0000:00/'
+_NVME0_PORT='0000:00:06.0/0000:02:00.0'
+_NVME1_PORT='0000:00:1a.0/0000:03:00.0'
+
+echo "DISABLING D3COLD ON NVME:"
+
+# First nvme
+echo 0 >"$_BUS_ROOT/$_NVME0_PORT/d3cold_allowed"
+echo "$_BUS_ROOT/$_NVME0_PORT/d3cold_allowed:"
+cat $_BUS_ROOT/$_NVME0_PORT/d3cold_allowed
+
+# Second nvme
+echo 0 >"$_BUS_ROOT/$_NVME1_PORT/d3cold_allowed"
+echo "$_BUS_ROOT/$_NVME1_PORT/d3cold_allowed:"
+cat $_BUS_ROOT/$_NVME1_PORT/d3cold_allowed
+
+echo -e "\n---------------------------------------------"
+echo "SUCESSFULLY DISABLED D3COLD ON NVME U2"
+echo "---------------------------------------------"
+```
+
+Save the script to `/etc/nvme_disable_d3cold.sh`
+
+`chmod +x /etc/nvme_disable_d3cold.sh`
+
+Test with: `/etc/nvme_disable_d3cold.sh`
+
+Create a cron to run the script:
 
 ```
+# crontab -e
+@reboot (sleep 15; /etc/nvme_disable_d3cold.sh | logger -p daemon.info -t NVME_PM)
+```
+
+`systemctl restart cron`
+
+`systemctl status cron`
 
 

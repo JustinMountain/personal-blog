@@ -129,6 +129,22 @@ volumes:
 
 The options are fairly straight-forward, but a better explanation can be found in the [Docker documentation](https://docs.docker.com/storage/volumes/).
 
+#### SMB Volumes
+
+Like NFS volumes, we can also mount SMB shares as volumes within `compose.yml`:
+
+```
+volumes:
+  smb-downloads:
+    driver: local
+    driver_opts:
+      type: cifs
+      o: username=${SMB_USERNAME},password=${SMB_PASSWORD},rw
+      device: "//${SMB_SHARE_IP}/entertainment/downloads"
+```
+
+The only important point here is to make sure that we run `sudo apt-get install cifs-utils` before attempting to mount in this to ensure the dependencies are installed on the host.
+
 ### 🛳️ Ports 
 
 Port mapping is one of the most fundamental things to understand in Docker. Whatever service the container is running will be using a port, `3000` for Node.js or `80` for web servers, for example. Port mapping is essentially allowing the host computer to pass one of its ports to the docker container so that the service can be accessed from the host computer's IP.  
