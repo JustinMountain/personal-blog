@@ -209,6 +209,8 @@ Under the **Subtitles** section, I turned off the "Use Embedded Subtitles" optio
 
 Finally, I needed to connect to Sonarr and Radarr in a similar way that I did with Prowlarr above. In each of their respective sections, I enabled the service toggle and copied over the API key from the appropriate service. I enabled "Download Only Monitored" to not download unnecessary subtitles and then saved in order to setup the Path Mapping. The Path Mapping should be `/tv/` for both Sonarr and Bazarr (or `/movies/` for Radarr) if nothing changed in the `compose.yml` file. 
 
+> I found a great resource to [setup Bazarr](https://www.youtube.com/watch?v=8vZ95HOdT-I)!
+
 ### 📺 Enjoying the Content
 
 In order to playback the content, I have setup a [Jellyfin server](https://github.com/JustinMountain/homelab/tree/main/docker/jellyfin). The server is available in a browser client and it can also be accessed via third-party applications. My current third-party app of choice is [Infuse](https://firecore.com/infuse) on the Apple TV.

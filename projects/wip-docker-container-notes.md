@@ -1,12 +1,12 @@
 ---
-title: ''
+title: 'Docker Container Notes'
 featured: 'no'
-published: 'no'
-updated: ''
+published: '2025-01-15'
+updated: '2025-02-05'
 repo: ''
-category: ''
-tags: ''
-excerpt: ''
+category: 'documentation'
+tags: 'docker, homelab, selfhosting'
+excerpt: 'This is where I keep notes about specific docker containers that do not (yet) require/deserve their own page.'
 excerpt2: ''
 thumbnail: ''
 thumbnail-alt: ''
@@ -14,13 +14,11 @@ thumbnail-alt: ''
 
 ### Table of Contents
 
-### Purpose
+1. `thumbnail` size is `1234x1234`
 
-This is a place to keep notes abotu specific docker containers that do not (yet) require/deserve their own page.
+### 💸 Actual Budget
 
-### Actual Budget
-
-I use RBC, which only lets me retrieve a certain amount of file through their system. I found a [script on GitHub](https://github.com/mindcruzer/rbc-statement-to-csv) which takes e-Statements from RBC credit cards and converts them into one large `.csv` file which I could import into Actual.
+RBC only let me retrieve a certain amount of files through their system. I found a [script on GitHub](https://github.com/mindcruzer/rbc-statement-to-csv) which takes e-Statements from RBC credit cards and converts them into one large `.csv` file which I could import into Actual.
 
 For Debit and Savings accounts, I used the filter funciton on the Account Summary page to select the range I wanted to import, loaded all of the entries for my range, copied them into Excel and created the appropriate columns.
 
@@ -28,17 +26,12 @@ Moving forward I will go to **Products & Services** > **Account Services** menu 
 
 To Download CIBC transactions, go to **More** on the left side menu, select **Download Transactions**
 
+> *Confirmed*: Sometimes there is a delay between a purchase being made and it showing up in the account. Any transactions falling in this category will be remedied in the subsequent download, even if the date the transaction was posted has already passed.
 
-Sometimes there is a delay between a purchase being made and it showing up in the account. Any transactions falling in this category will be remedied in the subsequent download, even if the date the transaction was posted has already passed.
+### 🏠 Homepage
 
+Using the FQDN doesn't work well with widgets/siteMonitor, for some reason. I the `.env.example` file has spots for both IP and FQDN for this reason.
 
-### Homepage
-
-FQDN don't work well with widgets/siteMonitor, use IP instead.
-
-### Code Server
+### ⌨️ Code Server
 
 Can't use the `terminal` to issue CLI commands, as it exists within the docker container 
-
-
-

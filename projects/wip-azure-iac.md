@@ -19,6 +19,65 @@ thumbnail-alt: ''
 [![Vizualization of the minimal Azure configuration](azure-example-min.jpg "Minimal Azure Configuration")](azure-example-min.jpg)
 *Vizualization of the minimal Azure configuration.*
 
+This documentation pairs with `v1-monorepo` and `v2-modules` examples in the `azure-iac-examples` in order to outline the basics of Terraform. 
+
+### Setting Up the Local Environment
+
+0. [Install Terraform](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli)
+1. Ensure there is an active subscription on Azure
+2. Install [Azure CLI](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-linux?pivots=apt) [in WSL](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs)
+3. `az login`, login via the link, choose the subscription/tenant, `az account show` to output the active subscription
+
+#### v1 Monorepo
+
+The Terraform component of this project is contained within two files in the `/terraform` directory: `main.tf` and `variables.tf`. Together, these two files represent the declarations for the minimum requirements to spin up a virtual machine in Azure. 
+
+`main.tf` can more or less be read from top to bottom to see how Terraform will initialize the different components, with subsequent blocks being dependent on the blocks above and referencing `variables.tf` as necessary. 
+
+Running `terraform init` and `terraform plan` while inside the `/terraform` directory, after successfully logging into azure, should output the list of actions that terraform will perform on Azure to create the VM as described by the Terraform code. 
+
+##### Probably need to do
+
+1. Remove Ansible/Docker components so this example focuses on TF
+1. Maybe I just embrace the monorepo of it all, leaving it mostly as is
+
+#### v2 Modules
+
+I need to create this module based file from v1. It needs to do the following:
+
+1. Modularize the different components into separate directories
+1. Continue to have the same output at the end of running `terraform plan`
+1. Removing Ansible/Docker from this repo allows me to focus here on just the Infrastructure part
+
+##### Probably need to do
+
+1. Remove Ansible/Docker components so this example focuses modules
+
+#### Other Examples
+
+1. Make manual `terraform apply` and `terraform destroy` actions to spin these up in the cloud.
+  1. This will mean putting state in Azure
+
+
+
+1. Running Ansible off Terraform changes
+
+#### Other Documentation: CI/CD
+
+1. Show a proper separation of tools: Terraform, Ansible, CI/CD each with its own repo
+
+
+#### Summary
+
+Doing the above would leave me with: 
+
+1. Monorepo with Terraform, Ansible, GH Actions CI/CD to deploy nginx to Azure
+1. Terraform-only version of the above broken down into constituent modules
+  1. This would represent the end of this documentation article
+1. Another documentation article focusing on CI/CD and how to make the tools work together in separate repos
+
+
+
 
 
 ### Next
@@ -99,13 +158,6 @@ terraform apply -var-file="variables.tfvars"
 
 ```
 
-### Notes
-
-0. [Install Terraform](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli)
-1. Ensure there is an active subscription on Azure
-2. Install [Azure CLI](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-linux?pivots=apt) [in WSL](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs)
-3. `az login`, login via the link, choose the subscription/tenant, `az account show` to output the active subscription
-4. 
 
 
 ### Connecting with Ansible

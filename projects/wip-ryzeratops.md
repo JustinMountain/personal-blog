@@ -1,246 +1,43 @@
 ---
-title: 'Proxmox'
+title: 'Ryzeratops'
 featured: 'no'
 published: 'no'
 updated: ''
 repo: ''
 category: 'documentation'
 tags: 'linux, homelab, data management'
-excerpt: 'Ensuring a proper backup strategy is an important part of a digital life.'
-excerpt2: ''
+excerpt: 'Proxmox Virtual Environment is my hypervisor of choice, allowing me to virtualize workloads in my homelab.'
+excerpt2: 'This documentation outlines how I setup Proxmox on my new dedicated server, StegosaurNAS.'
 thumbnail: ''
 thumbalt: ''
 ---
 
 ### Table of Contents
 
-### Intro
+### Plan
 
-StegosaurNAS
-LXC Candidates
-1. 101 PiHole (After old NAS is decomm'd)
+TrueNAS VM with 2 3tb drives for backup location
+1. Is it possible to pass the drives to TrueNAS?
+1. This becomes a backup target for other TrueNAS (rsync?)
 
-1. 112 TrueNAS
-1. 113 Proxmox Backup Server?
+Heavy Services VM
+1. GPU Passthrough for AI learning
+1. GitLab
+1. Immich Machine Learning
+1. Code Server (I need to build an image that contains Ansible and Terraform)
 
-Tyrannoserver
-LXC Candidates
-1. 100 PiHole
-1. 102 Unbound
-1. 103 Wireguard
-1. 105 Jellyfin
+Gaming VM
+1. Windows?
+1. Linux?
 
-1. 111 TrueNAS (SATA)
 
-1. 121 Dev
-1. 122 Sandbox
 
-1. 131 Servarr
-1. 132 Services
-
-1. 141 Windows (GPU, Bluetooth Card)
-1. 142 Linux (GPU, Bluetooth Card)
-
-
-
-
-
-### Proxmox Setup
-
-BIOS Settings (see photo)
-
-#### On Boot
-
-I used two 250gb drives in a zfs RAID1 mirror
-
-
-#### Post Installation
-
-Run the `Proxmox VE Post Install` and `Proxmox VE CPU Scaling Governor` scripts from `https://community-scripts.github.io/ProxmoxVE/scripts`.
-
-NVMe Pool:
-1. Mirror
-1. Compression `lz4`
-
-
-### Enabling PCIe Passthrough
-
-#### Update the GRUB Bootloader
-
-`nano /etc/default/grub`
-
-Change `GRUB_CMDLINE_LINUX_DEFAULT="quiet"`
-to `GRUB_CMDLINE_LINUX_DEFAULT="quiet intel_iommu=on iommu=pt"`
-
-`update-grub`
-
-`reboot`
-
-Validate with `dmesg | grep -e DMAR -e IOMMU`
-
-#### Update Kernel Modeules
-
-`nano /etc/modules`
-
-```
-vfio
-vfio_iommu_type1
-vfio_pci
-vfio_virqfd
-```
-
-`update-initramfs -u -k all`
-
-`reboot`
-
-Validate with `dmesg | grep -e DMAR -e IOMMU -e AMD-Vi` and look for "Remapping enabled"
-
-
-### Connecting an NFS Share
-
-First, enable permissions in NAS software for the IP to access the share.
-
-```
-# Create the mount point
-sudo apt-get install nfs-common
-sudo mkdir /mnt/nfsshare
-
-# Test the mount
-sudo mount -t nfs -o rw,nfsvers=4 server_ip:/shared/directory /mnt/nfsshare
-
-# Make permanent via fstab
-server_ip:/shared/directory /mnt/nfsshare nfs rw,nfsvers=4 0 0
-```
-
-### Connecting an SMB Share
-
-
-
-
-### TrueNAS VM
-
-Download the TrueNAS Scale ISO from `https://www.truenas.com/download-truenas-scale/`
-
-SATA Passthrough
-Shares for:
-1. Media
-1. Photos
-1. Backups (Documents, VMs)
-
-```
-Craft Computing Proxmox 8.0 - PCIe Passthrough
-```
-
-System:
-Machine: q35
-BIOS: OVMF (UEFI)
-EFI Storage: nvme
-
-CPU:
-4 Cores
-Type x86-64-v2-AES (default)
-
-Memory:
-8192 MiB 
-Ballooning turned off (required for passthrough)
-
-Create VM, turn on, 
-
-At the beginning of the startup it will say `Startup boot options`, press `Esc`. 
-
-Device Manager > Secure Boot Configuration > Attempt Secure Boot (turn off)
-
-F10 to save, Y to confirm
-
-This will open a boot menu where we need to turn off Secure Boot. This is required for UEFI BIOS to work. 
-
-install TrueNAS
-
-`username: truenas_admin`
-
-`shutdown`
-
-Add > PCI Device > Raw Device > Choose the SATA Controller, Check `PCI-Express`
-
-Now availabel at `192.168.1.xxx` as seen in the console 
-
-
-#### Set Static IP
-
-Go to the Network tab
-
-Find the interface and Uncheck DHCP
-
-Add an Alias with the desired IP
-
-Add gateway when prompted
-
-Reboot the VM, and it should now be accessible at the new IP (Can confirm via console, or the WebUI)
-
-
-#### Create an SMB Share
-
-1. Create a Pool
-`Storage > Create Pool`
-
-I chose a Mirrored VDEV for my 2 8TB drives and turned on Encryption. I can expand the pool after buying two more 8TB drives by going to:
-
-`Storage > DataStore > Manage Devices > Add VDEV`
-
-1. Create Datasets
-
-`Datasets > DataStore`
-
-I created different directories for each category of share (backups, documents, entertainment, photos, etc)
-
-1. Create Users
-
-`Credentials > Users`
-
-Give the user the group `builtin_administrator` or make a new group for them then add ACL accordingly under `Shares > share_name > Edit Filesystem ACL`
-
-1. Create Shares
-
-`Shares > Windows (SMB) Shares > Add`
-
-I created a share point for each Dataset.
-
-After creation, configure ACL and make sure to check if the new group has been added (as above) or add the user/group.
-
-Select `Save Access Control List`
-
-
-
-### Windows VM
+#### Windows VM
 
 Downlaod the Windows ISO from `https://www.microsoft.com/en-us/software-download/windows11`
 Download the latest Windows VirtIO Drivers from `https://pve.proxmox.com/wiki/Windows_VirtIO_Drivers#Using_the_ISO`
 
-#### Disabling GPU Drivers from Host
-
-`lspci -nn` on host shell to find device id (looks like `01:00.0`) and device hex code (looks like `1a2b:3c4d`)
-
-Verify the hex code with `lspci -n -s 01:00.0`
-
-
-`10de:21c4`
-`10de:1aeb`
-`10de:1aec`
-`10de:1aed`
-
-`echo "options vfio-pci ids=10de:21c4,10de:1aeb,10de:1aec,10de:1aed disable_vga=1" > /etc/modprobe.d/vfio.conf`
-
-
-
-```
-echo "options vfio-pci ids=####.####,####.#### disable_vga=1" > /etc/modprobe.d/vfio.conf # Can replace as many as necessary
-echo "blacklist nouveau" >> /etc/modprobe.d/blacklist.conf
-echo "blacklist nvidia*" >> /etc/modprobe.d/blacklist.conf
-update-initramfs -u -k all
-reboot
-```
-
-#### Creating the VM
+##### Creating the VM
 
 OS:
 Guest OS: Microsoft Windows
@@ -272,7 +69,7 @@ Then go to the Windows VM in Proxmox and again go to Hardware > Add > USB Device
 Select `Use USB Vendor/Device ID` and choose the Device ID found above to pass through the Bluetooth controller.
 
 
-#### Setting Up Windows
+##### Setting Up Windows
 
 I don't have a product key
 
@@ -324,7 +121,7 @@ Manually set IP address and dns info
 
 I disabled `Hardware > Display` so Sunshine would work properly
 
-### Jellyfin LXC
+#### Jellyfin LXC
 
 Create a priv LXC
 Under options turn on SMB (or NFS)
@@ -351,32 +148,9 @@ sudo mount -t cifs //192.168.1.111/entertainment /mnt/truenas/entertainment -o u
 ```
 
 
-### Development VM (Ubuntu)
+#### Ubuntu Server
 
-### Old Notes (Steps to Setup a VM)
-
-#### Init new VM in Proxmox GUI
-
-> Make sure to note the DHCP-given IP address
-
-- Turn off "Set up this disk as an LVM group"
-- Setup extra drives if necessary/mounted in proxmox when prompted
-  - Confirm drive mounts via `lsblk -f` and `sudo fdisk -l`
-- Install OpenSSH server    
-- sudo apt update && sudo apt upgrade -y
-
-#### Setup with Ansible
-
-1. Under `ansible/inventory/hosts` place the DHCP IP address under `server_setup_proxmox`
-2. In `ansible/playbooks/init/group_vars/server_setup_promox.yml`, update the desired IP and user info from the setup process.
-3. ssh to server at its DHCP address or otherwise add host's fingerprint to your known_hosts file
-4. Run `ansible-playbook -i ./ansible/inventory/hosts ./ansible/playbooks/init/server-setup-proxmox-ubuntu2404.yml --ask-vault-pass`
-
-### New Notes
-
-Download the Ubuntu Server ISO from `https://ubuntu.com/download/server`
-
-I followed my `wip-node-server` project to create the VM
+##### Dev Environment
 
 `sudo apt update && sudo apt upgrade -y`
 
@@ -416,6 +190,25 @@ Now I can SSH from the proxmox-win11 machine with `ssh -i 'C:\Users\Justin/.ssh/
 
 
 
+
+
+
+
+#### Bonus Gaming on Linux
+
+Download the Ubuntu Desktop ISO from `https://ubuntu.com/download/desktop`
+
+
+
+### Notes
+
+####  Sources
+
+Jim's Garage 2 gpus
+Craft Computing Proxmox 8.0 - PCIe Passthrough
+Virtualize Windows 11 with Proxmox the Right Way!
+Proxmox GPU Passthrough: The Ultimate Guide for Windows VMs! - Barmine Tech
+
 #### automating ssh keys added to the agent
 
 `eval "$(ssh-agent -s)"`
@@ -438,24 +231,6 @@ Host server-name
 ```
 
 And finally, I can connect to the remote server over SSH in VS Code.
-
-
-
-
-### Bonus Gaming on Linux
-
-Download the Ubuntu Desktop ISO from `https://ubuntu.com/download/desktop`
-
-###  Sources
-
-Jim's Garage 2 gpus
-Craft Computing Proxmox 8.0 - PCIe Passthrough
-Virtualize Windows 11 with Proxmox the Right Way!
-Proxmox GPU Passthrough: The Ultimate Guide for Windows VMs! - Barmine Tech
-
-
-
-### Notes
 
 #### NVMe issues
 
@@ -536,5 +311,30 @@ Create a cron to run the script:
 `systemctl restart cron`
 
 `systemctl status cron`
+
+
+#### NVMe Pools
+
+NVMe Pool:
+1. Mirror
+1. Compression `lz4`
+
+#### Connecting an NFS Share
+
+First, enable permissions in NAS software for the IP to access the share.
+
+```
+# Create the mount point
+sudo apt-get install nfs-common
+sudo mkdir /mnt/nfsshare
+
+# Test the mount
+sudo mount -t nfs -o rw,nfsvers=4 server_ip:/shared/directory /mnt/nfsshare
+
+# Make permanent via fstab
+server_ip:/shared/directory /mnt/nfsshare nfs rw,nfsvers=4 0 0
+```
+
+#### Connecting an SMB Share
 
 

@@ -1,11 +1,11 @@
 ---
 title: 'Docker on Ansible'
 featured: 'no'
-published: 'no'
+published: '2024-09-02'
 updated: ''
 repo: ''
-category: ''
-tags: ''
+category: 'documentation'
+tags: 'docker, linux, homelab, ansible, IaC'
 excerpt: ''
 excerpt2: ''
 thumbnail: ''
@@ -13,6 +13,11 @@ thumbnail-alt: ''
 ---
 
 ### Table of Contents
+
+1. Meta data
+  1. `thumbnail` size is `1234x1234`
+1. Emojis in titles
+1. Edit pass
 
 ### Intro
 
@@ -46,43 +51,16 @@ Once the Role had been installed, I created a playbook called `docker-geerling.y
 
 Now all we have to do is run the `docker-geerling.yml` playbook and Docker will be installed on the target servers. 
 
-### Creating an Initialization Playbook
-
-While a playbook for a role like this is completely possible, I have included it in an Ubuntu server initialization playbook:
-
-```
----
-- name: Init server from fresh Ubuntu install
-  hosts: "server_setup_proxmox"
-  vars_files:
-  - ~/.ansible/vault/ansible_ssh_pass.yml
-  - ~/.ansible/vault/ansible_become_pass.yml
-  roles:
-    - role: init/ssh_key_copy
-    
-    - role: init/disable_password_login
-      become: yes
-
-    - role: init/apt_update_upgrade
-      become: yes
-
-    - role: init/qemu_guest_agent
-      become: yes
-
-    - role: geerlingguy.docker
-      become: yes
-
-    - role: init/network_config
-      become: yes
-```
-
-This playbook handles all the necessary tasks that I do for every server I spin up and the other roles can be found in my [Homelab repo](https://github.com/JustinMountain/homelab/tree/main/ansible/roles/init). 
+Once I confirmed that the playbook runs as expected, I added the `geerlingguy.docker` role to my existing initialization playbook.
 
 ### Automating Docker Compose
 
+
+
+
 Since I'm using Ansible to manage remote servers, it's a pain in the ass to make a change, ssh into the machine, copy the files, and run the appropriate commands. This is why I made `compose_up` and `compose_down` roles that take care of all that for me. 
 
-The role handles everything so that I can just worry about writing a new `compose.yml` file and run it to make sure that everything is taken care of. It ensure the right directories are present on remote, handles moving over the `compose.yml` and `.env` files as well as any extra files that may be needed (I use a `/`data`` subdirectory), and even create the `proxy` docker network so that I can easily hook up new services into my [Traefik]() configuration. 
+The role handles everything so that I can just worry about writing a new `compose.yml` file and run it to make sure that everything is taken care of. It ensure the right directories are present on remote, handles moving over the `compose.yml` and `.env` files as well as any extra files that may be needed (I use a `/data` subdirectory), and even create the `proxy` docker network so that I can easily hook up new services into my [Traefik]() configuration. 
 
 `docker compose down` is a much simpler role, as it just needs to worry about tearing down the stack. However, with the roles created they are used in functionally the same way: Add the name of the container stack and go. 
 
