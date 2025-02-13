@@ -3,7 +3,7 @@ title: 'Running Docker in my Homelab'
 featured: 'no'
 published: '2023-03-05'
 updated: '2024-07-17'
-repo: 'https://github.com/JustinMountain/docker-compose'
+repo: 'https://github.com/JustinMountain/homelab/tree/main/docker'
 category: 'repository'
 tags: 'linux, homelab, docker'
 excerpt:  "Docker is a powerful virualization tool that allows us to deploy containerized applications. Application dependencies are part of the container rather than the host operating system, making containerized applications easily reproducible and independent from one another."
@@ -113,7 +113,7 @@ service:
 
 In general, I like to make directories because it allows for a more simple [backup solution](/projects/storage-and-backup).
 
-#### NFS Volumes
+#### 🐧 NFS Volumes
 
 We can make docker volumes from NFS mounts. I have found this more reliable than mounting NFS to the host and mapping the directory via `compose.yml`. These NFS volumes are referenced the same as above, but their declaration requires some configuration:
 
@@ -129,7 +129,7 @@ volumes:
 
 The options are fairly straight-forward, but a better explanation can be found in the [Docker documentation](https://docs.docker.com/storage/volumes/).
 
-#### SMB Volumes
+#### 🪟 SMB Volumes
 
 Like NFS volumes, we can also mount SMB shares as volumes within `compose.yml`:
 

@@ -3,7 +3,7 @@ title: 'Running Ansible in My Homelab'
 featured: 'no'
 published: '2024-06-15'
 updated: '2024-09-07'
-repo: 'https://github.com/JustinMountain/homelab/ansible'
+repo: 'https://github.com/JustinMountain/homelab/tree/main/ansible'
 category: 'repository'
 tags: 'linux, homelab, ansible, IaC'
 excerpt:  "Ansible allows me to establish my homelab's Infrastructure as Code. Through Ansible, I declare the desired state of my server(s) and Ansible does the rest."

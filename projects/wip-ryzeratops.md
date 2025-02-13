@@ -16,6 +16,12 @@ thumbalt: ''
 
 ### Plan
 
+Preparation:
+1. Take SSH keys from Win11 and discover process to import them to new machines
+  1. Need to push to tamy, win11vm, and devbuntu
+1. Use/write playbook to add SSH keys 
+1. `git push`
+
 TrueNAS VM with 2 3tb drives for backup location
 1. Is it possible to pass the drives to TrueNAS?
 1. This becomes a backup target for other TrueNAS (rsync?)
@@ -29,8 +35,6 @@ Heavy Services VM
 Gaming VM
 1. Windows?
 1. Linux?
-
-
 
 #### Windows VM
 

@@ -1,20 +1,32 @@
 ---
-title: 'Creating a new home production server: StegosaurNAS'
+title: 'A New Home Production Server: StegosaurNAS'
 featured: 'no'
 published: '2025-02-03'
 updated: ''
 repo: ''
 category: 'documentation'
-tags: 'linux, homelab, data management, proxmox, truenas'
+tags: 'linux, homelab, data management, proxmox, truenas, hardware'
 excerpt: 'Using Proxmox, I built a dedicated server to store my family files, photos, and services: StegosaurNAS.'
 excerpt2: 'This documentation outlines how to configure Proxmox for PCIe passthrough, and how to install TrueNAS and Ubuntu server as virual machines.'
-thumbnail: ''
+thumbnail: 'stegosaurnas.jpg'
 thumbalt: ''
 ---
 
 ### Table of Contents
 
-1. `thumbnail` size is `1234x1234`
+### Parts List
+
+1. 1x RackChoice 2U Rackmount Server Chassis
+1. 1x Topton N5105 NAS MOBO Mini ITX 
+1. 2x 16GB SAMSUNG Memory DDR4 SODIMM RAM 
+1. 2x Kingston 240GB A400 SATA 3 2.5 inch Internal SSD
+1. 1x ASM1166 M.2 PCIE to 6x SATA Expansion Card 
+1. 1x MSI MAG A550BN Gaming Power Supply
+1. 2x 8TB Seagate IronWolf Pro 
+1. 2x 8TB Seagate IronWolf 
+1. 3x Noctua NF-R8 80mm Case Fans
+1. 1x Noctua NF-A4x10 40mm Case Fan
+1. 1x Noctua NA-SYC1 Fan Cable Y-Splitter
 
 ### 👨‍💻 What is Proxmox?
 
@@ -45,7 +57,7 @@ There are a collection of [community scripts](https://community-scripts.github.i
 
 #### 🪪 Enabling PCIe Passthrough
 
-With Proxmox generally setup, there are a few extra things we can do in order to allow PCIe passthrough to our virtual machines. By enabling PCIe passthrough and giving the VMs direct access to the devices, devices act as if they are physically attached to the virtual machines instead of the host. This direct access has less overhead, improved I/O performance, minor security improvement due to isolation, and enables better GPU support for VMs.
+With Proxmox generally setup, there are a few extra things to do in order to allow PCIe passthrough to our virtual machines. By enabling PCIe passthrough and giving the VMs direct access to the devices, devices act as if they are physically attached to the virtual machines instead of the host. This direct access has less overhead, improved I/O performance, minor security improvement due to isolation, and enables better GPU support for VMs.
 
 First, we need to update the GRUB bootloader by accessing the grub file at `nano /etc/default/grub`:
 
@@ -86,14 +98,14 @@ My 1660 Super had four different devices that needed to be disabled. These four 
 echo "options vfio-pci ids=10de:21c4,10de:1aeb,10de:1aec,10de:1aed disable_vga=1" > /etc/modprobe.d/vfio.conf
 ```
 
-Additionally, we blacklist the GPU drivers: 
+Additionally, I blacklisted the GPU drivers: 
 
 ```
 echo "blacklist nouveau" >> /etc/modprobe.d/blacklist.conf
 echo "blacklist nvidia*" >> /etc/modprobe.d/blacklist.conf
 ```
 
-Then we need to run `update-initramfs -u -k all` and `reboot` the system.
+Then I ran `update-initramfs -u -k all` and `reboot` the system.
 
 When selecting the GPU for passthrough as described above, just select the top-level device for passthrough. The rest of the devices are extras, like the sound controller, and they will come along with the root device. 
 
@@ -113,7 +125,6 @@ Here are the settings I used when setting up the TrueNAS VM in Proxmox `8.3.3`:
 System:
 Machine: q35
 BIOS: OVMF (UEFI)
-EFI Storage: nvme
 
 CPU:
 4 Cores
@@ -130,23 +141,23 @@ Once the truenas install has completed, shutdown the device and in the Promox UI
 
 With the TrueNAS VM turned on, the `Console` will show its current IP address. Access the VM over port 80 at the IP seen in the console.
 
-##### Setting a Static IP
+##### 📍 Setting a Static IP
 
 Under the **Network** tab, find the interface and Uncheck **DHCP**. Then add an Alias with the desired IP and subnet mask. Once saved, a prompt will appear asking for the gateway address.
 
 After rebooting the VM, the TrueNAS UI should be available at the new IP. The new IP will also be in the `Console` tab of the Proxmox UI.
 
-##### Sharing Data
+##### 📨 Sharing Data
 
 Now that TrueNAS is available over a static IP and in control of the SATA card, it's time to add a share.
 
-First, we need to create a zfs pool for the data by going to the **Storage** tab, and selecting **Create Pool**. I chose to use a Mirrored VDEV for my 2 8TB drives, giving me 8TB of space with complete redundancy. 
+First, I needed to create a zfs pool for the data by going to the **Storage** tab, and selecting **Create Pool**. I chose to use a Mirrored VDEV for my 2 8TB drives, giving me 8TB of space with complete redundancy. 
 
 I later expanded the pool after buying two more 8TB drives by selecting **Manage Devices** under the **Storage** tab and then selecting **Add VDEV**.
 
 With the pool created and the **Datasets** tab open, click **Add Dataset** to create different share directories. I setup four: backups, documents, entertainment, and photos.
 
-Now we need to create users that have access to the data. Select the **Credentials** then **Users** tab and give the user the `builtin_administrator` group or make a new group for them then add ACL accordingly under **Shares** > **share_name** > **Edit Filesystem ACL**. I always check **Apply permissions recursively** and don't forget to **Save Access Control List**.
+Next, I needed to create users that have access to the data. Select the **Credentials** then **Users** tab and give the user the `builtin_administrator` group or make a new group for them then add ACL accordingly under **Shares** > **share_name** > **Edit Filesystem ACL**. I always check **Apply permissions recursively** and don't forget to **Save Access Control List**.
 
 Finally, shares can now be made and given to users! SMB and NFS shares can be made separately and to point towards the same directories. After creating a new share, I always like to configure the ACL and make sure to check if the new group has been added (as above) and manually add the user/group, if necessary.
 

@@ -8,13 +8,11 @@ category: 'documentation'
 tags: 'docker, homelab, selfhosting'
 excerpt: 'This is where I keep notes about specific docker containers that do not (yet) require/deserve their own page.'
 excerpt2: ''
-thumbnail: ''
-thumbnail-alt: ''
+thumbnail: 'docker-notes.jpg'
+thumbnail-alt: 'Notes for Docker containers and deployments'
 ---
 
 ### Table of Contents
-
-1. `thumbnail` size is `1234x1234`
 
 ### 💸 Actual Budget
 
