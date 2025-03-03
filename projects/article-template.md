@@ -8,7 +8,7 @@ category: ''
 tags: 'networking, docker, linux, homelab, data management, proxmox, truenas, media, aws, cloud, nextjs, hardware, ansible, IaC, certification, monitoring, node, selfhosting'
 excerpt: 'This should be a complete sentence.'
 excerpt2: ''
-thumbnail: ''
+thumbnail: 'article-template-splash.jpg'
 thumbnail-alt: ''
 ---
 

@@ -1,5 +1,8 @@
 name: Build and Push Personal Site to Docker Hub
-on: push
+on:
+  push:
+    branches:
+      - main
 jobs:
   build-container:
     name: Build Docker container image
