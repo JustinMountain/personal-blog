@@ -2,7 +2,7 @@
 title: 'Docker Container Notes'
 featured: 'no'
 published: '2025-01-15'
-updated: '2025-02-05'
+updated: '2025-06-14'
 repo: ''
 category: 'documentation'
 tags: 'docker, homelab, selfhosting'
@@ -25,6 +25,21 @@ Moving forward I will go to **Products & Services** > **Account Services** menu 
 To Download CIBC transactions, go to **More** on the left side menu, select **Download Transactions**
 
 > *Confirmed*: Sometimes there is a delay between a purchase being made and it showing up in the account. Any transactions falling in this category will be remedied in the subsequent download, even if the date the transaction was posted has already passed.
+
+### Home Assistant
+
+Adding the `macvlan` bridge to the IoT network:
+
+```
+docker network create -d macvlan \
+  --subnet=192.168.20.0/24 \
+  --gateway=192.168.20.1 \
+  -o parent=eth0 \
+  iot_macvlan
+```
+
+https://www.hacs.xyz/docs/use/download/download/#to-download-hacs
+
 
 ### 🏠 Homepage
 
